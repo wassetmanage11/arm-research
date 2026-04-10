@@ -368,6 +368,7 @@ footer {
     .sub-toggle.collapsed::before { transform:rotate(-90deg); }
 
   </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -1225,7 +1226,7 @@ footer {
   </div>
 
   <script>
-  (function() {
+  window.addEventListener("load", function() {
     const ctx = document.getElementById('cpuCompareChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
@@ -1573,9 +1574,9 @@ footer {
     <p style="color:var(--text-dim); font-size:0.8rem; margin-top:0.75rem;">출처: ARM 도쿄 IR 브리핑 (© 2026 Arm), 추정치 기반. $25B 타겟은 점선으로 표시.</p>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  
   <script>
-  (function() {
+  window.addEventListener("load", function() {
     const ctx = document.getElementById('revenueChart').getContext('2d');
     
     const labels = ['FY26', 'FY27', 'FY28', 'FY29', 'FY30', 'FY31'];
@@ -1733,7 +1734,7 @@ footer {
     <p class="table-caption" style="margin-top:0.5rem;">SoftBank 디자인 서비스 매출 포함, 칩 매출 미포함. 출처: ARM 도쿄 IR (© 2026 Arm)</p>
   </div>
   <script>
-  (function() {
+  window.addEventListener("load", function() {
     new Chart(document.getElementById('licenseChart').getContext('2d'), {
       type: 'bar',
       data: {
@@ -1771,7 +1772,7 @@ footer {
   })();
   </script>
   <script>
-  (function(){
+  window.addEventListener("load", function() {
     const ctx = document.getElementById('licenseChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
@@ -1780,7 +1781,7 @@ footer {
         datasets: [{
           label: 'License Revenue',
           data: [0.9, 1.0, 1.4, 1.7, 2.1, 2.3, 2.5, 2.8],
-          backgroundColor: function(ctx) {
+          backgroundColor: function(ctx)) {
             return ctx.dataIndex < 5 ? 'rgba(133,183,235,0.85)' : 'rgba(26,86,219,0.5)';
           },
           borderColor: function(ctx) {
@@ -1835,7 +1836,7 @@ footer {
     <p class="table-caption" style="margin-top:0.5rem;">출처: ARM 도쿄 IR (© 2026 Arm), 추정치 기반</p>
   </div>
   <script>
-  (function() {
+  window.addEventListener("load", function() {
     new Chart(document.getElementById('royaltyChart').getContext('2d'), {
       type: 'bar',
       data: {
@@ -1878,7 +1879,7 @@ footer {
   })();
   </script>
   <script>
-  (function(){
+  window.addEventListener("load", function() {
     const ctx = document.getElementById('royaltyChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
@@ -1887,7 +1888,7 @@ footer {
         datasets: [{
           label: 'Royalty Revenue',
           data: [1.4, 1.6, 1.9, 2.3, 2.8, 3.4, 4.0, 4.8, 5.8, 6.8],
-          backgroundColor: function(ctx) {
+          backgroundColor: function(ctx)) {
             return ctx.dataIndex < 5 ? 'rgba(133,183,235,0.85)' : 'rgba(26,86,219,0.85)';
           },
           borderColor: function(ctx) {
@@ -1949,7 +1950,7 @@ footer {
     <p class="table-caption" style="margin-top:0.5rem;">파랑 = 계약 기반 / 회색 = 미계약. 출처: ARM 도쿄 IR (© 2026 Arm)</p>
   </div>
   <script>
-  (function() {
+  window.addEventListener("load", function() {
     new Chart(document.getElementById('contractChart').getContext('2d'), {
       type: 'bar',
       data: {
@@ -1976,14 +1977,14 @@ footer {
   })();
   </script>
   <script>
-  (function(){
+  window.addEventListener("load", function() {
     const ctx = document.getElementById('contractChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['FY26','FY27','FY28','FY29','FY30','FY31'],
         datasets: [
-          { label: '계약 기반', data: [100, 98, 85, 75, 65, 60], backgroundColor: 'rgba(26,86,219,0.85)', borderRadius: 4 },
+          { label: '계약 기반', data: [100, 98, 85, 75, 65, 60], backgroundColor: 'rgba(26,86,219,0.85))', borderRadius: 4 },
           { label: '미계약', data: [0, 2, 15, 25, 35, 40], backgroundColor: 'rgba(200,204,210,0.6)', borderRadius: 4 }
         ]
       },
