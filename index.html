@@ -691,19 +691,59 @@ footer {
 
   
 <table class="data-table">
-  <thead><tr><th>IP 종류</th><th>설명</th><th>비고</th></tr></thead>
+  <thead><tr><th style="width:12%;">IP 종류</th><th style="width:30%;">설명</th><th style="width:28%;">비고</th><th style="width:30%;">주요 고객 / 납품처</th></tr></thead>
   <tbody>
-    <tr><td class="row-label">Cortex-X</td><td>모바일/클라이언트 최고 성능 플래그십 라인업</td><td>→ C1-Ultra로 통합 예정</td></tr>
-    <tr><td class="row-label">Cortex-A</td><td>모바일/임베디드 범용 라인업</td><td>→ C1 라인업으로 통합 예정</td></tr>
-    <tr><td class="row-label">Cortex-R</td><td>실시간 처리 중심. 지연 최소화 + 안정성 필수.</td><td>자동차 ECU, 산업용</td></tr>
-    <tr><td class="row-label">Cortex-M</td><td>임베디드 마이크로컨트롤러(MCU). 초저전력 + 결정론적 실시간 처리.</td><td>IoT, 센서, 웨어러블</td></tr>
-    <tr style="background:rgba(26,86,219,0.04)"><td class="row-label">C1 CPU 라인업<br><span style="font-size:0.7rem;color:var(--accent);">2025 신규</span></td><td>Cortex-X와 Cortex-A를 대체하는 새로운 통합 CPU 제품군. ARMv9.3-A 기반. 온디바이스 AI 성능 향상 + 전력 효율 추구.</td><td>C1-Ultra(플래그십), C1-Premium(서브 플래그십), C1-Pro(미들급 Big core), C1-Nano(고효율 Little core)</td></tr>
-    <tr style="background:rgba(26,86,219,0.04)"><td class="row-label">Neoverse</td><td>데이터센터/서버 전용 CPU 라인업. 클라우드와 엣지 컴퓨팅에 최적화.</td><td>N3: 하이퍼스케일/5G 용도<br>V3: 최고 싱글 스레드, AI/HPC 용도<br><strong>AGI CPU의 핵심</strong></td></tr>
-    <tr><td class="row-label">Ethos NPU</td><td>온디바이스 AI 처리에 중점을 둔 AI/ML 전용 가속기</td><td>4TOPS~8TOPS 등 다양한 스케일</td></tr>
-    <tr><td class="row-label">Mali GPU</td><td>ARM의 GPU IP 라인업</td><td>→ Immortalis(하이엔드) + Mali(메인스트림)</td></tr>
+    <tr>
+      <td class="row-label"><a href="https://www.arm.com/products/cortex-x" target="_blank">Cortex-X</a></td>
+      <td>모바일/클라이언트 최고 성능 플래그십 라인업</td>
+      <td>→ C1-Ultra로 통합 예정</td>
+      <td>Samsung Exynos, MediaTek Dimensity 플래그십, Google Tensor</td>
+    </tr>
+    <tr>
+      <td class="row-label"><a href="https://www.arm.com/products/silicon-ip-cpu" target="_blank">Cortex-A</a></td>
+      <td>모바일/임베디드 범용 라인업</td>
+      <td>→ C1 라인업으로 통합 예정</td>
+      <td>Samsung, MediaTek, Qualcomm(미드레인지), Unisoc, 대부분의 Android 기기</td>
+    </tr>
+    <tr>
+      <td class="row-label"><a href="https://www.arm.com/products/silicon-ip-cpu" target="_blank">Cortex-R</a></td>
+      <td>실시간 처리 중심. 지연 최소화 + 안정성 필수.</td>
+      <td>자동차 ECU, 산업용</td>
+      <td>Renesas, NXP, Texas Instruments, Bosch, Continental 등 자동차 Tier 1</td>
+    </tr>
+    <tr>
+      <td class="row-label"><a href="https://www.arm.com/products/silicon-ip-cpu" target="_blank">Cortex-M</a></td>
+      <td>임베디드 마이크로컨트롤러(MCU). 초저전력 + 결정론적 실시간 처리.</td>
+      <td>IoT, 센서, 웨어러블</td>
+      <td>STMicroelectronics, NXP, Nordic Semi, Infineon, Microchip — 연간 수십억 개 출하</td>
+    </tr>
+    <tr>
+      <td class="row-label"><a href="https://www.arm.com/products/silicon-ip-cpu/c1-ultra" target="_blank">C1 CPU 라인업</a><br><span style="font-size:0.75rem;color:var(--accent);">2025 신규</span></td>
+      <td>Cortex-X와 Cortex-A를 대체하는 새로운 통합 CPU 제품군. ARMv9.3-A 기반. 온디바이스 AI 성능 향상 + 전력 효율 추구.</td>
+      <td>C1-Ultra(플래그십), C1-Premium(서브 플래그십), C1-Pro(미들급), C1-Nano(고효율)</td>
+      <td>Samsung Galaxy S26/Z Flip 8, Oppo Find X9 Pro, Xiaomi 15 Ultra, Vivo X200 Pro 등 2026 플래그십에 탑재 예정 (Exynos/MediaTek 칩셋 경유). <a class="fc-source" href="https://techboltx.com/top-android-phones-2026-arm-new-cpus-ai/" target="_blank">TechBoltX</a></td>
+    </tr>
+    <tr>
+      <td class="row-label"><a href="https://www.arm.com/products/silicon-ip-cpu/neoverse" target="_blank">Neoverse</a></td>
+      <td>데이터센터/서버 전용 CPU 라인업. 클라우드와 엣지 컴퓨팅에 최적화.</td>
+      <td>N3: 하이퍼스케일/5G 용도<br>V3: 최고 싱글 스레드, AI/HPC 용도<br><strong>AGI CPU의 핵심</strong></td>
+      <td><strong>V 시리즈:</strong> AWS Graviton 3/4/5, Google Axion, Nvidia Grace/Vera, ARM AGI CPU<br><strong>N 시리즈:</strong> Microsoft Cobalt 100/200, Alibaba Yitian 710, Ampere Altra<br><a class="fc-source" href="https://newsroom.arm.com/blog/what-is-arm-neoverse" target="_blank">ARM Newsroom</a></td>
+    </tr>
+    <tr>
+      <td class="row-label"><a href="https://www.arm.com/products/silicon-ip-cpu" target="_blank">Ethos NPU</a></td>
+      <td>온디바이스 AI 처리에 중점을 둔 AI/ML 전용 가속기</td>
+      <td>4TOPS~8TOPS 등 다양한 스케일</td>
+      <td>Samsung, MediaTek 등 모바일 SoC에 통합. 스마트 카메라, 음성인식 엣지 디바이스</td>
+    </tr>
+    <tr>
+      <td class="row-label"><a href="https://www.arm.com/products/silicon-ip-gpu" target="_blank">Mali GPU</a></td>
+      <td>ARM의 GPU IP 라인업</td>
+      <td>→ G1-Ultra(하이엔드) + Mali(메인스트림). Immortalis 브랜드 폐지</td>
+      <td>Samsung Exynos, MediaTek Dimensity, Google Tensor. Qualcomm은 자체 Adreno GPU 사용</td>
+    </tr>
   </tbody>
 </table>
-<p class="table-caption">출처: ARM 공식 제품 페이지 및 도쿄 IR 브리핑 기반 재구성</p>
+<p class="table-caption">출처: <a href="https://www.arm.com/products" target="_blank">ARM 공식 제품 페이지</a> 및 도쿄 IR 브리핑 기반 재구성. 고객 정보는 공개 발표 기준.</p>
 
 
   
