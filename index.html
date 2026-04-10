@@ -1858,7 +1858,7 @@ window.addEventListener("load", function() {
         }
       }]
     });
-  })();
+  });
 window.addEventListener("load", function() {
     new Chart(document.getElementById('licenseChart').getContext('2d'), {
       type: 'bar',
@@ -1894,7 +1894,7 @@ window.addEventListener("load", function() {
         }
       }]
     });
-  })();
+  });
 window.addEventListener("load", function() {
     const ctx = document.getElementById('royaltyChart').getContext('2d');
     new Chart(ctx, {
@@ -1904,7 +1904,7 @@ window.addEventListener("load", function() {
         datasets: [{
           label: 'Royalty Revenue',
           data: [1.4, 1.6, 1.9, 2.3, 2.8, 3.4, 4.0, 4.8, 5.8, 6.8],
-          backgroundColor: function(ctx)) {
+          backgroundColor: function(ctx) {
             return ctx.dataIndex < 5 ? 'rgba(133,183,235,0.85)' : 'rgba(26,86,219,0.85)';
           },
           borderColor: function(ctx) {
@@ -1955,7 +1955,7 @@ window.addEventListener("load", function() {
         }
       }]
     });
-  })();
+  });
 window.addEventListener("load", function() {
     new Chart(document.getElementById('royaltyChart').getContext('2d'), {
       type: 'bar',
@@ -1996,7 +1996,7 @@ window.addEventListener("load", function() {
         }
       }]
     });
-  })();
+  });
 window.addEventListener("load", function() {
     new Chart(document.getElementById('contractChart').getContext('2d'), {
       type: 'bar',
@@ -2021,7 +2021,7 @@ window.addEventListener("load", function() {
         }
       }
     });
-  })();
+  });
 window.addEventListener("load", function() {
     const ctx = document.getElementById('licenseChart').getContext('2d');
     new Chart(ctx, {
@@ -2031,7 +2031,7 @@ window.addEventListener("load", function() {
         datasets: [{
           label: 'License Revenue',
           data: [0.9, 1.0, 1.4, 1.7, 2.1, 2.3, 2.5, 2.8],
-          backgroundColor: function(ctx)) {
+          backgroundColor: function(ctx) {
             return ctx.dataIndex < 5 ? 'rgba(133,183,235,0.85)' : 'rgba(26,86,219,0.5)';
           },
           borderColor: function(ctx) {
@@ -2067,7 +2067,7 @@ window.addEventListener("load", function() {
         }
       }]
     });
-  })();
+  });
 window.addEventListener("load", function() {
     const ctx = document.getElementById('contractChart').getContext('2d');
     new Chart(ctx, {
@@ -2091,7 +2091,7 @@ window.addEventListener("load", function() {
         }
       }
     });
-  })();
+  });
 // Smooth scroll for nav links
 document.querySelectorAll('nav a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
