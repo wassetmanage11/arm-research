@@ -925,6 +925,31 @@ footer {
   <div class="highlight">
     <strong>핵심 아이러니:</strong> Nvidia Vera도 ARM 아키텍처(v9.2-A) 기반이다. <a class="fc-source" href="https://www.servethehome.com/nvidias-vera-cpu-in-detail-high-perf-chip-takes-aim-at-broader-ai-server-market/" target="_blank">ServeTheHome</a> Nvidia는 ARM에 아키텍처 라이선스 비용을 지불하면서 자기만의 커스텀 CPU를 만든다. 즉 ARM은 자기 아키텍처를 라이선스해준 고객과 같은 시장에서 직접 경쟁하게 된 것이다. 다만 Grace(기성품 Neoverse 코어 사용)와 달리 Vera의 Olympus 코어는 Nvidia가 처음부터 자체 설계한 풀커스텀 코어다.
   </div>
+    <div class="highlight" style="margin-top:1.5rem;">
+      <strong>왜 Nvidia Vera인가 — GPU를 위해 CPU가 필요하다:</strong>
+      <p style="margin-top:0.5rem;">CES에서 Jensen Huang은 CPU에서도 향후 출하 1위를 목표한다고 언급. GTC 2026에서 Vera-only tray와 Standalone CPU rack을 출시. Agent 구동에서 CPU가 최고 성능이 되지 못하면 GPU idle이 발생하며, Agent 실행/오케스트레이션 역할에 집중하는 설계. 기존 2GPU-1CPU 구조는 충분하지 않으며, GPU가 여러 다른 Vera 코어에서 서비스될 수 있다고 언급.</p>
+    </div>
+
+    <div class="highlight" style="margin-top:1rem;">
+      <strong>왜 Intel/AMD 말고 Nvidia Vera를 쓰는가:</strong>
+      <p style="margin-top:0.5rem;">기존 x86 CPU들은 vCPU 형태로 배포하기 위해 많은 코어 수에 집중했으나, Vera는 Agent 호환성을 위해 빠른 단일 Thread와 I/O 대역폭에 집중. SOCAMM 활용 LPDDR5X로 코어당 대역폭이 직전 최고사양 CPU 대비 3배 높은 수준(약 14GB/s vs 약 4~6GB/s).</p>
+    </div>
+
+    <div class="img-container" style="margin-top:1.5rem;">
+      <img src="images/vera_spec_table.png" alt="Server CPU spec comparison table">
+      <div class="img-caption">서버 CPU 스펙 비교 — Vera CPU: 88코어/176T이지만 메모리 대역폭 1.2TB/s, I/O 1.8TB/s로 타 CPU 대비 압도적. 코어 수가 아닌 코어당 대역폭이 에이전틱 워크로드의 핵심.</div>
+    </div>
+
+    <div class="img-container" style="margin-top:1rem;">
+      <img src="images/vera_rack.png" alt="Vera CPU Rack configuration">
+      <div class="img-caption">Vera CPU Rack 구성 — Vera Compute Tray x32, 각 트레이에 Vera CPU x8 + BlueField-4 DPU x2 + CX9 NIC x1. Spectrum-X Ethernet spine 네트워킹 + 1U MGX ETL switch tray(Spectrum-6). 출처: SK증권</div>
+    </div>
+
+    <div class="img-container" style="margin-top:1rem;">
+      <img src="images/superpod_rack.png" alt="1/2 SuperPod rack configuration">
+      <div class="img-caption">1/2 SuperPod 내 랙 구성 — ①Vera Rubin NVL72(NVLink spine) x8랙 + ②Groq 3 LPX(D2C spine) x2랙 + ③Vera CPU(Spectrum-X spine) + ④BlueField-4 STX Storage(Spectrum-X spine) + ⑤Spectrum-6 SPX x5랙. GPU 랙 옆에 반드시 CPU 랙이 배치되는 구조. 출처: SK증권</div>
+    </div>
+
 
   <div class="card">
     <h3>서버 CPU 시장의 전체 경쟁 지형</h3>
