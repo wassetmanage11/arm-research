@@ -694,7 +694,7 @@ footer {
     <p><strong>AI Agent 시대의 DPU:</strong> AI Agent 시대 대비를 위해 루빈과 함께 출시되는 BlueField-4 DPU는 증가하는 KV Cache 관련 워크로드를 처리하기 위해 코어 수가 4배 더 증가했다. DPU 성능 증가 요구는 곧 CPU 수혜로 이어지며, ARM이 이 영역에서도 구조적 수혜를 받을 것으로 기대된다.</p>
   </div>
 
-<div class="section-label" style="margin-top:3rem;">반도체 시장 TAM 전망</div>
+<div class="section-label" style="margin-top:3rem;">CPU 시장 TAM 전망</div>
 
   <div class="img-container">
     <img src="images/img_004.jpg" alt="Massive and growing semiconductor market">
@@ -707,7 +707,7 @@ footer {
   </div>
 
   <div class="card">
-    <h3>TAM 전망 (FY31 기준)</h3>
+    <h3>CPU 중심 TAM 전망 (FY31 기준)</h3>
     <div class="spec-row"><span class="label">전체 반도체 로직</span><span class="value">$500B(현재) → $1.5T+(FY31)</span></div>
     <div class="spec-row"><span class="label">Cloud AI</span><span class="value">$330B → $1T+ (CAGR 약 35%)</span></div>
     <div class="spec-row"><span class="label">  - DC CPU (ARM 타겟)</span><span class="value">$100B+ (AGI CPU가 공략하는 시장)</span></div>
@@ -1035,6 +1035,174 @@ footer {
     <p><strong>기타:</strong> RISC-V (Tenstorrent 등 부상 중)</p>
     <p>Bank of America는 서버 CPU 시장이 2025년 $27B → 2030년 $60B로 성장 전망. <a class="fc-source" href="https://www.cnbc.com/2026/03/13/nvidia-gtc-ai-jensen-huang-cpu-gpu.html" target="_blank">CNBC</a></p>
   </div>
+<div class="card" style="padding:1.5rem;">
+    <h3>서버 CPU 4강 스펙 비교 대시보드</h3>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">x86 진영(Intel/AMD) vs ARM 진영(Nvidia Vera/ARM AGI)의 최신 플래그십 서버 CPU 비교. 동일 전력 예산에서 얼마나 많은 컴퓨트를 뽑아내는지가 에이전틱 AI 시대의 핵심 경쟁력.</p>
+    <div style="overflow-x:auto;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:20%;">항목</th>
+          <th style="width:20%;">Intel Xeon 6980P<br><span style="font-weight:400;font-size:0.8rem;">Granite Rapids</span></th>
+          <th style="width:20%;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.8rem;">Turin Dense</span></th>
+          <th style="width:20%;">Nvidia Vera<br><span style="font-weight:400;font-size:0.8rem;">Olympus (ARM)</span></th>
+          <th style="width:20%;">ARM AGI CPU<br><span style="font-weight:400;font-size:0.8rem;">Neoverse V3</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-label">아키텍처</td><td>x86 (Redwood Cove P-core)</td><td>x86 (Zen 5C)</td><td>ARM v9.2-A (커스텀 Olympus)</td><td>ARM v9.2-A (Neoverse V3)</td></tr>
+        <tr><td class="row-label">공정</td><td>Intel 3</td><td>TSMC N4</td><td>비공개 (N3P 추정)</td><td>TSMC N3P</td></tr>
+        <tr><td class="row-label">코어 수</td><td>128</td><td>192 (384T)</td><td>88 (176T, Spatial MT)</td><td>136 (136T, SMT 없음)</td></tr>
+        <tr><td class="row-label">TDP</td><td>500W</td><td>500W</td><td>비공개</td><td>300W (250~430W)</td></tr>
+        <tr><td class="row-label">L3 캐시</td><td>504MB</td><td>384MB</td><td>162MB</td><td>128MB (SLC)</td></tr>
+        <tr><td class="row-label">메모리</td><td>DDR5 12ch, MCR DIMM</td><td>DDR5 12ch, 6000MT/s</td><td>LPDDR5X, 1.2TB/s</td><td>DDR5 12ch, 8800MT/s</td></tr>
+        <tr><td class="row-label">PCIe</td><td>PCIe 5.0 x96</td><td>PCIe 5.0 x128</td><td>NVLink-C2C 1.8TB/s</td><td>PCIe Gen6 x96, CXL 3.0</td></tr>
+        <tr><td class="row-label">다이 구성</td><td>MCM (EMIB)</td><td>MCM (칩렛)</td><td>모놀리식 + dielets</td><td>MCM (듀얼 칩렛)</td></tr>
+        <tr><td class="row-label">코어/와트</td><td>0.26</td><td>0.38</td><td>추정 0.35~0.44</td><td style="font-weight:500; color:#1a56db;">0.45</td></tr>
+        <tr><td class="row-label">폼팩터</td><td>2U (듀얼소켓 기준)</td><td>2U (듀얼소켓 기준)</td><td>Vera Rubin NVL72 전용</td><td>1U (듀얼노드)</td></tr>
+        <tr><td class="row-label">36kW 랙 코어 수</td><td>약 4,352 (17x2U, 듀얼소켓)</td><td>약 6,528 (17x2U, 듀얼소켓)</td><td>NVL72 번들 (3,168코어/랙)</td><td style="font-weight:500; color:#1a56db;">8,160 (30x1U)</td></tr>
+        <tr><td class="row-label">주요 고객</td><td>Google, 엔터프라이즈</td><td>Meta, AWS, 범용</td><td>CoreWeave, 네오클라우드</td><td>Meta, Cerebras, SAP</td></tr>
+        <tr><td class="row-label">가격</td><td>$17,800</td><td>$14,813</td><td>번들 판매</td><td>미공개</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-caption">코어/와트 = 코어 수 ÷ TDP. 36kW 랙 코어 수는 에어쿨링 기준 추정치. Vera는 standalone 배치 시 달라질 수 있음. 출처: Intel, AMD, Nvidia, ARM 공식 발표 및 Tom's Hardware, Fudzilla, VideoCardz 기반 재구성.</p>
+    
+    <div style="position:relative; height:320px; width:100%; margin-top:1.5rem;">
+      <canvas id="cpuCompareChart"></canvas>
+    </div>
+    <p class="table-caption" style="margin-top:0.5rem;">코어/와트가 높을수록 동일 전력 예산에서 더 많은 컴퓨트 출력. ARM AGI CPU가 에어쿨링 기준 최고 밀도.</p>
+  </div>
+
+<div class="card" style="padding:1.5rem;">
+    <h3>서버 CPU 4강 스펙 비교 대시보드</h3>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">x86 진영(Intel/AMD) vs ARM 진영(Nvidia Vera/ARM AGI)의 최신 플래그십 서버 CPU 비교. 동일 전력 예산에서 얼마나 많은 컴퓨트를 뽑아내는지가 에이전틱 AI 시대의 핵심 경쟁력.</p>
+    <div style="overflow-x:auto;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:20%;">항목</th>
+          <th style="width:20%;">Intel Xeon 6980P<br><span style="font-weight:400;font-size:0.8rem;">Granite Rapids</span></th>
+          <th style="width:20%;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.8rem;">Turin Dense</span></th>
+          <th style="width:20%;">Nvidia Vera<br><span style="font-weight:400;font-size:0.8rem;">Olympus (ARM)</span></th>
+          <th style="width:20%;">ARM AGI CPU<br><span style="font-weight:400;font-size:0.8rem;">Neoverse V3</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-label">아키텍처</td><td>x86 (Redwood Cove P-core)</td><td>x86 (Zen 5C)</td><td>ARM v9.2-A (커스텀 Olympus)</td><td>ARM v9.2-A (Neoverse V3)</td></tr>
+        <tr><td class="row-label">공정</td><td>Intel 3</td><td>TSMC N4</td><td>비공개 (N3P 추정)</td><td>TSMC N3P</td></tr>
+        <tr><td class="row-label">코어 수</td><td>128</td><td>192 (384T)</td><td>88 (176T, Spatial MT)</td><td>136 (136T, SMT 없음)</td></tr>
+        <tr><td class="row-label">TDP</td><td>500W</td><td>500W</td><td>비공개</td><td>300W (250~430W)</td></tr>
+        <tr><td class="row-label">L3 캐시</td><td>504MB</td><td>384MB</td><td>162MB</td><td>128MB (SLC)</td></tr>
+        <tr><td class="row-label">메모리</td><td>DDR5 12ch, MCR DIMM</td><td>DDR5 12ch, 6000MT/s</td><td>LPDDR5X, 1.2TB/s</td><td>DDR5 12ch, 8800MT/s</td></tr>
+        <tr><td class="row-label">PCIe</td><td>PCIe 5.0 x96</td><td>PCIe 5.0 x128</td><td>NVLink-C2C 1.8TB/s</td><td>PCIe Gen6 x96, CXL 3.0</td></tr>
+        <tr><td class="row-label">다이 구성</td><td>MCM (EMIB)</td><td>MCM (칩렛)</td><td>모놀리식 + dielets</td><td>MCM (듀얼 칩렛)</td></tr>
+        <tr><td class="row-label">코어/와트</td><td>0.26</td><td>0.38</td><td>추정 0.35~0.44</td><td style="font-weight:500; color:#1a56db;">0.45</td></tr>
+        <tr><td class="row-label">폼팩터</td><td>2U (듀얼소켓 기준)</td><td>2U (듀얼소켓 기준)</td><td>Vera Rubin NVL72 전용</td><td>1U (듀얼노드)</td></tr>
+        <tr><td class="row-label">36kW 랙 코어 수</td><td>약 4,352 (17x2U, 듀얼소켓)</td><td>약 6,528 (17x2U, 듀얼소켓)</td><td>NVL72 번들 (3,168코어/랙)</td><td style="font-weight:500; color:#1a56db;">8,160 (30x1U)</td></tr>
+        <tr><td class="row-label">주요 고객</td><td>Google, 엔터프라이즈</td><td>Meta, AWS, 범용</td><td>CoreWeave, 네오클라우드</td><td>Meta, Cerebras, SAP</td></tr>
+        <tr><td class="row-label">가격</td><td>$17,800</td><td>$14,813</td><td>번들 판매</td><td>미공개</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-caption">코어/와트 = 코어 수 ÷ TDP. 36kW 랙 코어 수는 에어쿨링 기준 추정치. Vera는 standalone 배치 시 달라질 수 있음. 출처: Intel, AMD, Nvidia, ARM 공식 발표 및 Tom's Hardware, Fudzilla, VideoCardz 기반 재구성.</p>
+    
+    <div style="position:relative; height:320px; width:100%; margin-top:1.5rem;">
+      <canvas id="cpuCompareChart"></canvas>
+    </div>
+    <p class="table-caption" style="margin-top:0.5rem;">코어/와트가 높을수록 동일 전력 예산에서 더 많은 컴퓨트 출력. ARM AGI CPU가 에어쿨링 기준 최고 밀도.</p>
+  </div>
+
+  <script>
+  (function() {
+    const ctx = document.getElementById('cpuCompareChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Intel Xeon 6980P', 'AMD EPYC 9965', 'Nvidia Vera', 'ARM AGI CPU'],
+        datasets: [
+          {
+            label: '코어 수',
+            data: [128, 192, 88, 136],
+            backgroundColor: ['rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)'],
+            borderColor: ['#c8ccd2','#c8ccd2','#c8ccd2','#c8ccd2'],
+            borderWidth: 1, borderRadius: 4,
+            yAxisID: 'y',
+          },
+          {
+            label: 'TDP (W)',
+            data: [500, 500, 350, 300],
+            backgroundColor: ['rgba(194,37,37,0.15)', 'rgba(194,37,37,0.15)', 'rgba(194,37,37,0.15)', 'rgba(194,37,37,0.15)'],
+            borderColor: ['#c22525','#c22525','#c22525','#c22525'],
+            borderWidth: 1, borderRadius: 4,
+            yAxisID: 'y',
+          },
+          {
+            label: '36kW 랙 코어 수 (÷100)',
+            data: [43.5, 65.3, 31.7, 81.6],
+            backgroundColor: ['rgba(26,86,219,0.2)', 'rgba(26,86,219,0.2)', 'rgba(26,86,219,0.2)', 'rgba(26,86,219,0.85)'],
+            borderColor: ['#85b7eb','#85b7eb','#85b7eb','#1a56db'],
+            borderWidth: 1.5, borderRadius: 4,
+            yAxisID: 'y',
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top', align: 'start',
+            labels: { font: { family: "'Inter', sans-serif", size: 11 }, color: '#4a4a68', padding: 14, usePointStyle: true, pointStyleWidth: 10 }
+          },
+          tooltip: {
+            backgroundColor: '#1a1a2e', cornerRadius: 6,
+            titleFont: { family: "'Inter', sans-serif", size: 12 },
+            bodyFont: { family: "'Inter', sans-serif", size: 11 },
+            callbacks: {
+              label: function(ctx) {
+                if (ctx.datasetIndex === 2) return ctx.dataset.label.replace(' (÷100)','') + ': ' + (ctx.raw * 100).toLocaleString();
+                if (ctx.datasetIndex === 1) return ctx.dataset.label + ': ' + ctx.raw + 'W';
+                return ctx.dataset.label + ': ' + ctx.raw;
+              }
+            }
+          }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { family: "'Inter', sans-serif", size: 10 }, color: '#4a4a68' }, border: { color: '#e2e4e8' } },
+          y: { grid: { color: 'rgba(226,228,232,0.4)', lineWidth: 0.5 }, ticks: { font: { family: "'Inter', sans-serif", size: 10 }, color: '#7a7a96' }, border: { display: false }, max: 550 }
+        }
+      }
+    });
+  })();
+  </script>
+
+<div class="card">
+  <h3>x86 vs ARM: 데이터센터 효율성 비교</h3>
+  <table class="data-table">
+  <thead><tr><th>핵심 지표</th><th>Intel 서버 (x86)</th><th>ARM 서버</th><th>핵심 체크포인트 (TCO/효과)</th></tr></thead>
+  <tbody>
+    <tr><td class="row-label">소모 전력 (TDP)</td><td>CPU당 300~400W</td><td>CPU당 150~250W</td><td>전기 요금(OPEX) 약 30~40% 절감. 냉각 설비 가동률 동반 하락.</td></tr>
+    <tr><td class="row-label">상면 공간 (Rack Density)</td><td>높은 발열로 랙당 장착 대수 제한</td><td>단일 CPU에 128~192코어 고집적 저발열</td><td>동일 공간 대비 처리량 극대화.</td></tr>
+    <tr><td class="row-label">전력 대비 성능 (Perf/Watt)</td><td>기준 (1x)</td><td>1.5x~2x 이상</td><td>대규모 데이터 전처리·클라우드 네이티브 워크로드 → 적은 비용으로 처리 가능.</td></tr>
+  </tbody>
+</table>
+<div class="highlight" style="margin-top:1rem;">
+  <p style="margin:0;"><strong>왜 ARM이 더 효율적인가:</strong> x86은 CISC 설계 철학(고성능 중심)으로 수십 년간 레거시 호환성을 유지하면서 회로가 복잡해졌다. ARM은 RISC 설계 철학(고효율 중심)으로 출발했고, 레거시 지원 부분을 과감히 제거하여 전력 효율을 극대화했다. 이 차이가 서버 랙 단위로 누적되면 x86 랙 대비 와트당 2배의 성능이 가능하다. <span class="fc-note fc-note-warn">ARM 주장</span> <a class="fc-source" href="https://newsroom.arm.com/news/arm-agi-cpu-launch" target="_blank">ARM Newsroom</a></p>
+</div>
+<p class="table-caption">출처: ARM 공식 발표, The Register 기반 재구성</p>
+
+
+
+
+
+  <div class="section-label" style="margin-top:3rem;">AGI CPU — 35년 역사상 첫 자체 칩</div>
+  
+
+  
+</div>
+
+
 
   <div class="card">
     <h3>서버 CPU 4파전: 스펙·효율·밀도 비교 대시보드</h3>
