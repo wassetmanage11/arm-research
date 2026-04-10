@@ -595,74 +595,7 @@ footer {
   </div>
 
   
-  <div class="card" style="padding:1.5rem; overflow-x:auto;">
-    <h3>CPU 병목 테제 타임라인</h3>
-    <p style="color:var(--text-muted); margin-bottom:1.5rem;">에이전틱 AI가 CPU 수요를 폭발시키는 과정을 시간순으로 정리.</p>
-    <svg width="100%" viewBox="0 0 680 720" style="max-width:680px; margin:0 auto; display:block;">
-
-      <line x1="80" y1="40" x2="80" y2="700" stroke="#c8ccd2" stroke-width="1.5"/>
-
-      <circle cx="80" cy="60" r="5" fill="#1a56db"/>
-      <text x="100" y="56" font-family="Inter,sans-serif" font-size="10" fill="#1a56db" font-weight="600">2024.10</text>
-      <text x="100" y="72" font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e" font-weight="500">O1 프리뷰 출시 — RL 기반 추론 패러다임 전환</text>
-      <text x="100" y="88" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">강화학습 검증 루프가 CPU 집약적으로 전환. 코드 에이전트 매출 급증 시작.</text>
-
-      <circle cx="80" cy="126" r="5" fill="#1a56db"/>
-      <text x="100" y="122" font-family="Inter,sans-serif" font-size="10" fill="#1a56db" font-weight="600">2025.02</text>
-      <text x="100" y="138" font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e" font-weight="500">CPU 공급 위기 가시화</text>
-      <text x="100" y="154" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">Intel "absolutely constrained" 인정. AMD EPYC 완전 매진. 가격 인상 통보.</text>
-
-      <circle cx="80" cy="192" r="5" fill="#1a56db"/>
-      <text x="100" y="188" font-family="Inter,sans-serif" font-size="10" fill="#1a56db" font-weight="600">2025.09</text>
-      <text x="100" y="204" font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e" font-weight="500">Amazon CPU 서버 설치량 YoY 3배 증가</text>
-      <text x="100" y="220" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">GitHub 불안정성 심화 — MS가 여유 CPU를 AI 랩에 판매하면서 자체 서비스 부족.</text>
-
-      <circle cx="80" cy="258" r="5" fill="#0f7b3f"/>
-      <text x="100" y="254" font-family="Inter,sans-serif" font-size="10" fill="#0f7b3f" font-weight="600">2025.11</text>
-      <text x="100" y="270" font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e" font-weight="500">AWS-OpenAI $38B 계약 — "수천만 CPU" 명시</text>
-      <text x="100" y="286" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">SoftBank, Ampere $6.5B 인수 완료. OpenAI가 x86→ARM 전체 코드베이스 포팅.</text>
-
-      <circle cx="80" cy="324" r="5" fill="#0f7b3f"/>
-      <text x="100" y="320" font-family="Inter,sans-serif" font-size="10" fill="#0f7b3f" font-weight="600">2025.12</text>
-      <text x="100" y="336" font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e" font-weight="500">AWS Graviton5 출시 (192코어, 3nm)</text>
-      <text x="100" y="352" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">Trainium3 프리뷰. Trn2는 전량 매진. Trn4 발표(18개월 후 GA, 이미 상당량 예약).</text>
-
-      <circle cx="80" cy="390" r="5" fill="#c22525"/>
-      <text x="100" y="386" font-family="Inter,sans-serif" font-size="10" fill="#c22525" font-weight="600">2026.01</text>
-      <text x="100" y="402" font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e" font-weight="500">Trainium3 출하 시작 (1Q26)</text>
-      <text x="100" y="418" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">TSMC N3P 공정. 거의 전량 예약 완료. 2026년 160~170만 개 출하 전망.</text>
-
-      <circle cx="80" cy="456" r="5" fill="#c22525"/>
-      <text x="100" y="452" font-family="Inter,sans-serif" font-size="10" fill="#c22525" font-weight="600">2026.03</text>
-      <text x="100" y="468" font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e" font-weight="500">ARM AGI CPU + Nvidia Vera CPU 동시 발표</text>
-      <text x="100" y="484" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">ARM 36년 역사상 첫 자체 칩. Nvidia도 standalone CPU 판매. CPU 시장 4파전 돌입.</text>
-
-      <circle cx="80" cy="522" r="5" fill="#c22525"/>
-      <text x="100" y="518" font-family="Inter,sans-serif" font-size="10" fill="#c22525" font-weight="600">2026.04</text>
-      <text x="100" y="534" font-family="Inter,sans-serif" font-size="12" fill="#1a1a2e" font-weight="500">Trainium3 양산 본격화 (2Q26)</text>
-      <text x="100" y="550" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">AWS 자체 칩 런레이트 $20B+. Anthropic 서버 용량 부족으로 유료 고객 제한 발생.</text>
-
-      <circle cx="80" cy="588" r="4" fill="#7a7a96" stroke="#7a7a96" stroke-width="1" fill-opacity="0.3"/>
-      <text x="100" y="584" font-family="Inter,sans-serif" font-size="10" fill="#7a7a96" font-weight="600">2026 2H</text>
-      <text x="100" y="600" font-family="Inter,sans-serif" font-size="12" fill="#4a4a68" font-weight="500">ARM AGI CPU / Nvidia Vera 상용 시스템 출하</text>
-      <text x="100" y="616" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">ASRock Rack, Lenovo, Supermicro 등 OEM 파트너 통해 배포.</text>
-
-      <circle cx="80" cy="654" r="4" fill="#7a7a96" stroke="#7a7a96" stroke-width="1" fill-opacity="0.3"/>
-      <text x="100" y="650" font-family="Inter,sans-serif" font-size="10" fill="#7a7a96" font-weight="600">2027 3Q~</text>
-      <text x="100" y="666" font-family="Inter,sans-serif" font-size="12" fill="#4a4a68" font-weight="500">Trainium4 양산 시작 / ARM AGI CPU 2세대 출시</text>
-      <text x="100" y="682" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">Futurum: CPU:GPU 비율 1:1 회귀. CPU 시장 CAGR 34.9%(~2029).</text>
-
-      <rect x="64" y="36" width="32" height="100" rx="4" fill="none" stroke="none"/>
-      <rect x="64" y="245" width="32" height="122" rx="4" fill="none" stroke="#0f7b3f" stroke-width="0.5" stroke-dasharray="3 2"/>
-      <rect x="64" y="377" width="32" height="190" rx="4" fill="none" stroke="#c22525" stroke-width="0.5" stroke-dasharray="3 2"/>
-      <rect x="64" y="575" width="32" height="120" rx="4" fill="none" stroke="#7a7a96" stroke-width="0.5" stroke-dasharray="3 2"/>
-
-      <text x="56" y="306" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#0f7b3f" transform="rotate(-90 56 306)">Trigger events</text>
-      <text x="56" y="472" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#c22525" transform="rotate(-90 56 472)">Current phase</text>
-      <text x="56" y="635" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#7a7a96" transform="rotate(-90 56 635)">Upcoming</text>
-
-    </svg>
-  </div>
+  
 
 
 <div class="card">
@@ -761,183 +694,7 @@ footer {
     <p><strong>AI Agent 시대의 DPU:</strong> AI Agent 시대 대비를 위해 루빈과 함께 출시되는 BlueField-4 DPU는 증가하는 KV Cache 관련 워크로드를 처리하기 위해 코어 수가 4배 더 증가했다. DPU 성능 증가 요구는 곧 CPU 수혜로 이어지며, ARM이 이 영역에서도 구조적 수혜를 받을 것으로 기대된다.</p>
   </div>
 
-<div class="section-label" style="margin-top:3rem;">서버 CPU 경쟁 구도</div>
-  
-
-  <div class="compare-grid">
-    <div class="compare-card">
-      <div class="chip-name">ARM AGI CPU</div>
-      <div class="chip-maker">ARM Holdings — 자체 설계 · TSMC 제조</div>
-      <div class="spec-row"><span class="label">코어</span><span class="value">136x Neoverse V3</span></div>
-      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A</span></div>
-      <div class="spec-row"><span class="label">공정</span><span class="value">TSMC N3P (3nm) <a class="fc-source" href="https://fudzilla.com/arm-agi-cpu-is-a-136-core-hardware-chip/" target="_blank">Fudzilla</a></span></div>
-      <div class="spec-row"><span class="label">다이 구성</span><span class="value">듀얼 칩렛 (MCM)</span></div>
-      <div class="spec-row"><span class="label">TDP</span><span class="value">300W (250~430W)</span></div>
-      <div class="spec-row"><span class="label">메모리</span><span class="value">DDR5, 800+ GB/s</span></div>
-      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">6 GB/s</span></div>
-      <div class="spec-row"><span class="label">SMT</span><span class="value">없음 (1T/core)</span></div>
-      <div class="spec-row"><span class="label">강점</span><span class="value">코어 밀도, 에어쿨링</span></div>
-      <div class="spec-row"><span class="label">첫 고객</span><span class="value">Meta</span></div>
-    </div>
-    <div class="compare-card">
-      <div class="chip-name">Nvidia Vera CPU</div>
-      <div class="chip-maker">Nvidia — 커스텀 Olympus 코어</div>
-      <div class="spec-row"><span class="label">코어</span><span class="value">88x Olympus</span></div>
-      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A (커스텀)</span></div>
-      <div class="spec-row"><span class="label">공정</span><span class="value">비공개</span></div>
-      <div class="spec-row"><span class="label">다이 구성</span><span class="value">모놀리식 + dielets</span></div>
-      <div class="spec-row"><span class="label">TDP</span><span class="value">비공개</span></div>
-      <div class="spec-row"><span class="label">메모리</span><span class="value">LPDDR5X, 1.2 TB/s <a class="fc-source" href="https://developer.nvidia.com/blog/nvidia-vera-cpu-delivers-high-performance-bandwidth-and-efficiency-for-ai-factories/" target="_blank">Nvidia Blog</a></span></div>
-      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">약 14 GB/s</span></div>
-      <div class="spec-row"><span class="label">SMT</span><span class="value">Spatial MT (176 threads) <a class="fc-source" href="https://www.tomshardware.com/pc-components/gpus/nvidia-unveils-details-of-new-88-core-vera-cpus-positioned-to-compete-with-amd-and-intel-new-vera-cpu-rack-features-256-liquid-cooled-chips-that-deliver-up-to-a-6x-gain-in-cpu-throughput" target="_blank">Tom's Hardware</a></span></div>
-      <div class="spec-row"><span class="label">강점</span><span class="value">단일 스레드, GPU 연동</span></div>
-      <div class="spec-row"><span class="label">핵심 플랫폼</span><span class="value">Vera Rubin NVL72</span></div>
-    </div>
-  </div>
-
-  <div class="highlight">
-    <strong>핵심 아이러니:</strong> Nvidia Vera도 ARM 아키텍처(v9.2-A) 기반이다. <a class="fc-source" href="https://www.servethehome.com/nvidias-vera-cpu-in-detail-high-perf-chip-takes-aim-at-broader-ai-server-market/" target="_blank">ServeTheHome</a> Nvidia는 ARM에 아키텍처 라이선스 비용을 지불하면서 자기만의 커스텀 CPU를 만든다. 즉 ARM은 자기 아키텍처를 라이선스해준 고객과 같은 시장에서 직접 경쟁하게 된 것이다. 다만 Grace(기성품 Neoverse 코어 사용)와 달리 Vera의 Olympus 코어는 Nvidia가 처음부터 자체 설계한 풀커스텀 코어다.
-  </div>
-
-  <div class="card">
-    <h3>서버 CPU 시장의 전체 경쟁 지형</h3>
-    <p>"AI 인프라에서 GPU 옆에 어떤 CPU를 놓을 것인가"의 싸움:</p>
-    <p><strong>x86:</strong> Intel (Xeon, Clearwater Forest 준비 중), AMD (EPYC Turin)</p>
-    <p><strong>ARM 기반:</strong> Nvidia Vera, ARM AGI CPU, AWS Graviton (5세대, 192 Neoverse V3 코어), Google Axion (Neoverse N3), Microsoft Cobalt 200 (CSS V3)</p>
-    <p><strong>기타:</strong> RISC-V (Tenstorrent 등 부상 중)</p>
-    <p>Bank of America는 서버 CPU 시장이 2025년 $27B → 2030년 $60B로 성장 전망. <a class="fc-source" href="https://www.cnbc.com/2026/03/13/nvidia-gtc-ai-jensen-huang-cpu-gpu.html" target="_blank">CNBC</a></p>
-  </div>
-
-  <div class="card">
-    <h3>서버 CPU 4파전: 스펙·효율·밀도 비교 대시보드</h3>
-    <p style="color:var(--text-muted); margin-bottom:1rem;">2026년 기준 데이터센터 서버 CPU 주요 4개 제품의 핵심 스펙 비교. 동일 전력 예산(36kW 표준 랙) 기준 코어 밀도가 투자 판단의 핵심 변수.</p>
-    <div style="overflow-x:auto;">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th style="min-width:120px;">항목</th>
-          <th style="min-width:140px;">Intel Xeon 6 6980P<br><span style="font-weight:400;font-size:0.8em;color:#7a7a96;">Granite Rapids</span></th>
-          <th style="min-width:140px;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.8em;color:#7a7a96;">Turin Dense</span></th>
-          <th style="min-width:140px;">Nvidia Vera CPU<br><span style="font-weight:400;font-size:0.8em;color:#7a7a96;">Olympus (ARM)</span></th>
-          <th style="min-width:140px;background:rgba(26,86,219,0.04);">ARM AGI CPU<br><span style="font-weight:400;font-size:0.8em;color:#1a56db;">Neoverse V3</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="row-label">아키텍처</td>
-          <td>x86 (Redwood Cove P-core)</td>
-          <td>x86 (Zen 5c)</td>
-          <td>ARM v9.2-A (커스텀)</td>
-          <td style="background:rgba(26,86,219,0.04);">ARM v9.2-A (Neoverse V3)</td>
-        </tr>
-        <tr>
-          <td class="row-label">코어 수</td>
-          <td>128코어 / 256스레드</td>
-          <td>192코어 / 384스레드</td>
-          <td>88코어 / 176스레드 (SMT)</td>
-          <td style="background:rgba(26,86,219,0.04);"><strong>136코어</strong> / 136스레드 (No SMT)</td>
-        </tr>
-        <tr>
-          <td class="row-label">공정</td>
-          <td>Intel 3 (약 5nm급)</td>
-          <td>TSMC N4 (4nm)</td>
-          <td>비공개 (N3P 추정)</td>
-          <td style="background:rgba(26,86,219,0.04);">TSMC N3P (3nm)</td>
-        </tr>
-        <tr>
-          <td class="row-label">TDP</td>
-          <td style="color:#c22525;"><strong>500W</strong></td>
-          <td style="color:#c22525;"><strong>500W</strong></td>
-          <td>비공개 (추정 300~400W)</td>
-          <td style="background:rgba(26,86,219,0.04);color:#0f7b3f;"><strong>300W</strong> (250~430W)</td>
-        </tr>
-        <tr>
-          <td class="row-label">클럭</td>
-          <td>2.0 / 3.2 GHz</td>
-          <td>2.25 / 3.7 GHz</td>
-          <td>비공개</td>
-          <td style="background:rgba(26,86,219,0.04);">3.2 / 3.7 GHz</td>
-        </tr>
-        <tr>
-          <td class="row-label">메모리</td>
-          <td>DDR5 12ch, 8ch MCR</td>
-          <td>DDR5 12ch, 6400 MT/s</td>
-          <td>LPDDR5X, 1.2 TB/s</td>
-          <td style="background:rgba(26,86,219,0.04);">DDR5 12ch, 800+ GB/s</td>
-        </tr>
-        <tr>
-          <td class="row-label">L3 캐시</td>
-          <td>504 MB</td>
-          <td>384 MB</td>
-          <td>162 MB</td>
-          <td style="background:rgba(26,86,219,0.04);">128 MB (SLC)</td>
-        </tr>
-        <tr>
-          <td class="row-label">PCIe</td>
-          <td>PCIe 5.0</td>
-          <td>PCIe 5.0 x128</td>
-          <td>NVLink C2C</td>
-          <td style="background:rgba(26,86,219,0.04);">PCIe Gen6 x96, CXL 3.0</td>
-        </tr>
-        <tr>
-          <td class="row-label">코어/W 효율</td>
-          <td>0.26 코어/W</td>
-          <td>0.38 코어/W</td>
-          <td>약 0.25 코어/W (추정)</td>
-          <td style="background:rgba(26,86,219,0.04);color:#1a56db;"><strong>0.45 코어/W</strong></td>
-        </tr>
-        <tr style="background:#f0f7ff;">
-          <td class="row-label" style="font-weight:600;">36kW 랙 밀도</td>
-          <td>17x 2U = <strong>4,352코어</strong></td>
-          <td>15x 2U = 약 <strong>5,760코어</strong></td>
-          <td>NVL72 번들 (36 Vera/랙)</td>
-          <td style="background:rgba(26,86,219,0.08);color:#1a56db;font-weight:600;">30x 1U = <strong>8,160코어</strong></td>
-        </tr>
-        <tr style="background:#f0f7ff;">
-          <td class="row-label" style="font-weight:600;">x86 대비 밀도</td>
-          <td>기준 (1.0x)</td>
-          <td>1.3x</td>
-          <td>N/A (GPU 번들)</td>
-          <td style="background:rgba(26,86,219,0.08);color:#1a56db;font-weight:600;">1.9x</td>
-        </tr>
-        <tr>
-          <td class="row-label">폼팩터</td>
-          <td>2U (듀얼소켓 가능)</td>
-          <td>2U (듀얼소켓 가능)</td>
-          <td>NVL72 랙 통합</td>
-          <td style="background:rgba(26,86,219,0.04);">1U 듀얼노드 (에어쿨링)</td>
-        </tr>
-        <tr>
-          <td class="row-label">핵심 고객</td>
-          <td>Google, 레거시 엔터프라이즈</td>
-          <td>하이퍼스케일러, 범용</td>
-          <td>CoreWeave, 네오클라우드</td>
-          <td style="background:rgba(26,86,219,0.04);">Meta, OpenAI, SAP</td>
-        </tr>
-        <tr>
-          <td class="row-label">가격</td>
-          <td>$5,184 (6960P 기준)</td>
-          <td>$14,813</td>
-          <td>비공개 (시스템 번들)</td>
-          <td style="background:rgba(26,86,219,0.04);">비공개</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-    <p class="table-caption">출처: Intel, AMD, Nvidia, ARM 공식 발표, Tom's Hardware, VideoCardz, Fudzilla 기반 종합. Vera CPU 일부 스펙은 비공개로 추정치 포함. 36kW 랙 밀도는 ARM 공식 발표(AGI CPU) 및 업계 추정치 기반.</p>
-  </div>
-
-
-  <div class="card">
-    <h3>기존 라이선시와의 긴장 관계</h3>
-    <p>ARM vs Qualcomm: Nuvia 인수 건 라이선스 분쟁 진행 중, ARM이 Qualcomm 아키텍처 라이선스 취소 통보.</p>
-    <p>Nvidia: 4Q25에 잔여 ARM 지분 110만 주(약 $140M) 전량 매각(2026.02 SEC 공시). 다만 20년 라이선스 계약은 유지되며 Grace/Vera CPU 모두 ARM 아키텍처 기반을 유지. Jensen Huang은 "수십 년간 라이선시로서 ARM을 지원하겠다"고 발언. $140M은 Nvidia 시가총액 $4.58T 대비 사실상 무의미한 규모로, 관계 악화보다는 포트폴리오 재배분으로 해석. <a class="fc-source" href="https://www.cnbc.com/2026/02/18/arm-nvidia-nokia-ai-stake-shares.html" target="_blank">CNBC</a> <a class="fc-source" href="https://www.tomshardware.com/tech-industry/nvidia-sells-off-final-arm-shares-but-licensing-deals-will-continue-usd140-million-stake-sold-equating-to-1-1-million-shares" target="_blank">Tom's Hardware</a></p>
-    <p>Qualcomm: 2025년 말 RISC-V 고성능 코어 설계사 Ventana Micro Systems 인수 — ARM 의존도 축소 포석.</p>
-  </div>
-
-
-
-  <div class="section-label" style="margin-top:3rem;">반도체 시장 TAM 전망</div>
+<div class="section-label" style="margin-top:3rem;">반도체 시장 TAM 전망</div>
 
   <div class="img-container">
     <img src="images/img_004.jpg" alt="Massive and growing semiconductor market">
@@ -1177,137 +934,6 @@ footer {
     <p><strong>로열티 구조:</strong> v8 → v9로 2배, v9 → CSS로 추가 2배. CSS는 세대별로 약 20%씩 추가 상승하며, 매년 신세대 출시로 연 20%의 구조적 로열티 인상이 가능하다.</p>
   </div>
 
-  <div class="section-label" style="margin-top:3rem;">네트워크 / 스토리지: DPU에도 ARM CPU가 간다</div>
-
-  <div class="card">
-    <h3>DPU(Data Processing Unit)란?</h3>
-    <p>DPU는 스토리지, 보안, 네트워크 기능을 CPU와 분담하여 처리하는 비메모리 반도체다. AI Agent 도입에 따라 CPU 수혜가 또 예상되는 영역이 바로 DPU다.</p>
-    <p>DPU를 뜯어보면 일부 보안/네트워크 기능은 ASIC 형태로 들어가 있지만 중심은 CPU다. Intel, AMD, Nvidia 등 다양한 기업들이 DPU를 만들고 있지만, Nvidia가 자사 제품들을 랙스케일 단위로 판매하면서 출하량이 빠르게 증가하고 있다.</p>
-    <p><strong>ARM과의 관계:</strong> Nvidia DPU의 경우 ARM CPU가 DPU의 핵심이다. BlueField-4에는 64코어 Grace CPU(ARM Neoverse V2 기반)가 탑재된다. AI Agent 시대에 DPU도 성능 증가가 요구되고 있어, CPU가 DPU를 통해서도 수혜를 받을 것으로 기대된다.</p>
-  </div>
-
-  <div class="card" style="padding:1.5rem;">
-    <h3>서버 CPU 4강 스펙 비교 대시보드</h3>
-    <p style="color:var(--text-muted); margin-bottom:1rem;">x86 진영(Intel/AMD) vs ARM 진영(Nvidia Vera/ARM AGI)의 최신 플래그십 서버 CPU 비교. 동일 전력 예산에서 얼마나 많은 컴퓨트를 뽑아내는지가 에이전틱 AI 시대의 핵심 경쟁력.</p>
-    <div style="overflow-x:auto;">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th style="width:20%;">항목</th>
-          <th style="width:20%;">Intel Xeon 6980P<br><span style="font-weight:400;font-size:0.8rem;">Granite Rapids</span></th>
-          <th style="width:20%;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.8rem;">Turin Dense</span></th>
-          <th style="width:20%;">Nvidia Vera<br><span style="font-weight:400;font-size:0.8rem;">Olympus (ARM)</span></th>
-          <th style="width:20%;">ARM AGI CPU<br><span style="font-weight:400;font-size:0.8rem;">Neoverse V3</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="row-label">아키텍처</td><td>x86 (Redwood Cove P-core)</td><td>x86 (Zen 5C)</td><td>ARM v9.2-A (커스텀 Olympus)</td><td>ARM v9.2-A (Neoverse V3)</td></tr>
-        <tr><td class="row-label">공정</td><td>Intel 3</td><td>TSMC N4</td><td>비공개 (N3P 추정)</td><td>TSMC N3P</td></tr>
-        <tr><td class="row-label">코어 수</td><td>128</td><td>192 (384T)</td><td>88 (176T, Spatial MT)</td><td>136 (136T, SMT 없음)</td></tr>
-        <tr><td class="row-label">TDP</td><td>500W</td><td>500W</td><td>비공개</td><td>300W (250~430W)</td></tr>
-        <tr><td class="row-label">L3 캐시</td><td>504MB</td><td>384MB</td><td>162MB</td><td>128MB (SLC)</td></tr>
-        <tr><td class="row-label">메모리</td><td>DDR5 12ch, MCR DIMM</td><td>DDR5 12ch, 6000MT/s</td><td>LPDDR5X, 1.2TB/s</td><td>DDR5 12ch, 8800MT/s</td></tr>
-        <tr><td class="row-label">PCIe</td><td>PCIe 5.0 x96</td><td>PCIe 5.0 x128</td><td>NVLink-C2C 1.8TB/s</td><td>PCIe Gen6 x96, CXL 3.0</td></tr>
-        <tr><td class="row-label">다이 구성</td><td>MCM (EMIB)</td><td>MCM (칩렛)</td><td>모놀리식 + dielets</td><td>MCM (듀얼 칩렛)</td></tr>
-        <tr><td class="row-label">코어/와트</td><td>0.26</td><td>0.38</td><td>추정 0.35~0.44</td><td style="font-weight:500; color:#1a56db;">0.45</td></tr>
-        <tr><td class="row-label">폼팩터</td><td>2U (듀얼소켓 기준)</td><td>2U (듀얼소켓 기준)</td><td>Vera Rubin NVL72 전용</td><td>1U (듀얼노드)</td></tr>
-        <tr><td class="row-label">36kW 랙 코어 수</td><td>약 4,352 (17x2U, 듀얼소켓)</td><td>약 6,528 (17x2U, 듀얼소켓)</td><td>NVL72 번들 (3,168코어/랙)</td><td style="font-weight:500; color:#1a56db;">8,160 (30x1U)</td></tr>
-        <tr><td class="row-label">주요 고객</td><td>Google, 엔터프라이즈</td><td>Meta, AWS, 범용</td><td>CoreWeave, 네오클라우드</td><td>Meta, Cerebras, SAP</td></tr>
-        <tr><td class="row-label">가격</td><td>$17,800</td><td>$14,813</td><td>번들 판매</td><td>미공개</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p class="table-caption">코어/와트 = 코어 수 ÷ TDP. 36kW 랙 코어 수는 에어쿨링 기준 추정치. Vera는 standalone 배치 시 달라질 수 있음. 출처: Intel, AMD, Nvidia, ARM 공식 발표 및 Tom's Hardware, Fudzilla, VideoCardz 기반 재구성.</p>
-    
-    <div style="position:relative; height:320px; width:100%; margin-top:1.5rem;">
-      <canvas id="cpuCompareChart"></canvas>
-    </div>
-    <p class="table-caption" style="margin-top:0.5rem;">코어/와트가 높을수록 동일 전력 예산에서 더 많은 컴퓨트 출력. ARM AGI CPU가 에어쿨링 기준 최고 밀도.</p>
-  </div>
-
-  <script>
-  window.addEventListener("load", function() {
-    const ctx = document.getElementById('cpuCompareChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Intel Xeon 6980P', 'AMD EPYC 9965', 'Nvidia Vera', 'ARM AGI CPU'],
-        datasets: [
-          {
-            label: '코어 수',
-            data: [128, 192, 88, 136],
-            backgroundColor: ['rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)'],
-            borderColor: ['#c8ccd2','#c8ccd2','#c8ccd2','#c8ccd2'],
-            borderWidth: 1, borderRadius: 4,
-            yAxisID: 'y',
-          },
-          {
-            label: 'TDP (W)',
-            data: [500, 500, 350, 300],
-            backgroundColor: ['rgba(194,37,37,0.15)', 'rgba(194,37,37,0.15)', 'rgba(194,37,37,0.15)', 'rgba(194,37,37,0.15)'],
-            borderColor: ['#c22525','#c22525','#c22525','#c22525'],
-            borderWidth: 1, borderRadius: 4,
-            yAxisID: 'y',
-          },
-          {
-            label: '36kW 랙 코어 수 (÷100)',
-            data: [43.5, 65.3, 31.7, 81.6],
-            backgroundColor: ['rgba(26,86,219,0.2)', 'rgba(26,86,219,0.2)', 'rgba(26,86,219,0.2)', 'rgba(26,86,219,0.85)'],
-            borderColor: ['#85b7eb','#85b7eb','#85b7eb','#1a56db'],
-            borderWidth: 1.5, borderRadius: 4,
-            yAxisID: 'y',
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top', align: 'start',
-            labels: { font: { family: "'Inter', sans-serif", size: 11 }, color: '#4a4a68', padding: 14, usePointStyle: true, pointStyleWidth: 10 }
-          },
-          tooltip: {
-            backgroundColor: '#1a1a2e', cornerRadius: 6,
-            titleFont: { family: "'Inter', sans-serif", size: 12 },
-            bodyFont: { family: "'Inter', sans-serif", size: 11 },
-            callbacks: {
-              label: function(ctx) {
-                if (ctx.datasetIndex === 2) return ctx.dataset.label.replace(' (÷100)','') + ': ' + (ctx.raw * 100).toLocaleString();
-                if (ctx.datasetIndex === 1) return ctx.dataset.label + ': ' + ctx.raw + 'W';
-                return ctx.dataset.label + ': ' + ctx.raw;
-              }
-            }
-          }
-        },
-        scales: {
-          x: { grid: { display: false }, ticks: { font: { family: "'Inter', sans-serif", size: 10 }, color: '#4a4a68' }, border: { color: '#e2e4e8' } },
-          y: { grid: { color: 'rgba(226,228,232,0.4)', lineWidth: 0.5 }, ticks: { font: { family: "'Inter', sans-serif", size: 10 }, color: '#7a7a96' }, border: { display: false }, max: 550 }
-        }
-      }
-    });
-  })();
-  </script>
-
-
-  
-<table class="data-table">
-  <thead><tr><th>핵심 지표</th><th>Intel 서버 (x86)</th><th>ARM 서버</th><th>핵심 체크포인트 (TCO/효과)</th></tr></thead>
-  <tbody>
-    <tr><td class="row-label">소모 전력 (TDP)</td><td>CPU당 300~400W</td><td>CPU당 150~250W</td><td>전기 요금(OPEX) 약 30~40% 절감. 냉각 설비 가동률 동반 하락.</td></tr>
-    <tr><td class="row-label">상면 공간 (Rack Density)</td><td>높은 발열로 랙당 장착 대수 제한</td><td>단일 CPU에 128~192코어 고집적 저발열</td><td>동일 공간 대비 처리량 극대화.</td></tr>
-    <tr><td class="row-label">전력 대비 성능 (Perf/Watt)</td><td>기준 (1x)</td><td>1.5x~2x 이상</td><td>대규모 데이터 전처리·클라우드 네이티브 워크로드 → 적은 비용으로 처리 가능.</td></tr>
-  </tbody>
-</table>
-<div class="highlight" style="margin-top:1rem;">
-  <p style="margin:0;"><strong>왜 ARM이 더 효율적인가:</strong> x86은 CISC 설계 철학(고성능 중심)으로 수십 년간 레거시 호환성을 유지하면서 회로가 복잡해졌다. ARM은 RISC 설계 철학(고효율 중심)으로 출발했고, 레거시 지원 부분을 과감히 제거하여 전력 효율을 극대화했다. 이 차이가 서버 랙 단위로 누적되면 x86 랙 대비 와트당 2배의 성능이 가능하다. <span class="fc-note fc-note-warn">ARM 주장</span> <a class="fc-source" href="https://newsroom.arm.com/news/arm-agi-cpu-launch" target="_blank">ARM Newsroom</a></p>
-</div>
-<p class="table-caption">출처: ARM 공식 발표, The Register 기반 재구성</p>
-
-
-
-
-
   <div class="section-label" style="margin-top:3rem;">AGI CPU — 35년 역사상 첫 자체 칩</div>
   
 
@@ -1362,6 +988,184 @@ footer {
     <p>또한 Meta 같은 하이퍼스케일러는 자체 칩 설계에 엔지니어 1,000명, $500M 예산이 필요한데, 그런 자원이 없는 기업들에게 ARM이 "기성품 ARM CPU"를 제공한다는 포지셔닝.</p>
   </div>
 
+
+<div class="section-label" style="margin-top:3rem;">서버 CPU 경쟁 구도</div>
+  
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <div class="chip-name">ARM AGI CPU</div>
+      <div class="chip-maker">ARM Holdings — 자체 설계 · TSMC 제조</div>
+      <div class="spec-row"><span class="label">코어</span><span class="value">136x Neoverse V3</span></div>
+      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A</span></div>
+      <div class="spec-row"><span class="label">공정</span><span class="value">TSMC N3P (3nm) <a class="fc-source" href="https://fudzilla.com/arm-agi-cpu-is-a-136-core-hardware-chip/" target="_blank">Fudzilla</a></span></div>
+      <div class="spec-row"><span class="label">다이 구성</span><span class="value">듀얼 칩렛 (MCM)</span></div>
+      <div class="spec-row"><span class="label">TDP</span><span class="value">300W (250~430W)</span></div>
+      <div class="spec-row"><span class="label">메모리</span><span class="value">DDR5, 800+ GB/s</span></div>
+      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">6 GB/s</span></div>
+      <div class="spec-row"><span class="label">SMT</span><span class="value">없음 (1T/core)</span></div>
+      <div class="spec-row"><span class="label">강점</span><span class="value">코어 밀도, 에어쿨링</span></div>
+      <div class="spec-row"><span class="label">첫 고객</span><span class="value">Meta</span></div>
+    </div>
+    <div class="compare-card">
+      <div class="chip-name">Nvidia Vera CPU</div>
+      <div class="chip-maker">Nvidia — 커스텀 Olympus 코어</div>
+      <div class="spec-row"><span class="label">코어</span><span class="value">88x Olympus</span></div>
+      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A (커스텀)</span></div>
+      <div class="spec-row"><span class="label">공정</span><span class="value">비공개</span></div>
+      <div class="spec-row"><span class="label">다이 구성</span><span class="value">모놀리식 + dielets</span></div>
+      <div class="spec-row"><span class="label">TDP</span><span class="value">비공개</span></div>
+      <div class="spec-row"><span class="label">메모리</span><span class="value">LPDDR5X, 1.2 TB/s <a class="fc-source" href="https://developer.nvidia.com/blog/nvidia-vera-cpu-delivers-high-performance-bandwidth-and-efficiency-for-ai-factories/" target="_blank">Nvidia Blog</a></span></div>
+      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">약 14 GB/s</span></div>
+      <div class="spec-row"><span class="label">SMT</span><span class="value">Spatial MT (176 threads) <a class="fc-source" href="https://www.tomshardware.com/pc-components/gpus/nvidia-unveils-details-of-new-88-core-vera-cpus-positioned-to-compete-with-amd-and-intel-new-vera-cpu-rack-features-256-liquid-cooled-chips-that-deliver-up-to-a-6x-gain-in-cpu-throughput" target="_blank">Tom's Hardware</a></span></div>
+      <div class="spec-row"><span class="label">강점</span><span class="value">단일 스레드, GPU 연동</span></div>
+      <div class="spec-row"><span class="label">핵심 플랫폼</span><span class="value">Vera Rubin NVL72</span></div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>핵심 아이러니:</strong> Nvidia Vera도 ARM 아키텍처(v9.2-A) 기반이다. <a class="fc-source" href="https://www.servethehome.com/nvidias-vera-cpu-in-detail-high-perf-chip-takes-aim-at-broader-ai-server-market/" target="_blank">ServeTheHome</a> Nvidia는 ARM에 아키텍처 라이선스 비용을 지불하면서 자기만의 커스텀 CPU를 만든다. 즉 ARM은 자기 아키텍처를 라이선스해준 고객과 같은 시장에서 직접 경쟁하게 된 것이다. 다만 Grace(기성품 Neoverse 코어 사용)와 달리 Vera의 Olympus 코어는 Nvidia가 처음부터 자체 설계한 풀커스텀 코어다.
+  </div>
+
+  <div class="card">
+    <h3>서버 CPU 시장의 전체 경쟁 지형</h3>
+    <p>"AI 인프라에서 GPU 옆에 어떤 CPU를 놓을 것인가"의 싸움:</p>
+    <p><strong>x86:</strong> Intel (Xeon, Clearwater Forest 준비 중), AMD (EPYC Turin)</p>
+    <p><strong>ARM 기반:</strong> Nvidia Vera, ARM AGI CPU, AWS Graviton (5세대, 192 Neoverse V3 코어), Google Axion (Neoverse N3), Microsoft Cobalt 200 (CSS V3)</p>
+    <p><strong>기타:</strong> RISC-V (Tenstorrent 등 부상 중)</p>
+    <p>Bank of America는 서버 CPU 시장이 2025년 $27B → 2030년 $60B로 성장 전망. <a class="fc-source" href="https://www.cnbc.com/2026/03/13/nvidia-gtc-ai-jensen-huang-cpu-gpu.html" target="_blank">CNBC</a></p>
+  </div>
+
+  <div class="card">
+    <h3>서버 CPU 4파전: 스펙·효율·밀도 비교 대시보드</h3>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">2026년 기준 데이터센터 서버 CPU 주요 4개 제품의 핵심 스펙 비교. 동일 전력 예산(36kW 표준 랙) 기준 코어 밀도가 투자 판단의 핵심 변수.</p>
+    <div style="overflow-x:auto;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="min-width:120px;">항목</th>
+          <th style="min-width:140px;">Intel Xeon 6 6980P<br><span style="font-weight:400;font-size:0.8em;color:#7a7a96;">Granite Rapids</span></th>
+          <th style="min-width:140px;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.8em;color:#7a7a96;">Turin Dense</span></th>
+          <th style="min-width:140px;">Nvidia Vera CPU<br><span style="font-weight:400;font-size:0.8em;color:#7a7a96;">Olympus (ARM)</span></th>
+          <th style="min-width:140px;background:rgba(26,86,219,0.04);">ARM AGI CPU<br><span style="font-weight:400;font-size:0.8em;color:#1a56db;">Neoverse V3</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">아키텍처</td>
+          <td>x86 (Redwood Cove P-core)</td>
+          <td>x86 (Zen 5c)</td>
+          <td>ARM v9.2-A (커스텀)</td>
+          <td style="background:rgba(26,86,219,0.04);">ARM v9.2-A (Neoverse V3)</td>
+        </tr>
+        <tr>
+          <td class="row-label">코어 수</td>
+          <td>128코어 / 256스레드</td>
+          <td>192코어 / 384스레드</td>
+          <td>88코어 / 176스레드 (SMT)</td>
+          <td style="background:rgba(26,86,219,0.04);"><strong>136코어</strong> / 136스레드 (No SMT)</td>
+        </tr>
+        <tr>
+          <td class="row-label">공정</td>
+          <td>Intel 3 (약 5nm급)</td>
+          <td>TSMC N4 (4nm)</td>
+          <td>비공개 (N3P 추정)</td>
+          <td style="background:rgba(26,86,219,0.04);">TSMC N3P (3nm)</td>
+        </tr>
+        <tr>
+          <td class="row-label">TDP</td>
+          <td style="color:#c22525;"><strong>500W</strong></td>
+          <td style="color:#c22525;"><strong>500W</strong></td>
+          <td>비공개 (추정 300~400W)</td>
+          <td style="background:rgba(26,86,219,0.04);color:#0f7b3f;"><strong>300W</strong> (250~430W)</td>
+        </tr>
+        <tr>
+          <td class="row-label">클럭</td>
+          <td>2.0 / 3.2 GHz</td>
+          <td>2.25 / 3.7 GHz</td>
+          <td>비공개</td>
+          <td style="background:rgba(26,86,219,0.04);">3.2 / 3.7 GHz</td>
+        </tr>
+        <tr>
+          <td class="row-label">메모리</td>
+          <td>DDR5 12ch, 8ch MCR</td>
+          <td>DDR5 12ch, 6400 MT/s</td>
+          <td>LPDDR5X, 1.2 TB/s</td>
+          <td style="background:rgba(26,86,219,0.04);">DDR5 12ch, 800+ GB/s</td>
+        </tr>
+        <tr>
+          <td class="row-label">L3 캐시</td>
+          <td>504 MB</td>
+          <td>384 MB</td>
+          <td>162 MB</td>
+          <td style="background:rgba(26,86,219,0.04);">128 MB (SLC)</td>
+        </tr>
+        <tr>
+          <td class="row-label">PCIe</td>
+          <td>PCIe 5.0</td>
+          <td>PCIe 5.0 x128</td>
+          <td>NVLink C2C</td>
+          <td style="background:rgba(26,86,219,0.04);">PCIe Gen6 x96, CXL 3.0</td>
+        </tr>
+        <tr>
+          <td class="row-label">코어/W 효율</td>
+          <td>0.26 코어/W</td>
+          <td>0.38 코어/W</td>
+          <td>약 0.25 코어/W (추정)</td>
+          <td style="background:rgba(26,86,219,0.04);color:#1a56db;"><strong>0.45 코어/W</strong></td>
+        </tr>
+        <tr style="background:#f0f7ff;">
+          <td class="row-label" style="font-weight:600;">36kW 랙 밀도</td>
+          <td>17x 2U = <strong>4,352코어</strong></td>
+          <td>15x 2U = 약 <strong>5,760코어</strong></td>
+          <td>NVL72 번들 (36 Vera/랙)</td>
+          <td style="background:rgba(26,86,219,0.08);color:#1a56db;font-weight:600;">30x 1U = <strong>8,160코어</strong></td>
+        </tr>
+        <tr style="background:#f0f7ff;">
+          <td class="row-label" style="font-weight:600;">x86 대비 밀도</td>
+          <td>기준 (1.0x)</td>
+          <td>1.3x</td>
+          <td>N/A (GPU 번들)</td>
+          <td style="background:rgba(26,86,219,0.08);color:#1a56db;font-weight:600;">1.9x</td>
+        </tr>
+        <tr>
+          <td class="row-label">폼팩터</td>
+          <td>2U (듀얼소켓 가능)</td>
+          <td>2U (듀얼소켓 가능)</td>
+          <td>NVL72 랙 통합</td>
+          <td style="background:rgba(26,86,219,0.04);">1U 듀얼노드 (에어쿨링)</td>
+        </tr>
+        <tr>
+          <td class="row-label">핵심 고객</td>
+          <td>Google, 레거시 엔터프라이즈</td>
+          <td>하이퍼스케일러, 범용</td>
+          <td>CoreWeave, 네오클라우드</td>
+          <td style="background:rgba(26,86,219,0.04);">Meta, OpenAI, SAP</td>
+        </tr>
+        <tr>
+          <td class="row-label">가격</td>
+          <td>$5,184 (6960P 기준)</td>
+          <td>$14,813</td>
+          <td>비공개 (시스템 번들)</td>
+          <td style="background:rgba(26,86,219,0.04);">비공개</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-caption">출처: Intel, AMD, Nvidia, ARM 공식 발표, Tom's Hardware, VideoCardz, Fudzilla 기반 종합. Vera CPU 일부 스펙은 비공개로 추정치 포함. 36kW 랙 밀도는 ARM 공식 발표(AGI CPU) 및 업계 추정치 기반.</p>
+  </div>
+
+
+  <div class="card">
+    <h3>기존 라이선시와의 긴장 관계</h3>
+    <p>ARM vs Qualcomm: Nuvia 인수 건 라이선스 분쟁 진행 중, ARM이 Qualcomm 아키텍처 라이선스 취소 통보.</p>
+    <p>Nvidia: 4Q25에 잔여 ARM 지분 110만 주(약 $140M) 전량 매각(2026.02 SEC 공시). 다만 20년 라이선스 계약은 유지되며 Grace/Vera CPU 모두 ARM 아키텍처 기반을 유지. Jensen Huang은 "수십 년간 라이선시로서 ARM을 지원하겠다"고 발언. $140M은 Nvidia 시가총액 $4.58T 대비 사실상 무의미한 규모로, 관계 악화보다는 포트폴리오 재배분으로 해석. <a class="fc-source" href="https://www.cnbc.com/2026/02/18/arm-nvidia-nokia-ai-stake-shares.html" target="_blank">CNBC</a> <a class="fc-source" href="https://www.tomshardware.com/tech-industry/nvidia-sells-off-final-arm-shares-but-licensing-deals-will-continue-usd140-million-stake-sold-equating-to-1-1-million-shares" target="_blank">Tom's Hardware</a></p>
+    <p>Qualcomm: 2025년 말 RISC-V 고성능 코어 설계사 Ventana Micro Systems 인수 — ARM 의존도 축소 포석.</p>
+  </div>
+
+
+
+  
 </section>
 
 
