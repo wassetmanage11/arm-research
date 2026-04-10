@@ -944,15 +944,122 @@ footer {
       <div class="img-caption">서버 CPU 스펙 비교 — Vera CPU: 88코어/176T이지만 메모리 대역폭 1.2TB/s, I/O 1.8TB/s로 타 CPU 대비 압도적. 코어 수가 아닌 코어당 대역폭이 에이전틱 워크로드의 핵심.</div>
     </div>
 
-    <div class="img-container" style="margin-top:1rem;">
-      <img src="images/vera_rack.png" alt="Vera CPU Rack configuration">
-      <div class="img-caption">Vera CPU Rack 구성 — Vera Compute Tray x32, 각 트레이에 Vera CPU x8 + BlueField-4 DPU x2 + CX9 NIC x1. Spectrum-X Ethernet spine 네트워킹 + 1U MGX ETL switch tray(Spectrum-6). 출처: SK증권</div>
-    </div>
+    <div class="card" style="padding:1.5rem; overflow-x:auto;">
+    <h4 style="font-size:0.95rem; color:var(--text); margin-bottom:1rem;">Vera CPU Rack 구성</h4>
+    <svg width="100%" viewBox="0 0 680 360" style="max-width:680px; margin:0 auto; display:block;">
+      <!-- Rack -->
+      <rect x="20" y="20" width="100" height="300" rx="6" fill="#f8f9fa" stroke="#1a56db" stroke-width="2"/>
+      <text x="70" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#1a56db" font-weight="600">NVIDIA Vera CPU</text>
+      <text x="70" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7a7a96">Spectrum-X spine</text>
+      <!-- Rack lines -->
+      <line x1="30" y1="80" x2="110" y2="80" stroke="#e2e4e8" stroke-width="0.5"/>
+      <line x1="30" y1="95" x2="110" y2="95" stroke="#e2e4e8" stroke-width="0.5"/>
+      <line x1="30" y1="110" x2="110" y2="110" stroke="#e2e4e8" stroke-width="0.5"/>
+      <line x1="30" y1="125" x2="110" y2="125" stroke="#e2e4e8" stroke-width="0.5"/>
+      <line x1="30" y1="140" x2="110" y2="140" stroke="#e2e4e8" stroke-width="0.5"/>
+      <line x1="30" y1="155" x2="110" y2="155" stroke="#e2e4e8" stroke-width="0.5"/>
+      <line x1="30" y1="170" x2="110" y2="170" stroke="#e2e4e8" stroke-width="0.5"/>
+      <line x1="30" y1="185" x2="110" y2="185" stroke="#e2e4e8" stroke-width="0.5"/>
+      <text x="70" y="210" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7a7a96">...</text>
+      <text x="70" y="290" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#4a4a68">x32 trays</text>
+      
+      <!-- Arrow to Compute Tray -->
+      <line x1="122" y1="140" x2="180" y2="140" stroke="#c8ccd2" stroke-width="1"/>
+      <text x="150" y="134" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7a7a96">x32</text>
+      
+      <!-- Compute Tray -->
+      <rect x="182" y="100" width="160" height="80" rx="6" fill="#f0f1f3" stroke="#c8ccd2" stroke-width="1"/>
+      <text x="262" y="120" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#1a1a2e" font-weight="500">Vera Compute Tray</text>
+      <text x="262" y="136" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#4a4a68">Cable-free modular design</text>
+      <text x="262" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#4a4a68">6분 내 조립 (vs BW 100분)</text>
+      <text x="262" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7a7a96">각 트레이 구성 →</text>
+      
+      <!-- Arrow to components -->
+      <line x1="344" y1="120" x2="400" y2="60" stroke="#c8ccd2" stroke-width="0.8"/>
+      <line x1="344" y1="140" x2="400" y2="140" stroke="#c8ccd2" stroke-width="0.8"/>
+      <line x1="344" y1="160" x2="400" y2="220" stroke="#c8ccd2" stroke-width="0.8"/>
+      
+      <!-- Vera CPU x8 -->
+      <rect x="402" y="36" width="120" height="48" rx="5" fill="rgba(26,86,219,0.08)" stroke="#1a56db" stroke-width="1"/>
+      <text x="462" y="56" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#1a56db" font-weight="500">Vera CPU</text>
+      <text x="462" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#4a4a68">88코어 Olympus × 8</text>
+      <text x="535" y="56" font-family="Inter,sans-serif" font-size="11" fill="#1a56db" font-weight="600">×8</text>
+      
+      <!-- BlueField-4 x2 -->
+      <rect x="402" y="116" width="120" height="48" rx="5" fill="rgba(83,74,183,0.08)" stroke="#534ab7" stroke-width="1"/>
+      <text x="462" y="136" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#534ab7" font-weight="500">BlueField-4</text>
+      <text x="462" y="152" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#4a4a68">64코어 Grace, 800Gb/s</text>
+      <text x="535" y="136" font-family="Inter,sans-serif" font-size="11" fill="#534ab7" font-weight="600">×2</text>
+      
+      <!-- ConnectX-9 x1 -->
+      <rect x="402" y="196" width="120" height="48" rx="5" fill="rgba(15,123,63,0.08)" stroke="#0f7b3f" stroke-width="1"/>
+      <text x="462" y="216" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#0f7b3f" font-weight="500">ConnectX-9</text>
+      <text x="462" y="232" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#4a4a68">1.6Tb/s SuperNIC</text>
+      <text x="535" y="216" font-family="Inter,sans-serif" font-size="11" fill="#0f7b3f" font-weight="600">×1</text>
+      
+      <!-- Switch tray -->
+      <rect x="182" y="280" width="340" height="40" rx="5" fill="#1a1a2e" stroke="none"/>
+      <text x="352" y="300" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#fff" font-weight="500">1U MGX ETL Switch Tray</text>
+      <text x="352" y="312" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)">Spectrum-6 Ethernet Switch × 1</text>
+      
+      <!-- Total -->
+      <text x="340" y="348" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a7a96">1 Rack = 256 Vera CPUs + 64 BF-4 DPUs + 32 CX-9 NICs. 출처: Nvidia 공식 발표, ServeTheHome 기반 재구성</text>
+    </svg>
+  </div>
 
-    <div class="img-container" style="margin-top:1rem;">
-      <img src="images/superpod_rack.png" alt="1/2 SuperPod rack configuration">
-      <div class="img-caption">1/2 SuperPod 내 랙 구성 — ①Vera Rubin NVL72(NVLink spine) x8랙 + ②Groq 3 LPX(D2C spine) x2랙 + ③Vera CPU(Spectrum-X spine) + ④BlueField-4 STX Storage(Spectrum-X spine) + ⑤Spectrum-6 SPX x5랙. GPU 랙 옆에 반드시 CPU 랙이 배치되는 구조. 출처: SK증권</div>
-    </div>
+    <div class="card" style="padding:1.5rem; overflow-x:auto;">
+    <h4 style="font-size:0.95rem; color:var(--text); margin-bottom:1rem;">1/2 SuperPod 내 랙 구성 (DGX Vera Rubin)</h4>
+    <svg width="100%" viewBox="0 0 680 280" style="max-width:680px; margin:0 auto; display:block;">
+      <!-- 8x NVL72 racks -->
+      <rect x="20" y="30" width="280" height="140" rx="6" fill="rgba(194,37,37,0.06)" stroke="#c22525" stroke-width="1"/>
+      <text x="160" y="22" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#c22525" font-weight="500">① NVIDIA MGX ETL (Fully Configurable, up to 256 chips)</text>
+      <text x="160" y="52" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#c22525" font-weight="600">Vera Rubin NVL72</text>
+      <text x="160" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#4a4a68">72 Rubin GPUs + 36 Vera CPUs</text>
+      <text x="160" y="88" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#4a4a68">18 BlueField-4 DPUs</text>
+      <text x="160" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#4a4a68">260 TB/s NVLink 6 throughput</text>
+      <text x="160" y="120" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a7a96">NVLink spine</text>
+      <text x="160" y="155" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#c22525" font-weight="600">× 8 랙</text>
+      
+      <!-- 2x Groq LPX racks -->
+      <rect x="320" y="30" width="100" height="140" rx="6" fill="rgba(180,83,9,0.06)" stroke="#b45309" stroke-width="1"/>
+      <text x="370" y="22" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#b45309" font-weight="500">② MGX NVL</text>
+      <text x="370" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#b45309" font-weight="600">Groq 3 LPX</text>
+      <text x="370" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#4a4a68">256 LPUs/rack</text>
+      <text x="370" y="88" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#4a4a68">128GB SRAM</text>
+      <text x="370" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7a7a96">D2C spine</text>
+      <text x="370" y="155" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" fill="#b45309" font-weight="600">× 2 랙</text>
+      
+      <!-- 1x Vera CPU rack -->
+      <rect x="440" y="30" width="60" height="140" rx="6" fill="rgba(26,86,219,0.08)" stroke="#1a56db" stroke-width="1.5"/>
+      <text x="470" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#1a56db" font-weight="600">③</text>
+      <text x="470" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#1a56db" font-weight="500">Vera</text>
+      <text x="470" y="84" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#1a56db" font-weight="500">CPU</text>
+      <text x="470" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7a7a96">Spectrum-X</text>
+      
+      <!-- 1x BF-4 STX Storage -->
+      <rect x="515" y="30" width="60" height="140" rx="6" fill="rgba(83,74,183,0.08)" stroke="#534ab7" stroke-width="1"/>
+      <text x="545" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#534ab7" font-weight="600">④</text>
+      <text x="545" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#534ab7" font-weight="500">BF-4</text>
+      <text x="545" y="84" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#534ab7" font-weight="500">STX</text>
+      <text x="545" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7a7a96">Storage</text>
+      
+      <!-- 5x Spectrum-6 SPX -->
+      <rect x="590" y="30" width="70" height="140" rx="6" fill="rgba(95,94,90,0.08)" stroke="#5f5e5a" stroke-width="1"/>
+      <text x="625" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#5f5e5a" font-weight="600">⑤</text>
+      <text x="625" y="72" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#5f5e5a" font-weight="500">Spectrum-6</text>
+      <text x="625" y="84" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#5f5e5a" font-weight="500">SPX</text>
+      <text x="625" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7a7a96">Ethernet</text>
+      <text x="625" y="155" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#5f5e5a" font-weight="600">× 5 랙</text>
+
+      <!-- Summary bar -->
+      <rect x="20" y="200" width="640" height="60" rx="6" fill="#f8f9fa" stroke="#e2e4e8" stroke-width="0.5"/>
+      <text x="340" y="222" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#1a1a2e" font-weight="500">1/2 SuperPod = 8(NVL72) + 2(LPX) + 1(CPU) + 1(Storage) + 5(Network) = 17 랙</text>
+      <text x="340" y="240" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#4a4a68">576 Rubin GPUs · 288 Vera CPUs · 144 BF-4 DPUs · 512 Groq LPUs</text>
+      <text x="340" y="255" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7a7a96">GPU 랙 옆에 CPU·DPU·네트워크 랙이 반드시 배치 — 풀스택 번들 구조</text>
+      
+      <text x="340" y="276" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7a7a96">출처: Nvidia 공식 발표 (CES/GTC 2026), DGX SuperPod Blog, ServeTheHome, The Register 기반 재구성</text>
+    </svg>
+  </div>
 
 
   <div class="card">
