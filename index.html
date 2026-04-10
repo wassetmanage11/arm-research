@@ -72,7 +72,7 @@ nav ul a:hover { color: var(--text); background: var(--bg-card); }
   padding: 10rem 2rem 5rem;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 .hero::before {
   content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
@@ -126,6 +126,7 @@ section:first-of-type { border-top: none; }
   padding: 2rem;
   margin-bottom: 1.5rem;
   transition: border-color 0.3s;
+  overflow: visible;
 }
 .card:hover { border-color: var(--border-accent); }
 
@@ -151,8 +152,7 @@ section:first-of-type { border-top: none; }
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
-  margin: 2rem auto !important;
-  max-width: 680px !important;
+  margin: 2rem 0;
   width: 100%;
 }
 .img-container img {
@@ -172,6 +172,7 @@ section:first-of-type { border-top: none; }
 .compare-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 1.5rem; margin: 2rem 0;
+  overflow-x: auto;
 }
 @media (max-width: 768px) {
   .compare-grid { grid-template-columns: 1fr; }
@@ -374,7 +375,6 @@ footer {
     .sub-toggle.collapsed::before { transform:rotate(-90deg); }
 
   </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -386,7 +386,7 @@ footer {
       <li><a href="#industry">산업 개요</a></li>
       <li><a href="#company">기업 개요</a></li>
       <li><a href="#financials">재무분석</a></li>
-      <li><a href="#investment">투자포인트</a></li>
+      <li><a href="#investment">기타</a></li>
       <li><a href="#risks">리스크</a></li>
     </ul>
   </div>
@@ -414,7 +414,12 @@ footer {
 <!-- SECTION 1: OVERVIEW -->
 <!-- ═══════════════════════════════════════════════ -->
 
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION: 산업 개요 (industry)                      -->
+<!-- ═══════════════════════════════════════════ -->
 <section id="industry">
+<div class="container">
   <div class="section-label">01 — Industry Overview</div>
   <div class="section-title">산업 개요: CPU 르네상스</div>
 
@@ -562,7 +567,29 @@ footer {
     <p><strong>BlueField-4의 핵심 변화:</strong> CPU가 BF-3의 16코어 Cortex-A78(Armv8.2+)에서 BF-4의 64코어 Grace CPU(Arm Neoverse V2 기반)로 대폭 업그레이드되었다. 컴퓨트 성능이 BF-3 대비 6배로 증가했으며, PCIe도 Gen5→Gen6로 업그레이드. <a class="fc-source" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank">Nvidia Blog</a></p>
     <p>DPU는 Intel, AMD, Nvidia 등 다양한 기업들이 만들고 있지만, Nvidia가 자사 제품들을 랙스케일 단위로 판매하면서 출하량이 빠르게 증가하고 있다. Nvidia DPU의 경우 ARM CPU가 핵심이다.</p>
     <p><strong>AI Agent 시대의 DPU:</strong> AI Agent 시대 대비를 위해 루빈과 함께 출시되는 BlueField-4 DPU는 증가하는 KV Cache 관련 워크로드를 처리하기 위해 코어 수가 4배 더 증가했다. DPU 성능 증가 요구는 곧 CPU 수혜로 이어지며, ARM이 이 영역에서도 구조적 수혜를 받을 것으로 기대된다.</p>
-  </div>
+  
+    <div style="overflow-x:auto; margin-top:1.5rem;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="min-width:100px;">항목</th>
+          <th style="min-width:150px;">BlueField-3 DPU</th>
+          <th style="min-width:150px;">BlueField-4 DPU</th>
+          <th style="min-width:160px;">BF-4 개선점</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-label">네트워크 속도</td><td>최대 400 Gb/s (Ethernet 또는 InfiniBand NDR)</td><td>최대 800 Gb/s (Ethernet 또는 InfiniBand)</td><td>2배 (ConnectX-7 → ConnectX-9 기반)</td></tr>
+        <tr><td class="row-label">CPU 코어</td><td>최대 16코어 ARM Cortex-A78 (ARMv8.2+)</td><td>64코어 Grace CPU (ARM Neoverse V2 기반)</td><td>4배 코어 수 + 아키텍처 업그레이드</td></tr>
+        <tr><td class="row-label">컴퓨트 성능</td><td>BlueField-2 대비 4배</td><td>BlueField-3 대비 6배</td><td>Grace CPU로 대폭 향상</td></tr>
+        <tr><td class="row-label">메모리</td><td>16GB DDR5</td><td>128GB LPDDR5X</td><td>8배</td></tr>
+        <tr><td class="row-label">PCIe 인터페이스</td><td>PCIe Gen5 x16</td><td>PCIe Gen6 x16</td><td>Gen6로 업그레이드</td></tr>
+        <tr><td class="row-label">하드웨어 가속기</td><td>RegEx, AES-XTS/GCM, Erasure Coding, NVMe-oF, MACsec 등</td><td>기존 + 강화된 KV I/O, 암호화·CRC 가속 (800 Gb/s 라인레이트)</td><td>AI·스토리지 특화 강화 (ICMS에 최적)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-caption">출처: Nvidia 공식 발표 기반 재구성. <a class="fc-source" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank">Nvidia Blog</a></p>
+</div>
 
 
 
@@ -595,15 +622,9 @@ footer {
 
 <div class="section-label" style="margin-top:3rem;">CPU 시장 TAM 전망</div>
 
-  <div class="img-container">
-    <img src="images/img_004.jpg" alt="Massive and growing semiconductor market">
-    <div class="img-caption">반도체 시장 TAM — Cloud AI $330B→$1.2T+, Edge AI $180B→$250B, Physical AI $25B→$50B, 전체 $535B→$1.5T+ (FY26→FY31). 출처: ARM 공식 자료, 추정치 기반 (© 2026 Arm)</div>
-  </div>
+  
 
-  <div class="img-container">
-    <img src="images/img_005.jpg" alt="Cloud AI TAM breakdown">
-    <div class="img-caption">Cloud AI TAM 상세 — FY26: DC CPU $50B + 기타 CPU $35B + XPU $245B = $330B → FY31: DC CPU $100B+ + 기타 CPU $55B + XPU $1T = $1T+. ARM AGI CPU가 공략하는 DC CPU 시장이 $100B+. 가속기(XPU) TAM $1T에 대해서는 "watch this space". 출처: ARM 공식 자료, 추정치 기반 (© 2026 Arm)</div>
-  </div>
+  
 
   <div class="card">
     <h3>CPU 중심 TAM 전망 (FY31 기준)</h3>
@@ -618,16 +639,29 @@ footer {
     <div class="highlight" style="margin-top:1rem;">
       <strong>가속기 시장 $1T:</strong> ARM은 CPU만 발표한 상태이나, 가속기 시장 진출 가능성을 "watch this space"로 시사. 향후 Chiplet marketplace를 통해 CPU 칩렛 + 가속기 칩렛 조합도 가능.
     </div>
+  
+<div class="img-container">
+    <img src="images/img_004.jpg" alt="Massive and growing semiconductor market">
+    <div class="img-caption">반도체 시장 TAM — Cloud AI $330B→$1.2T+, Edge AI $180B→$250B, Physical AI $25B→$50B, 전체 $535B→$1.5T+ (FY26→FY31). 출처: ARM 공식 자료, 추정치 기반 (© 2026 Arm)</div>
+  </div>
+<div class="img-container">
+    <img src="images/img_005.jpg" alt="Cloud AI TAM breakdown">
+    <div class="img-caption">Cloud AI TAM 상세 — FY26: DC CPU $50B + 기타 CPU $35B + XPU $245B = $330B → FY31: DC CPU $100B+ + 기타 CPU $55B + XPU $1T = $1T+. ARM AGI CPU가 공략하는 DC CPU 시장이 $100B+. 가속기(XPU) TAM $1T에 대해서는 "watch this space". 출처: ARM 공식 자료, 추정치 기반 (© 2026 Arm)</div>
   </div>
 
-  <div class="img-container">
-    <img src="images/img_006.jpg" alt="Landing the ARM AGI CPU business">
-    <div class="img-caption">ARM AGI CPU 매출 램프 전망 — 신규 고객 수요(demand pull)에서 출발. FY28이 본격 매출 시작 연도, FY31까지 exponentially ramp하여 약 $15B 타겟. 대부분의 CPU 칩이 이미 ARM IP 기반이므로 ARM이 unique position. 출처: ARM 공식 자료, 추정치 기반 (© 2026 Arm)</div>
-  </div>
+</div>
 
+  
+
+</div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION: 기업 개요 (company)                      -->
+<!-- ═══════════════════════════════════════════ -->
 <section id="company">
+<div class="container">
   <div class="section-label">02 — Company Overview</div>
   <div class="section-title">기업 개요: ARM Holdings</div>
 
@@ -685,11 +719,7 @@ footer {
       <h4>ARM AGI CPU 공개 — 35년 역사상 첫 자체 칩</h4>
       <p>136코어, TSMC N3P, Meta 첫 고객. "반도체의 스위스" 중립성을 포기한 역사적 전환.</p>
     </div>
-    <div class="tl-item">
-      <div class="tl-date">2026.04.07</div>
-      <h4>Morgan Stanley 다운그레이드</h4>
-      <p>OW→EW, TP $135→$150. <a class="fc-source" href="https://seekingalpha.com/news/4572953-arm-holdings-slides-as-morgan-stanley-downgrades" target="_blank">Seeking Alpha</a> 전략은 맞지만 상업적 램프에 시간이 걸린다는 판단.</p>
-    </div>
+    
   </div>
 
 
@@ -725,6 +755,37 @@ footer {
   </div>
 
   
+
+
+
+  
+  <div class="section-label" style="margin-top:3rem;">제품 및 서비스</div>
+
+  <div class="card">
+    <h3>ARM ISA 버전별 개요</h3>
+    <p>ARM의 명령어 세트 아키텍처(ISA)는 세대를 거듭하며 진화해왔다. 현재 v9가 최신이며, AI 연산과 보안 기능이 핵심 강화 포인트다.</p>
+  
+<table class="data-table">
+  <thead><tr><th>구분</th><th>설명</th><th>세부 제품</th></tr></thead>
+  <tbody>
+    <tr><td class="row-label">System IP</td><td>SoC 내부 연결 및 제어 관련 IP 툴. CPU 코어 간 상호 연결, 시스템 컨트롤러, 디버그/트레이스 등 IP 포트폴리오.</td><td>CMN(Coherent Mesh Network), NI(Network Interconnect), GIC(인터럽트 컨트롤러)</td></tr>
+    <tr><td class="row-label">Security IP</td><td>SoC 보안 관련 IP. 암호화/키 관리, 물리 공격 방어 등.</td><td>CryptoCell, TrustZone(하드웨어 격리, 루트 오브 트러스트), PSA 아키텍처 기반 4단계 접근(분석→아키텍처→구현→인증)</td></tr>
+    <tr style="background:rgba(26,86,219,0.04)"><td class="row-label">Subsystems IP<br>(CSS)</td><td>사전 통합 컴퓨트 서브시스템. CPU + 인터커넥트 + 시스템 IP를 미리 조립한 형태. 거의 추가 설계가 필요 없는 완제품 상태. <strong>최근 ARM 매출의 핵심 성장 동력.</strong></td><td>Neoverse CSS: 데이터센터 용<br>Lumex CSS: 스마트폰/노트북 용<br>Zena CSS: 자동차 SDV 용</td></tr>
+  </tbody>
+</table>
+<p class="table-caption">출처: ARM 공식 제품 페이지 기반 재구성</p>
+</div>
+
+  
+
+
+
+  <div class="card">
+    <h3>ARM IP 제품 라인업</h3>
+    <p>ARM은 CPU뿐 아니라 GPU, NPU, System IP까지 광범위한 제품군을 보유하고 있다. 2025년에는 기존 Cortex-X/A 라인을 통합한 새로운 C1 CPU 라인업이 출시되었다.</p>
+  
+
+
 <table class="data-table">
   <thead><tr><th style="width:12%;">IP 종류</th><th style="width:30%;">설명</th><th style="width:28%;">비고</th><th style="width:30%;">주요 고객 / 납품처</th></tr></thead>
   <tbody>
@@ -779,101 +840,7 @@ footer {
   </tbody>
 </table>
 <p class="table-caption">출처: <a href="https://www.arm.com/products" target="_blank">ARM 공식 제품 페이지</a> 및 도쿄 IR 브리핑 기반 재구성. 고객 정보는 공개 발표 기준.</p>
-
-
-  
-  <div class="section-label" style="margin-top:3rem;">제품 및 서비스</div>
-
-  <div class="card">
-    <h3>ARM ISA 버전별 개요</h3>
-    <p>ARM의 명령어 세트 아키텍처(ISA)는 세대를 거듭하며 진화해왔다. 현재 v9가 최신이며, AI 연산과 보안 기능이 핵심 강화 포인트다.</p>
-  </div>
-
-  
-<table class="data-table">
-  <thead><tr><th>구분</th><th>설명</th><th>세부 제품</th></tr></thead>
-  <tbody>
-    <tr><td class="row-label">System IP</td><td>SoC 내부 연결 및 제어 관련 IP 툴. CPU 코어 간 상호 연결, 시스템 컨트롤러, 디버그/트레이스 등 IP 포트폴리오.</td><td>CMN(Coherent Mesh Network), NI(Network Interconnect), GIC(인터럽트 컨트롤러)</td></tr>
-    <tr><td class="row-label">Security IP</td><td>SoC 보안 관련 IP. 암호화/키 관리, 물리 공격 방어 등.</td><td>CryptoCell, TrustZone(하드웨어 격리, 루트 오브 트러스트), PSA 아키텍처 기반 4단계 접근(분석→아키텍처→구현→인증)</td></tr>
-    <tr style="background:rgba(26,86,219,0.04)"><td class="row-label">Subsystems IP<br>(CSS)</td><td>사전 통합 컴퓨트 서브시스템. CPU + 인터커넥트 + 시스템 IP를 미리 조립한 형태. 거의 추가 설계가 필요 없는 완제품 상태. <strong>최근 ARM 매출의 핵심 성장 동력.</strong></td><td>Neoverse CSS: 데이터센터 용<br>Lumex CSS: 스마트폰/노트북 용<br>Zena CSS: 자동차 SDV 용</td></tr>
-  </tbody>
-</table>
-<p class="table-caption">출처: ARM 공식 제품 페이지 기반 재구성</p>
-
-
-  <div class="card">
-    <h3>ARM IP 제품 라인업</h3>
-    <p>ARM은 CPU뿐 아니라 GPU, NPU, System IP까지 광범위한 제품군을 보유하고 있다. 2025년에는 기존 Cortex-X/A 라인을 통합한 새로운 C1 CPU 라인업이 출시되었다.</p>
-  </div>
-
-  
-<table class="data-table">
-  <thead><tr><th>항목</th><th>BlueField-3 DPU</th><th>BlueField-4 DPU</th><th>BF-4 개선점</th></tr></thead>
-  <tbody>
-    <tr><td class="row-label">네트워크 속도</td><td>최대 400 Gb/s (Ethernet 또는 InfiniBand NDR)</td><td>최대 800 Gb/s (Ethernet 또는 InfiniBand)</td><td>2배 (ConnectX-7 → ConnectX-9 기반)</td></tr>
-    <tr><td class="row-label">CPU 코어</td><td>최대 16코어 ARM Cortex-A78 (ARMv8.2+)</td><td>64코어 Grace CPU (ARM Neoverse V2 기반)</td><td>4배 코어 수 + 아키텍처 업그레이드</td></tr>
-    <tr><td class="row-label">컴퓨트 성능</td><td>BlueField-2 대비 4배</td><td>BlueField-3 대비 6배</td><td>Grace CPU로 대폭 향상</td></tr>
-    <tr><td class="row-label">메모리</td><td>16GB DDR5</td><td>128GB LPDDR5X</td><td>8배</td></tr>
-    <tr><td class="row-label">PCIe 인터페이스</td><td>PCIe Gen5 x16</td><td>PCIe Gen6 x16</td><td>Gen6로 업그레이드</td></tr>
-    <tr><td class="row-label">하드웨어 가속기</td><td>RegEx, AES-XTS/GCM, Erasure Coding, NVMe-oF, MACsec 등</td><td>기존 + 강화된 KV I/O, 암호화·CRC 가속 (800 Gb/s 라인레이트)</td><td>AI·스토리지 특화 강화 (ICMS에 최적)</td></tr>
-  </tbody>
-</table>
-<p class="table-caption">출처: Nvidia 공식 발표 기반 재구성. <a class="fc-source" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank">Nvidia Blog</a></p>
-
-
-  
-
-
-
-  
-<table class="data-table">
-  <thead><tr><th>항목</th><th>사양</th></tr></thead>
-  <tbody>
-    <tr><td class="row-label">코어</td><td>최대 136개 ARM Neoverse V3 코어</td></tr>
-    <tr><td class="row-label">다이 구성</td><td>듀얼 다이 (chiplet) 설계, MCM 패키징 <a class="fc-source" href="https://fudzilla.com/arm-agi-cpu-is-a-136-core-hardware-chip/" target="_blank">Fudzilla</a></td></tr>
-    <tr><td class="row-label">공정</td><td>TSMC 3nm (N3P) <a class="fc-source" href="https://fudzilla.com/arm-agi-cpu-is-a-136-core-hardware-chip/" target="_blank">Fudzilla</a></td></tr>
-    <tr><td class="row-label">클럭</td><td>베이스 3.2GHz / 부스트 최대 3.7GHz</td></tr>
-    <tr><td class="row-label">TDP</td><td>300W (가변 250~430W)</td></tr>
-    <tr><td class="row-label">L2 캐시</td><td>코어당 2MB (전용)</td></tr>
-    <tr><td class="row-label">SLC (시스템 레벨 캐시)</td><td>128MB 공유</td></tr>
-    <tr><td class="row-label">메모리</td><td>12채널 DDR5-8800, 코어당 6GB/s 대역폭, 100ns 미만 레이턴시</td></tr>
-    <tr><td class="row-label">I/O</td><td>96 PCIe Gen6 레인, CXL 3.0 메모리 확장 지원</td></tr>
-    <tr><td class="row-label">SMT</td><td>비채용 (코어당 1스레드, 결정론적 성능 확보 목적)</td></tr>
-    <tr><td class="row-label">제조</td><td>TSMC</td></tr>
-  </tbody>
-</table>
-<p class="table-caption">출처: ARM 공식 발표, Tom's Hardware, Fudzilla 기반 재구성. <a class="fc-source" href="https://www.tomshardware.com/tech-industry/semiconductors/arm-launches-its-first-data-center-cpu" target="_blank">Tom's Hardware</a></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="img-container">
-    <img src="images/img_007.jpg" alt="ARM AGI CPU chip detail">
-    <div class="img-caption">ARM AGI CPU 실물 — 136 Neoverse V3 코어의 Responsive Performance, Composable AI 시스템을 위한 I/O(PCIe Gen6 96레인, CXL 3.0), Latency-Optimized Memory Access(sub-100ns), Memory Tuned for Compute(DDR5 12채널), 그리고 ARM의 전설적인 전력 효율(Legendary Arm Efficiency). 출처: ARM 공식 자료 (© 2026 Arm)</div>
-  </div>
-
-  <div class="img-container">
-    <img src="images/img_008.jpg" alt="ARM AGI CPU rack vs x86">
-    <div class="img-caption">ARM AGI CPU 랙 vs x86 — 동일 36kW 표준 랙에서 ARM: 30x 1U 서버 = 8,160코어 vs x86: 17x 2U 서버 = 4,352코어. 같은 CAPEX·전력 예산으로 2배 이상의 컴퓨트 출력. 출처: ARM 공식 자료, 추정치 기반 (© 2026 Arm)</div>
-  </div>
-
-  <div class="img-container">
-    <img src="images/img_009.jpg" alt="ARM AGI CPU roadmap">
-    <div class="img-caption">ARM AGI CPU 로드맵 — 1세대(Now, 136코어 Neoverse V3) → 2세대(2027, 약 1년 내 출시) → 3세대(Future, 개발 착수). FY31까지 3개 세대가 동시에 램프하면서 $15B 매출 타겟을 견인. 타임라인은 실리콘 샘플 가용 시점 기준. 출처: ARM 공식 자료 (© 2026 Arm)</div>
-  </div>
-
-
+</div>
 
   <div class="card">
     <h3>CSS(Compute Subsystem)가 중요한 이유</h3>
@@ -887,7 +854,135 @@ footer {
     <p><strong>로열티 구조:</strong> v8 → v9로 2배, v9 → CSS로 추가 2배. CSS는 세대별로 약 20%씩 추가 상승하며, 매년 신세대 출시로 연 20%의 구조적 로열티 인상이 가능하다.</p>
   </div>
 
-  <div class="section-label" style="margin-top:3rem;">AGI CPU — 35년 역사상 첫 자체 칩</div>
+  <div class="section-label" style="margin-top:3rem;">서버 CPU 경쟁 구도</div>
+
+  <div class="card">
+    <h3>서버 CPU 시장의 전체 경쟁 지형</h3>
+    <p>"AI 인프라에서 GPU 옆에 어떤 CPU를 놓을 것인가"의 싸움:</p>
+    <p><strong>x86:</strong> Intel (Xeon, Clearwater Forest 준비 중), AMD (EPYC Turin)</p>
+    <p><strong>ARM 기반:</strong> Nvidia Vera, ARM AGI CPU, AWS Graviton (5세대, 192 Neoverse V3 코어), Google Axion (Neoverse N3), Microsoft Cobalt 200 (CSS V3)</p>
+    <p><strong>기타:</strong> RISC-V (Tenstorrent 등 부상 중)</p>
+    <p>Bank of America는 서버 CPU 시장이 2025년 $27B → 2030년 $60B로 성장 전망. <a class="fc-source" href="https://www.cnbc.com/2026/03/13/nvidia-gtc-ai-jensen-huang-cpu-gpu.html" target="_blank">CNBC</a></p>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="card">
+    <h3 class="no-toggle">서버 CPU 4파전: 스펙·효율·밀도 비교 대시보드</h3>
+    
+<div class="compare-grid">
+    <div class="compare-card">
+      <div class="chip-name">ARM AGI CPU</div>
+      <div class="chip-maker">ARM Holdings — 자체 설계 · TSMC 제조</div>
+      <div class="spec-row"><span class="label">코어</span><span class="value">136x Neoverse V3</span></div>
+      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A</span></div>
+      <div class="spec-row"><span class="label">공정</span><span class="value">TSMC N3P (3nm) <a class="fc-source" href="https://fudzilla.com/arm-agi-cpu-is-a-136-core-hardware-chip/" target="_blank">Fudzilla</a></span></div>
+      <div class="spec-row"><span class="label">다이 구성</span><span class="value">듀얼 칩렛 (MCM)</span></div>
+      <div class="spec-row"><span class="label">TDP</span><span class="value">300W (250~430W)</span></div>
+      <div class="spec-row"><span class="label">메모리</span><span class="value">DDR5, 800+ GB/s</span></div>
+      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">6 GB/s</span></div>
+      <div class="spec-row"><span class="label">SMT</span><span class="value">없음 (1T/core)</span></div>
+      <div class="spec-row"><span class="label">강점</span><span class="value">코어 밀도, 에어쿨링</span></div>
+      <div class="spec-row"><span class="label">첫 고객</span><span class="value">Meta</span></div>
+    </div>
+    <div class="compare-card">
+      <div class="chip-name">Nvidia Vera CPU</div>
+      <div class="chip-maker">Nvidia — 커스텀 Olympus 코어</div>
+      <div class="spec-row"><span class="label">코어</span><span class="value">88x Olympus</span></div>
+      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A (커스텀)</span></div>
+      <div class="spec-row"><span class="label">공정</span><span class="value">비공개</span></div>
+      <div class="spec-row"><span class="label">다이 구성</span><span class="value">모놀리식 + dielets</span></div>
+      <div class="spec-row"><span class="label">TDP</span><span class="value">비공개</span></div>
+      <div class="spec-row"><span class="label">메모리</span><span class="value">LPDDR5X, 1.2 TB/s <a class="fc-source" href="https://developer.nvidia.com/blog/nvidia-vera-cpu-delivers-high-performance-bandwidth-and-efficiency-for-ai-factories/" target="_blank">Nvidia Blog</a></span></div>
+      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">약 14 GB/s</span></div>
+      <div class="spec-row"><span class="label">SMT</span><span class="value">Spatial MT (176 threads) <a class="fc-source" href="https://www.tomshardware.com/pc-components/gpus/nvidia-unveils-details-of-new-88-core-vera-cpus-positioned-to-compete-with-amd-and-intel-new-vera-cpu-rack-features-256-liquid-cooled-chips-that-deliver-up-to-a-6x-gain-in-cpu-throughput" target="_blank">Tom's Hardware</a></span></div>
+      <div class="spec-row"><span class="label">강점</span><span class="value">단일 스레드, GPU 연동</span></div>
+      <div class="spec-row"><span class="label">핵심 플랫폼</span><span class="value">Vera Rubin NVL72</span></div>
+    </div>
+  </div
+
+    <div class="highlight" style="margin-top:1rem;">
+      <strong>핵심 아이러니:</strong> Nvidia Vera도 ARM 아키텍처(v9.2-A) 기반이다. Nvidia는 ARM에 아키텍처 라이선스 비용을 지불하면서 자기만의 커스텀 CPU를 만든다. 즉 ARM은 자기 아키텍처를 라이선스해준 고객과 같은 시장에서 직접 경쟁하게 된 것이다. 다만 Grace(기성품 Neoverse 코어 사용)와 달리 Vera의 Olympus 코어는 Nvidia가 처음부터 자체 설계한 풀커스텀 코어다.
+    </div>
+
+    
+
+    
+
+    <div style="overflow-x:auto; margin-top:1.5rem;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="min-width:100px;">항목</th>
+          <th style="min-width:115px;">Intel Xeon 6980P<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Granite Rapids</span></th>
+          <th style="min-width:115px;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Turin Dense</span></th>
+          <th style="min-width:115px;">Nvidia Vera<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Olympus (ARM)</span></th>
+          <th style="min-width:115px;">AWS Graviton4<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Neoverse V2</span></th>
+          <th style="min-width:115px;background:rgba(26,86,219,0.04);">ARM AGI CPU<br><span style="font-weight:400;font-size:0.75em;color:#1a56db;">Neoverse V3</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-label">아키텍처</td><td>x86 (Redwood Cove)</td><td>x86 (Zen 5C)</td><td>ARM v9.2-A (커스텀)</td><td>ARM v9 (Neoverse V2)</td><td>ARM v9.2-A (Neoverse V3)</td></tr>
+        <tr><td class="row-label">공정</td><td>Intel 3</td><td>TSMC N4</td><td>비공개 (N3P 추정)</td><td>TSMC N4</td><td>TSMC N3P</td></tr>
+        <tr><td class="row-label">코어 수</td><td>128</td><td>192</td><td>88</td><td>96</td><td>136</td></tr>
+        <tr><td class="row-label">Thread 수</td><td>256 (HT)</td><td>384 (SMT)</td><td>176 (Spatial MT)</td><td>N/A (1T/core)</td><td>136 (1T/core)</td></tr>
+        <tr><td class="row-label">TDP</td><td>500W</td><td>500W</td><td>비공개 (약 350W 추정)</td><td>비공개</td><td>300W (250~430W)</td></tr>
+        <tr><td class="row-label">메모리 대역폭</td><td>845 GB/s</td><td>614 GB/s</td><td style="color:#1a56db;font-weight:600;">1,200 GB/s</td><td>538 GB/s</td><td>800+ GB/s</td></tr>
+        <tr><td class="row-label">코어당 대역폭</td><td>6.6 GB/s</td><td>3.2 GB/s</td><td style="color:#1a56db;font-weight:600;">약 14 GB/s</td><td>5.6 GB/s</td><td>6 GB/s</td></tr>
+        <tr><td class="row-label">대표 I/O</td><td>PCIe 5.0 (378 GB/s)</td><td>PCIe 5.0 (504 GB/s)</td><td style="color:#1a56db;font-weight:600;">NVLink-C2C (1.8 TB/s)</td><td>PCIe 5.0 (378 GB/s)</td><td>PCIe Gen6, CXL 3.0</td></tr>
+        <tr><td class="row-label">메모리 타입</td><td>DDR5 MCR DIMM</td><td>DDR5 6000MT/s</td><td>SOCAMM LPDDR5X</td><td>DDR5</td><td>DDR5 8800MT/s</td></tr>
+        <tr><td class="row-label">코어/와트</td><td>0.26</td><td>0.38</td><td>약 0.40</td><td>N/A</td><td style="color:#1a56db;font-weight:600;">0.45</td></tr>
+        <tr><td class="row-label">36kW 랙 코어</td><td>약 4,352</td><td>약 6,528</td><td>3,168 (NVL72)</td><td>N/A (AWS 전용)</td><td style="color:#1a56db;font-weight:600;">8,160</td></tr>
+        <tr><td class="row-label">설계 철학</td><td>범용 고성능</td><td>코어 수 극대화</td><td>코어당 BW 극대화</td><td>클라우드 범용 효율</td><td>코어 밀도·에너지 효율</td></tr>
+        <tr><td class="row-label">주요 고객</td><td>Google, 엔터프라이즈</td><td>Meta, AWS, 범용</td><td>CoreWeave, 네오클라우드</td><td>AWS EC2 전용</td><td>Meta, Cerebras, SAP</td></tr>
+        <tr><td class="row-label">가격</td><td>$17,800</td><td>$14,813</td><td>번들</td><td>AWS 내부용</td><td>미공개</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-caption">Vera는 코어 수보다 코어당 대역폭(14GB/s, 타 CPU 대비 약 3배)에 집중. SOCAMM LPDDR5X로 기존 DDR5 대비 대역폭 극대화. 출처: Intel, AMD, Nvidia, ARM 공식 발표 종합.</p>
+
+    
+
+    
+
+>
+
+<p style="color:var(--text-muted); margin-bottom:1rem;">2026년 기준 데이터센터 서버 CPU 주요 4개 제품의 핵심 스펙 비교. 동일 전력 예산(36kW 표준 랙) 기준 코어 밀도가 투자 판단의 핵심 변수.</p>
+    
+  
+    
+
+    <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:2rem;">
+      <div style="flex:1; min-width:280px;">
+        <h4 style="font-family:var(--sans); font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem; text-align:center;">Performance / Watt (코어/W)</h4>
+        <div style="position:relative; height:240px;"><canvas id="perfWattChart"></canvas></div>
+      </div>
+      <div style="flex:1; min-width:280px;">
+        <h4 style="font-family:var(--sans); font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem; text-align:center;">36kW 랙 코어 밀도 (x86 Xeon 대비)</h4>
+        <div style="position:relative; height:240px;"><canvas id="densityChart"></canvas></div>
+      </div>
+    </div>
+</div>
+</div>
+
+<div class="card">
+    <h3>기존 라이선시와의 긴장 관계</h3>
+    <p>ARM vs Qualcomm: Nuvia 인수 건 라이선스 분쟁 진행 중, ARM이 Qualcomm 아키텍처 라이선스 취소 통보.</p>
+    <p>Nvidia: 4Q25에 잔여 ARM 지분 110만 주(약 $140M) 전량 매각(2026.02 SEC 공시). 다만 20년 라이선스 계약은 유지되며 Grace/Vera CPU 모두 ARM 아키텍처 기반을 유지. Jensen Huang은 "수십 년간 라이선시로서 ARM을 지원하겠다"고 발언. $140M은 Nvidia 시가총액 $4.58T 대비 사실상 무의미한 규모로, 관계 악화보다는 포트폴리오 재배분으로 해석. <a class="fc-source" href="https://www.cnbc.com/2026/02/18/arm-nvidia-nokia-ai-stake-shares.html" target="_blank">CNBC</a> <a class="fc-source" href="https://www.tomshardware.com/tech-industry/nvidia-sells-off-final-arm-shares-but-licensing-deals-will-continue-usd140-million-stake-sold-equating-to-1-1-million-shares" target="_blank">Tom's Hardware</a></p>
+    <p>Qualcomm: 2025년 말 RISC-V 고성능 코어 설계사 Ventana Micro Systems 인수 — ARM 의존도 축소 포석.</p>
+  </div>
+
+
+
+  
+
+
+<div class="section-label" style="margin-top:3rem;">AGI CPU — 35년 역사상 첫 자체 칩</div>
   
 
   <div class="card">
@@ -916,22 +1011,41 @@ footer {
     <div class="spec-row"><span class="label">수냉 랙</span><span class="value">200kW, 45,696코어, 1PB+ 메모리</span></div>
     <div class="spec-row"><span class="label">서버 파트너</span><span class="value">ASRock Rack, Lenovo, Supermicro (주문 가능) <a class="fc-source" href="https://www.trendforce.com/news/2026/03/25/news-arm-unveils-first-agi-cpu-on-tsmc-3nm-meta-among-customers-promising-up-to-2x-performance-vs-x86/" target="_blank">TrendForce</a></span></div>
     <div class="spec-row"><span class="label">가용 시기</span><span class="value">2H 2026</span></div>
-  </div>
+  
+
 
 <div class="img-container">
-    <img src="images/img_011.jpg" alt="매출액 & 성장률 ($M) — FY2025 4Q $1,242M으로 사상 최초 분기 $1B ">
-    <div class="img-caption">매출액 & 성장률 ($M) — FY2025 4Q $1,242M으로 사상 최초 분기 $1B 돌파. YoY 성장률은 1Q25 33.7% 피크 후 둔화 추세.</div>
+    <img src="images/img_006.jpg" alt="Landing the ARM AGI CPU business">
+    <div class="img-caption">ARM AGI CPU 매출 램프 전망 — 신규 고객 수요(demand pull)에서 출발. FY28이 본격 매출 시작 연도, FY31까지 exponentially ramp하여 약 $15B 타겟. 대부분의 CPU 칩이 이미 ARM IP 기반이므로 ARM이 unique position. 출처: ARM 공식 자료, 추정치 기반 (© 2026 Arm)</div>
   </div>
 
-<div class="img-container">
-    <img src="images/img_012.jpg" alt="마진 추이 (GPM/OPM/NPM) 및 OPEX/CAPEX 비중 — GPM 97%대 유지,">
-    <div class="img-caption">마진 추이 (GPM/OPM/NPM) 및 OPEX/CAPEX 비중 — GPM 97%대 유지, OPM은 18~33% 레인지. CAPEX % of Sales가 FY2025 들어 급등(6%→14%) — 칩 직접 제조 투자 반영.</div>
-  </div>
 
-<div class="img-container">
-    <img src="images/img_013.jpg" alt="Diluted EPS — 3Q23 IPO 관련 일회성 비용으로 ($0.11) 적자 후 회복">
-    <div class="img-caption">Diluted EPS — 3Q23 IPO 관련 일회성 비용으로 ($0.11) 적자 후 회복. FY2025 분기 EPS $0.12~$0.22 레인지.</div>
-  </div>
+
+
+
+    <div class="img-container" style="margin-top:1.5rem;">
+      <img src="images/agi_chip.png" alt="ARM AGI CPU 실물">
+      <div class="img-caption">ARM AGI CPU 실물 — 136 Neoverse V3 코어의 Responsive Performance, I/O for Composable AI Systems(PCIe Gen6 96레인, CXL 3.0), Latency-Optimized Memory Access(sub-100ns), Memory Tuned for Compute(DDR5 12채널), Legendary Arm Efficiency. 출처: ARM 공식 자료 (© 2026 Arm)</div>
+    </div>
+
+    <div class="img-container">
+      <img src="images/agi_rack.png" alt="ARM AGI CPU 랙 vs x86">
+      <div class="img-caption">ARM AGI CPU 랙 vs x86 — 동일 36kW 표준 랙에서 ARM: 30x 1U 서버 = 8,160코어 vs x86: 17x 2U 서버 = 4,352코어. 같은 CAPEX·전력 예산으로 2배 이상의 컴퓨트. 출처: ARM 공식 자료 (© 2026 Arm)</div>
+    </div>
+
+    <div class="img-container">
+      <img src="images/agi_roadmap.png" alt="ARM AGI CPU 로드맵">
+      <div class="img-caption">ARM AGI CPU 로드맵 — 1세대(Now, 136코어 V3) → 2세대(2027, 약 1년 내 출시) → 3세대(Future). FY31까지 3개 세대가 동시 램프하면서 $15B 매출 타겟 견인. 출처: ARM 공식 자료 (© 2026 Arm)</div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
 
   
@@ -953,32 +1067,9 @@ footer {
   </div>
 
 
-<div class="section-label" style="margin-top:3rem;">서버 CPU 경쟁 구도</div>
-  
 
-  
 
-  <div class="highlight">
-    <strong>핵심 아이러니:</strong> Nvidia Vera도 ARM 아키텍처(v9.2-A) 기반이다. <a class="fc-source" href="https://www.servethehome.com/nvidias-vera-cpu-in-detail-high-perf-chip-takes-aim-at-broader-ai-server-market/" target="_blank">ServeTheHome</a> Nvidia는 ARM에 아키텍처 라이선스 비용을 지불하면서 자기만의 커스텀 CPU를 만든다. 즉 ARM은 자기 아키텍처를 라이선스해준 고객과 같은 시장에서 직접 경쟁하게 된 것이다. 다만 Grace(기성품 Neoverse 코어 사용)와 달리 Vera의 Olympus 코어는 Nvidia가 처음부터 자체 설계한 풀커스텀 코어다.
-  </div>
-    <div class="highlight" style="margin-top:1.5rem;">
-      <strong>왜 Nvidia Vera인가 — GPU를 위해 CPU가 필요하다:</strong>
-      <p style="margin-top:0.5rem;">CES에서 Jensen Huang은 CPU에서도 향후 출하 1위를 목표한다고 언급. GTC 2026에서 Vera-only tray와 Standalone CPU rack을 출시. Agent 구동에서 CPU가 최고 성능이 되지 못하면 GPU idle이 발생하며, Agent 실행/오케스트레이션 역할에 집중하는 설계. 기존 2GPU-1CPU 구조는 충분하지 않으며, GPU가 여러 다른 Vera 코어에서 서비스될 수 있다고 언급.</p>
-    </div>
-
-    <div class="highlight" style="margin-top:1rem;">
-      <strong>왜 Intel/AMD 말고 Nvidia Vera를 쓰는가:</strong>
-      <p style="margin-top:0.5rem;">기존 x86 CPU들은 vCPU 형태로 배포하기 위해 많은 코어 수에 집중했으나, Vera는 Agent 호환성을 위해 빠른 단일 Thread와 I/O 대역폭에 집중. SOCAMM 활용 LPDDR5X로 코어당 대역폭이 직전 최고사양 CPU 대비 3배 높은 수준(약 14GB/s vs 약 4~6GB/s).</p>
-    </div>
-
-    
-
-<div class="img-container" style="margin-top:1.5rem;">
-      <img src="images/vera_spec_table.png" alt="Server CPU spec comparison table">
-      <div class="img-caption">서버 CPU 스펙 비교 — Vera CPU: 88코어/176T이지만 메모리 대역폭 1.2TB/s, I/O 1.8TB/s로 타 CPU 대비 압도적. 코어 수가 아닌 코어당 대역폭이 에이전틱 워크로드의 핵심.</div>
-    </div>
-
-    <div class="card" style="padding:1.5rem; overflow-x:auto;">
+<div class="card" style="padding:1.5rem; overflow-x:auto;">
     <h4 style="font-size:0.95rem; color:var(--text); margin-bottom:1rem;">Vera CPU Rack 구성</h4>
     <svg width="100%" viewBox="0 0 680 360" style="max-width:680px; margin:0 auto; display:block;">
       <!-- Rack -->
@@ -1041,7 +1132,7 @@ footer {
     </svg>
   </div>
 
-    <div class="card" style="padding:1.5rem; overflow-x:auto;">
+<div class="card" style="padding:1.5rem; overflow-x:auto;">
     <h4 style="font-size:0.95rem; color:var(--text); margin-bottom:1rem;">1/2 SuperPod 내 랙 구성 (DGX Vera Rubin)</h4>
     <svg width="100%" viewBox="0 0 680 280" style="max-width:680px; margin:0 auto; display:block;">
       <!-- 8x NVL72 racks -->
@@ -1096,196 +1187,40 @@ footer {
   </div>
 
 
-  <div class="card">
-    <h3>서버 CPU 시장의 전체 경쟁 지형</h3>
-    <p>"AI 인프라에서 GPU 옆에 어떤 CPU를 놓을 것인가"의 싸움:</p>
-    <p><strong>x86:</strong> Intel (Xeon, Clearwater Forest 준비 중), AMD (EPYC Turin)</p>
-    <p><strong>ARM 기반:</strong> Nvidia Vera, ARM AGI CPU, AWS Graviton (5세대, 192 Neoverse V3 코어), Google Axion (Neoverse N3), Microsoft Cobalt 200 (CSS V3)</p>
-    <p><strong>기타:</strong> RISC-V (Tenstorrent 등 부상 중)</p>
-    <p>Bank of America는 서버 CPU 시장이 2025년 $27B → 2030년 $60B로 성장 전망. <a class="fc-source" href="https://www.cnbc.com/2026/03/13/nvidia-gtc-ai-jensen-huang-cpu-gpu.html" target="_blank">CNBC</a></p>
-  </div>
-
-
-
-
-
-
-
-
-  <div class="card">
-    <h3>서버 CPU 4파전: 스펙·효율·밀도 비교 대시보드</h3>
-    
-<div class="compare-grid">
-    <div class="compare-card">
-      <div class="chip-name">ARM AGI CPU</div>
-      <div class="chip-maker">ARM Holdings — 자체 설계 · TSMC 제조</div>
-      <div class="spec-row"><span class="label">코어</span><span class="value">136x Neoverse V3</span></div>
-      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A</span></div>
-      <div class="spec-row"><span class="label">공정</span><span class="value">TSMC N3P (3nm) <a class="fc-source" href="https://fudzilla.com/arm-agi-cpu-is-a-136-core-hardware-chip/" target="_blank">Fudzilla</a></span></div>
-      <div class="spec-row"><span class="label">다이 구성</span><span class="value">듀얼 칩렛 (MCM)</span></div>
-      <div class="spec-row"><span class="label">TDP</span><span class="value">300W (250~430W)</span></div>
-      <div class="spec-row"><span class="label">메모리</span><span class="value">DDR5, 800+ GB/s</span></div>
-      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">6 GB/s</span></div>
-      <div class="spec-row"><span class="label">SMT</span><span class="value">없음 (1T/core)</span></div>
-      <div class="spec-row"><span class="label">강점</span><span class="value">코어 밀도, 에어쿨링</span></div>
-      <div class="spec-row"><span class="label">첫 고객</span><span class="value">Meta</span></div>
-    </div>
-    <div class="compare-card">
-      <div class="chip-name">Nvidia Vera CPU</div>
-      <div class="chip-maker">Nvidia — 커스텀 Olympus 코어</div>
-      <div class="spec-row"><span class="label">코어</span><span class="value">88x Olympus</span></div>
-      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A (커스텀)</span></div>
-      <div class="spec-row"><span class="label">공정</span><span class="value">비공개</span></div>
-      <div class="spec-row"><span class="label">다이 구성</span><span class="value">모놀리식 + dielets</span></div>
-      <div class="spec-row"><span class="label">TDP</span><span class="value">비공개</span></div>
-      <div class="spec-row"><span class="label">메모리</span><span class="value">LPDDR5X, 1.2 TB/s <a class="fc-source" href="https://developer.nvidia.com/blog/nvidia-vera-cpu-delivers-high-performance-bandwidth-and-efficiency-for-ai-factories/" target="_blank">Nvidia Blog</a></span></div>
-      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">약 14 GB/s</span></div>
-      <div class="spec-row"><span class="label">SMT</span><span class="value">Spatial MT (176 threads) <a class="fc-source" href="https://www.tomshardware.com/pc-components/gpus/nvidia-unveils-details-of-new-88-core-vera-cpus-positioned-to-compete-with-amd-and-intel-new-vera-cpu-rack-features-256-liquid-cooled-chips-that-deliver-up-to-a-6x-gain-in-cpu-throughput" target="_blank">Tom's Hardware</a></span></div>
-      <div class="spec-row"><span class="label">강점</span><span class="value">단일 스레드, GPU 연동</span></div>
-      <div class="spec-row"><span class="label">핵심 플랫폼</span><span class="value">Vera Rubin NVL72</span></div>
-    </div>
-  </div
-
-    <div class="highlight" style="margin-top:1rem;">
-      <strong>핵심 아이러니:</strong> Nvidia Vera도 ARM 아키텍처(v9.2-A) 기반이다. Nvidia는 ARM에 아키텍처 라이선스 비용을 지불하면서 자기만의 커스텀 CPU를 만든다. 즉 ARM은 자기 아키텍처를 라이선스해준 고객과 같은 시장에서 직접 경쟁하게 된 것이다. 다만 Grace(기성품 Neoverse 코어 사용)와 달리 Vera의 Olympus 코어는 Nvidia가 처음부터 자체 설계한 풀커스텀 코어다.
-    </div>
-
-    
-
-    
-
-    <div style="overflow-x:auto; margin-top:1.5rem;">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th style="min-width:110px;">항목</th>
-          <th style="min-width:130px;">Intel Xeon 6980P<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Granite Rapids</span></th>
-          <th style="min-width:130px;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Turin Dense</span></th>
-          <th style="min-width:130px;">Nvidia Vera<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Olympus (ARM)</span></th>
-          <th style="min-width:130px;background:rgba(26,86,219,0.04);">ARM AGI CPU<br><span style="font-weight:400;font-size:0.75em;color:#1a56db;">Neoverse V3</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="row-label">아키텍처</td><td>x86 (Redwood Cove)</td><td>x86 (Zen 5C)</td><td>ARM v9.2-A (커스텀 Olympus)</td><td>ARM v9.2-A (Neoverse V3)</td></tr>
-        <tr><td class="row-label">공정</td><td>Intel 3</td><td>TSMC N4</td><td>비공개 (N3P 추정)</td><td>TSMC N3P</td></tr>
-        <tr><td class="row-label">코어 수</td><td>128</td><td>192</td><td>88</td><td>136</td></tr>
-        <tr><td class="row-label">Thread 수</td><td>256 (HT)</td><td>384 (SMT)</td><td>176 (Spatial MT)</td><td>136 (SMT 없음)</td></tr>
-        <tr><td class="row-label">TDP</td><td>500W</td><td>500W</td><td>비공개 (약 350W 추정)</td><td>300W (250~430W)</td></tr>
-        <tr><td class="row-label">메모리 대역폭</td><td>845 GB/s</td><td>614 GB/s</td><td style="color:#1a56db;font-weight:600;">1,200 GB/s</td><td>800+ GB/s</td></tr>
-        <tr><td class="row-label">코어당 대역폭</td><td>6.6 GB/s</td><td>3.2 GB/s</td><td style="color:#1a56db;font-weight:600;">약 14 GB/s</td><td>6 GB/s</td></tr>
-        <tr><td class="row-label">대표 I/O</td><td>PCIe 5.0 (378 GB/s)</td><td>PCIe 5.0 (504 GB/s)</td><td style="color:#1a56db;font-weight:600;">NVLink-C2C (1.8 TB/s)</td><td>PCIe Gen6, CXL 3.0</td></tr>
-        <tr><td class="row-label">메모리 타입</td><td>DDR5 MCR DIMM</td><td>DDR5 6000MT/s</td><td>SOCAMM LPDDR5X</td><td>DDR5 8800MT/s</td></tr>
-        <tr><td class="row-label">코어/와트</td><td>0.26</td><td>0.38</td><td>약 0.40</td><td style="color:#1a56db;font-weight:600;">0.45</td></tr>
-        <tr><td class="row-label">36kW 랙 코어</td><td>약 4,352</td><td>약 6,528</td><td>3,168 (NVL72)</td><td style="color:#1a56db;font-weight:600;">8,160</td></tr>
-        <tr><td class="row-label">설계 철학</td><td>범용 고성능</td><td>코어 수 극대화</td><td>코어당 대역폭 극대화</td><td>코어 밀도·에너지 효율</td></tr>
-        <tr><td class="row-label">주요 고객</td><td>Google, 엔터프라이즈</td><td>Meta, AWS, 범용</td><td>CoreWeave, 네오클라우드</td><td>Meta, Cerebras, SAP</td></tr>
-        <tr><td class="row-label">가격</td><td>$17,800</td><td>$14,813</td><td>번들</td><td>미공개</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p class="table-caption">Vera는 코어 수보다 코어당 대역폭(14GB/s, 타 CPU 대비 약 3배)에 집중. SOCAMM LPDDR5X로 기존 DDR5 대비 대역폭 극대화. 출처: Intel, AMD, Nvidia, ARM 공식 발표 종합.</p>
-
-    
-
-    
-
->
-<div class="card">
-    <h3>ARM의 논리: 왜 이 선택을 했나</h3>
-    <p>기존 라이선스 모델의 한계: 칩 가격의 1~2% 로열티로는 AI 인프라 투자 붐에서 나오는 가치의 극히 일부만 가져간다.</p>
-    <p>CEO Rene Haas는 AGI CPU 단독으로 <strong>2031년까지 연 $15B 매출</strong>을 전망하며 <a class="fc-source" href="https://www.hpcwire.com/aiwire/2026/04/01/arm-flexes-with-new-data-center-cpu-for-ai-inference/" target="_blank">HPCwire</a>, 회사 전체 매출을 $25B까지 끌어올리겠다고 발표. FY2025 전체 매출이 $4.0B인 점 감안하면, 라이선스 모델만으로는 불가능한 성장 규모다.</p>
-    <p><strong>제품 로드맵:</strong> 1세대 AGI CPU 발표 완료. 2세대는 이미 완성 단계로 약 1년 내 출시 예정, 3세대 개발도 착수. FY31까지 3개 세대가 동시에 램프되면서 exponential한 매출 성장을 견인할 계획.</p>
-    <p>또한 Meta 같은 하이퍼스케일러는 자체 칩 설계에 엔지니어 1,000명, $500M 예산이 필요한데, 그런 자원이 없는 기업들에게 ARM이 "기성품 ARM CPU"를 제공한다는 포지셔닝.</p>
-  </div>
-<p style="color:var(--text-muted); margin-bottom:1rem;">2026년 기준 데이터센터 서버 CPU 주요 4개 제품의 핵심 스펙 비교. 동일 전력 예산(36kW 표준 랙) 기준 코어 밀도가 투자 판단의 핵심 변수.</p>
-    
-  
-    
-
-    <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:2rem;">
-      <div style="flex:1; min-width:280px;">
-        <h4 style="font-family:var(--sans); font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem; text-align:center;">Performance / Watt (코어/W)</h4>
-        <div style="position:relative; height:240px;"><canvas id="perfWattChart"></canvas></div>
-      </div>
-      <div style="flex:1; min-width:280px;">
-        <h4 style="font-family:var(--sans); font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem; text-align:center;">36kW 랙 코어 밀도 (x86 Xeon 대비)</h4>
-        <div style="position:relative; height:240px;"><canvas id="densityChart"></canvas></div>
-      </div>
-    </div>
 </div>
-  <script>
-  window.addEventListener("load", function() {
-    new Chart(document.getElementById('perfWattChart').getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: ['Intel Xeon 6980P', 'AMD EPYC 9965', 'Nvidia Vera', 'ARM AGI CPU'],
-        datasets: [{
-          data: [0.26, 0.38, 0.40, 0.45],
-          backgroundColor: ['rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(26,86,219,0.85)'],
-          borderColor: ['#c8ccd2', '#c8ccd2', '#c8ccd2', '#1a56db'],
-          borderWidth: [1, 1, 1, 2],
-          borderRadius: 6, barPercentage: 0.55,
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-        plugins: { legend: { display: false },
-          tooltip: { backgroundColor:'#1a1a2e', cornerRadius:6, callbacks: { label: function(c) { return c.raw + ' cores/W'; } } }
-        },
-        scales: {
-          x: { grid:{color:'rgba(226,228,232,0.4)',lineWidth:0.5}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#7a7a96'}, border:{display:false}, max:0.55 },
-          y: { grid:{display:false}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#4a4a68'}, border:{color:'#e2e4e8'} }
-        }
-      },
-      plugins: [{ afterDraw: function(chart) { var ctx=chart.ctx,meta=chart.getDatasetMeta(0); ctx.save(); ctx.font="600 11px 'Inter',sans-serif"; meta.data.forEach(function(bar,i){ var v=chart.data.datasets[0].data[i]; ctx.fillStyle=i===3?'#1a56db':'#4a4a68'; ctx.fillText(v.toFixed(2),bar.x+6,bar.y+4); }); ctx.restore(); } }]
-    });
-    new Chart(document.getElementById('densityChart').getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: ['Intel Xeon 6980P', 'AMD EPYC 9965', 'Nvidia Vera', 'ARM AGI CPU'],
-        datasets: [{
-          data: [1.0, 1.50, 0.73, 1.88],
-          backgroundColor: ['rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(26,86,219,0.85)'],
-          borderColor: ['#c8ccd2', '#c8ccd2', '#c8ccd2', '#1a56db'],
-          borderWidth: [1, 1, 1, 2],
-          borderRadius: 6, barPercentage: 0.55,
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-        plugins: { legend: { display: false },
-          tooltip: { backgroundColor:'#1a1a2e', cornerRadius:6, callbacks: { label: function(c) { return c.raw.toFixed(2) + 'x vs Intel Xeon'; } } }
-        },
-        scales: {
-          x: { grid:{color:'rgba(226,228,232,0.4)',lineWidth:0.5}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#7a7a96',callback:function(v){return v.toFixed(1)+'x';}}, border:{display:false}, max:2.2 },
-          y: { grid:{display:false}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#4a4a68'}, border:{color:'#e2e4e8'} }
-        }
-      },
-      plugins: [{ afterDraw: function(chart) { var ctx=chart.ctx,meta=chart.getDatasetMeta(0); ctx.save(); ctx.font="600 11px 'Inter',sans-serif"; meta.data.forEach(function(bar,i){ var v=chart.data.datasets[0].data[i]; ctx.fillStyle=i===3?'#1a56db':'#4a4a68'; ctx.fillText(v.toFixed(2)+'x',bar.x+6,bar.y+4); }); ctx.restore(); } }]
-    });
-  });
-  </script>
-
-
-  <div class="card">
-    <h3>기존 라이선시와의 긴장 관계</h3>
-    <p>ARM vs Qualcomm: Nuvia 인수 건 라이선스 분쟁 진행 중, ARM이 Qualcomm 아키텍처 라이선스 취소 통보.</p>
-    <p>Nvidia: 4Q25에 잔여 ARM 지분 110만 주(약 $140M) 전량 매각(2026.02 SEC 공시). 다만 20년 라이선스 계약은 유지되며 Grace/Vera CPU 모두 ARM 아키텍처 기반을 유지. Jensen Huang은 "수십 년간 라이선시로서 ARM을 지원하겠다"고 발언. $140M은 Nvidia 시가총액 $4.58T 대비 사실상 무의미한 규모로, 관계 악화보다는 포트폴리오 재배분으로 해석. <a class="fc-source" href="https://www.cnbc.com/2026/02/18/arm-nvidia-nokia-ai-stake-shares.html" target="_blank">CNBC</a> <a class="fc-source" href="https://www.tomshardware.com/tech-industry/nvidia-sells-off-final-arm-shares-but-licensing-deals-will-continue-usd140-million-stake-sold-equating-to-1-1-million-shares" target="_blank">Tom's Hardware</a></p>
-    <p>Qualcomm: 2025년 말 RISC-V 고성능 코어 설계사 Ventana Micro Systems 인수 — ARM 의존도 축소 포석.</p>
-  </div>
-
-
-
-  
 </section>
 
 
 
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION: 재무분석 (financials)                      -->
+<!-- ═══════════════════════════════════════════ -->
 <section id="financials">
+<div class="container">
   <div class="section-label">04 — Financial Analysis</div>
   <div class="section-title">기업 재무: 숫자로 보는 ARM</div>
   
   <p style="color:var(--text-muted); margin-bottom: 2rem;">ARM FY 기준 (3월 결산). 단위: $M. 2Q22~4Q25 분기별 추이.</p>
+
+  <div class="img-container">
+    <img src="images/img_011.jpg" alt="매출액 & 성장률">
+    <div class="img-caption">매출액 & 성장률 ($M) — FY2025 4Q $1,242M으로 사상 최초 분기 $1B 돌파. YoY 성장률은 1Q25 33.7% 피크 후 둔화 추세.</div>
+  </div>
+  <p class="table-caption" style="margin-top:0.5rem;"><strong>매출 성장:</strong> FY2025 연간 $4.0B(YoY +24%). 사상 최초 분기 $1B 돌파(4Q25 $1,242M). 다만 YoY 성장률은 33.7%(1Q25) → 26.3%(4Q25)으로 둔화 추세.</p>
+
+  <div class="img-container">
+    <img src="images/img_012.jpg" alt="마진 추이">
+    <div class="img-caption">마진 추이 (GPM/OPM/NPM) 및 OPEX/CAPEX 비중 — GPM 97%대 유지, OPM은 18~33% 레인지. CAPEX % of Sales가 FY2025 들어 급등.</div>
+  </div>
+  <p class="table-caption" style="margin-top:0.5rem;"><strong>마진 구조:</strong> GPM 97%대로 업계 최고 수준 유지. 다만 AGI CPU 직접 판매가 본격화되면 칩 매출의 GM은 40~50% 수준이므로 블렌디드 마진 하락 불가피.</p>
+  <p class="table-caption"><strong>CAPEX 급등:</strong> FY2025 들어 CAPEX % of Sales가 6%→14%대로 급등. 칩 직접 제조를 위한 선행 투자 반영.</p>
+
+  <div class="img-container">
+    <img src="images/img_013.jpg" alt="Diluted EPS">
+    <div class="img-caption">Diluted EPS — 3Q23 IPO 관련 일회성 비용으로 ($0.11) 적자 후 회복. FY2025 분기 EPS $0.12~$0.22 레인지.</div>
+  </div>
+
 
   <div class="img-container">
     <img src="images/img_024.jpg" alt="매출액 & 성장률">
@@ -1347,11 +1282,102 @@ footer {
 
   
 
+
+
+<div class="card">
+    <h3>ARM 도쿄 IR 브리핑 핵심 (2026.03, Ian Thornton VP IR)</h3>
+    <p style="color:var(--text-dim); font-family:var(--mono); font-size:0.8rem; margin-bottom:1rem;">ARM 최초 자체 칩 발표 직후 도쿄에서 진행된 투자자 브리핑. FY31(2031.03) 5개년 타겟 최초 공개.</p>
+
+    <h3 style="margin-top:2rem;">FY31 재무 타겟</h3>
+    <div class="spec-row"><span class="label">총 매출</span><span class="value">$25B (IP $10B + Chip $15B)</span></div>
+    <div class="spec-row"><span class="label">IP 사업 마진</span><span class="value">GM 99% / Non-GAAP OPM >65%</span></div>
+    <div class="spec-row"><span class="label">Chip 사업 마진</span><span class="value">GM >50% / Non-GAAP OPM >30%</span></div>
+    <div class="spec-row"><span class="label">Non-GAAP EPS</span><span class="value">>$9 (현재 약 $2 대비 약 4.5배)</span></div>
+    <div class="spec-row"><span class="label">EPS 구성</span><span class="value">IP 사업 약 $6 + Chip 사업 약 $3</span></div>
+    <div class="spec-row"><span class="label">현재 FCF</span><span class="value">약 $1B/년. 자사주매입 없음, 배당 검토 중</span></div>
+
+    <div class="highlight" style="margin-top:1.5rem;">
+      <strong>핵심 메시지:</strong> "IP vs Chip 중 하나를 선택하는 이야기가 아니다. 매우 높은 마진의 IP 모델과 대규모·고성장·이익 기여적인(accretive) 칩 사업을 결합하는 이야기다." — R&D 투자의 대부분은 이미 반영되어 있어, 추가 칩 매출의 GP가 영업이익으로 상당 부분 낙수(drop-through)된다.
+    </div>
+  </div>
+
+<div class="card">
+    <h3>Chip 사업 가시성 & 고객 구조</h3>
+    <p><strong>$1B+ 매출 가시성:</strong> 향후 2년(FY27+FY28) 합산 $1B 이상의 칩 매출을 확보. FY28부터 본격 매출, FY31까지 exponential ramp.</p>
+    <p><strong>고객 구조:</strong> Meta(리드 파트너), OpenAI, SAP, Cloudflare, SK Telecom, F5 + 비공개 다수. $15B 달성에 Meta·OpenAI만 필요한 것이 아니라 다양한 경로가 존재한다고 강조.</p>
+    <p><strong>기존 IP 사업과의 관계:</strong> 칩 사업은 자체 칩 설계 역량이 없거나 원치 않는 "새로운 고객"을 타겟. AWS/Google/MS는 자체 칩을 자사 DC에만 사용하고 외부 판매하지 않으므로, ARM이 공략하는 것은 이들이 서브하지 않는 시장. 카니발리제이션 없음.</p>
+    <p><strong>제품 로드맵:</strong> AGI CPU 1세대 발표 완료. 2세대는 이미 완성 단계(약 1년 내 출시). 3세대 개발 착수. FY31까지 3개 세대 동시 램프.</p>
+  </div>
+
+<div class="card" style="padding:1.5rem; overflow-x:auto;">
+    <h3>FY31 수익 구조: >$9 Non-GAAP EPS</h3>
+    <svg width="100%" viewBox="0 0 680 200" style="max-width:680px; margin:0 auto; display:block;">
+      <rect x="40" y="20" width="180" height="160" rx="10" fill="rgba(26,86,219,0.03)" stroke="#85b7eb" stroke-width="0.5"/>
+      <text x="130" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">IP/CSS business in FY31</text>
+      <text x="130" y="80" text-anchor="middle" font-family="Libre Baskerville,serif" font-size="11" fill="#1a56db">IP/CSS revenue</text>
+      <text x="130" y="105" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" fill="#1a56db" font-weight="500">$10B</text>
+      <text x="130" y="135" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">Non-GAAP OPM</text>
+      <text x="130" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="20" fill="#1a1a2e" font-weight="500">>65%</text>
+      <rect x="250" y="20" width="180" height="160" rx="10" fill="rgba(26,86,219,0.03)" stroke="#85b7eb" stroke-width="0.5"/>
+      <text x="340" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">AGI CPU business in FY31</text>
+      <text x="340" y="80" text-anchor="middle" font-family="Libre Baskerville,serif" font-size="11" fill="#1a56db">Chip revenue</text>
+      <text x="340" y="105" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" fill="#1a56db" font-weight="500">$15B</text>
+      <text x="340" y="135" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">Non-GAAP OPM</text>
+      <text x="340" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="20" fill="#1a1a2e" font-weight="500">>30%</text>
+      <rect x="460" y="20" width="180" height="160" rx="10" fill="rgba(26,86,219,0.06)" stroke="#1a56db" stroke-width="1"/>
+      <text x="550" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">Consolidated in FY31</text>
+      <text x="550" y="80" text-anchor="middle" font-family="Libre Baskerville,serif" font-size="11" fill="#1a56db">Non-GAAP EPS</text>
+      <text x="550" y="115" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" fill="#1a56db" font-weight="500">>$9</text>
+      <text x="550" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">현재 약 $2 대비</text>
+      <text x="550" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#b45309" font-weight="500">약 4.5배</text>
+    </svg>
+    <p style="color:var(--text-dim); font-size:0.8rem; margin-top:0.5rem;">R&D 투자 대부분 이미 반영 → 추가 칩 GP가 영업이익으로 drop-through. 출처: ARM 도쿄 IR (© 2026 Arm)</p>
+  </div>
+
+<div class="card" style="padding:1.5rem;">
+    <h3>매출 구성 변화: Licensing + Royalty + AGI CPU → $25B</h3>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">AGI CPU 매출은 IP/CSS 라이선스·로열티에 추가(additive)되는 구조. 카니발리제이션 없음. FY30에 Cloud AI가 Edge AI를 추월하여 최대 매출원으로 부상.</p>
+    <div style="position:relative; height:360px; width:100%;">
+      <canvas id="revenueChart"></canvas>
+    </div>
+    <p style="color:var(--text-dim); font-size:0.8rem; margin-top:0.75rem;">출처: ARM 도쿄 IR 브리핑 (© 2026 Arm), 추정치 기반. $25B 타겟은 점선으로 표시.</p>
+  </div>
+<div class="card" style="padding:1.5rem;">
+    <h3>라이선스 매출 성장: 미래 로열티의 선행지표</h3>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">IPO 시 low single digit 가이던스 → 실제 약 19% CAGR. 오늘의 라이선스 성장이 향후 수년간의 로열티 성장을 견인.</p>
+    <div style="position:relative; height:280px; width:100%;"><canvas id="licenseChart"></canvas></div>
+    <p class="table-caption" style="margin-top:0.5rem;">SoftBank 디자인 서비스 매출 포함, 칩 매출 미포함. 출처: ARM 도쿄 IR (© 2026 Arm)</p>
+  </div>
+<div class="card">
+    <h3>로열티 매출 성장 드라이버 (20% CAGR 전망)</h3>
+    <p><strong>로열티율 상승:</strong> v9는 v8 대비 2배, CSS는 추가 2배. 세대별로 약 20%씩 추가 상승(연간 신세대 출시 → 연 20% 인상).</p>
+    <p><strong>코어 수 증가:</strong> 데이터센터 칩의 코어 수가 연간 약 20% 증가. 현재 출하 중인 칩 대부분 약 100코어. 200, 300, 심지어 500코어 이상의 미래 칩에 대한 가시성 확보. 코어 2배 = 로열티 2배.</p>
+    <p><strong>계약 기반:</strong> FY27~31 전망 로열티 매출의 70% 이상이 이미 계약 체결·로열티율 합의 완료. <a class="fc-source" href="#">도쿄 IR 브리핑</a> FY31 시점에도 약 60%가 계약 기반. 나머지 40%도 거의 전부 기존 고객의 차세대 계약.</p>
+    <p><strong>과거 5년 로열티 CAGR 약 14% → 최근 2년 20%+ 가속.</strong> 향후 5년 평균 20% 전망 (간헐적 시장 조정 가능).</p>
+  </div>
+<div class="card" style="padding:1.5rem;">
+    <h3>로열티 매출 성장 추이 및 전망</h3>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">과거 5년 약 14% CAGR → 향후 5년 20% CAGR 가속. 칩 사업이 로열티 궤적에 material impact 없음(additive).</p>
+    <div style="position:relative; height:300px; width:100%;"><canvas id="royaltyChart"></canvas></div>
+    <p class="table-caption" style="margin-top:0.5rem;">출처: ARM 도쿄 IR (© 2026 Arm), 추정치 기반</p>
+  </div>
+<div class="card" style="padding:1.5rem;">
+    <h3>로열티 매출의 계약 기반 비율</h3>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">전망 로열티 매출의 70% 이상이 이미 계약 체결·로열티율 합의 완료. FY31에도 약 60%가 계약 기반. 나머지 40%도 거의 전부 기존 고객의 차세대 계약.</p>
+    <div style="position:relative; height:280px; width:100%;"><canvas id="contractChart"></canvas></div>
+    <p class="table-caption" style="margin-top:0.5rem;">파랑 = 계약 기반 / 회색 = 미계약. 출처: ARM 도쿄 IR (© 2026 Arm)</p>
+  </div>
+</div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION: 기타 (investment)                      -->
+<!-- ═══════════════════════════════════════════ -->
 <section id="investment">
-  <div class="section-label">05 — Investment Thesis</div>
-  <div class="section-title">투자 포인트</div>
+<div class="container">
+  <div class="section-label">05 — 기타</div>
+  <div class="section-title">기타</div>
   
 
   
@@ -1438,68 +1464,303 @@ footer {
 
 
 
+
+
+  
+
+  
+
+  
+<p class="table-caption" style="margin-top:0.5rem;"><strong>라이선스 기반 확대:</strong> Total Access License 수가 10→50개(5배), Flexible Access License 수가 190→318개로 꾸준히 증가. ARM 생태계의 저변 확대를 보여주는 긍정적 선행지표.</p>
+<p class="table-caption" style="margin-top:0.5rem;"><strong>Related Party 매출 급증:</strong> SoftBank 그룹 관련 매출이 FY2025 들어 분기 $222M~$338M 수준으로 급증. Ampere 인수 및 SoftBank AI 인프라 투자와 연관된 거래로 추정. 매출 품질(sustainability) 모니터링 필요.</p>
+<p class="table-caption" style="margin-top:0.5rem;"><strong>RPO 감소:</strong> 잔여 이행 의무(RPO)가 1Q24 $2,484M 피크 후 4Q25 $2,148M으로 YoY -7.6% 감소. 라이선스 딜 파이프라인의 선행지표로서 모멘텀 둔화 시사.</p>
+<p class="table-caption" style="margin-top:0.5rem;"><strong>마진 구조:</strong> GPM 97%대로 업계 최고 수준 유지. 다만 AGI CPU 직접 판매가 본격화되면 칩 매출의 GM은 40~50% 수준이므로 블렌디드 마진 하락 불가피 — MS 다운그레이드의 핵심 논점 중 하나.</p>
+<p class="table-caption" style="margin-top:0.5rem;"><strong>CAPEX 급등:</strong> FY2025 들어 CAPEX % of Sales가 6%→14%대로 급등. 칩 직접 제조를 위한 선행 투자(TSMC 웨이퍼 커밋, 서버 레퍼런스 디자인 등)가 반영된 것으로 추정.</p>
+<p class="table-caption" style="margin-top:0.5rem;"><strong>매출 성장:</strong> FY2025 연간 $4.0B(YoY +24%). 사상 최초 분기 $1B 돌파(4Q25 $1,242M). 다만 YoY 성장률은 33.7%(1Q25) → 26.3%(4Q25)으로 둔화 추세.</p>
+
 <div class="card">
-    <h3>ARM 도쿄 IR 브리핑 핵심 (2026.03, Ian Thornton VP IR)</h3>
-    <p style="color:var(--text-dim); font-family:var(--mono); font-size:0.8rem; margin-bottom:1rem;">ARM 최초 자체 칩 발표 직후 도쿄에서 진행된 투자자 브리핑. FY31(2031.03) 5개년 타겟 최초 공개.</p>
+    <h3>기타 주요 발언</h3>
+    <p><strong>소프트웨어 생태계:</strong> ARM 개발자 2,200만 명 이상, 누적 15억+ 시간의 ARM 소프트웨어 개발 투자. v8에 약 $1B, v9에 약 $3B의 자체 소프트웨어 투자. AWS 상위 1,000 고객 중 99%+가 일부 워크로드를 ARM에서 실행.</p>
+    <p><strong>자동차:</strong> 한 OEM이 1세대 자율주행차에 433개 ARM 코어 배치 <a class="fc-source" href="#">도쿄 IR 브리핑</a> → 차량당 로열티 $100~$200 발생. 로보택시 올해 약 10,000대 → 2020년대 말 1,000만대+ 전망.</p>
+    <p><strong>Edge AI:</strong> Android 앱스토어의 AI 지원 앱 중 70%+가 ARM CPU만으로 실행(별도 가속 불필요). v9는 엣지 AI 가속에 필수 → 거의 모든 소비자 전자기기가 v9로 전환 전망.</p>
+    <p><strong>Chiplet 표준화:</strong> 30년 전 IP 표준을 만들었듯이, 이제 칩렛 간 표준 인터페이스를 만들려는 initiative 진행 중. CPU 칩렛(ARM) + 가속기 칩렛(Nvidia/Rebellions 등) + IO 칩렛을 하나의 패키지에 통합하는 미래.</p>
+    <p><strong>SoftBank/Ampere/Graphcore 관계:</strong> AGI CPU는 순수 ARM 이니셔티브로, SoftBank 산하 Ampere(약 1,000명)·Graphcore(약 500명)와는 완전히 별개 프로젝트. 이들이 무엇을 개발 중인지는 별도 발표 예정.</p>
+    <p><strong>TAL(Total Access License):</strong> 상위 50개 고객 중 30개만 구독 라이선스 체결. 나머지 20개도 향후 가입 전망 → 라이선스 매출 성장 여력.</p>
+  </div>
+</div>
+</section>
 
-    <h3 style="margin-top:2rem;">FY31 재무 타겟</h3>
-    <div class="spec-row"><span class="label">총 매출</span><span class="value">$25B (IP $10B + Chip $15B)</span></div>
-    <div class="spec-row"><span class="label">IP 사업 마진</span><span class="value">GM 99% / Non-GAAP OPM >65%</span></div>
-    <div class="spec-row"><span class="label">Chip 사업 마진</span><span class="value">GM >50% / Non-GAAP OPM >30%</span></div>
-    <div class="spec-row"><span class="label">Non-GAAP EPS</span><span class="value">>$9 (현재 약 $2 대비 약 4.5배)</span></div>
-    <div class="spec-row"><span class="label">EPS 구성</span><span class="value">IP 사업 약 $6 + Chip 사업 약 $3</span></div>
-    <div class="spec-row"><span class="label">현재 FCF</span><span class="value">약 $1B/년. 자사주매입 없음, 배당 검토 중</span></div>
 
-    <div class="highlight" style="margin-top:1.5rem;">
-      <strong>핵심 메시지:</strong> "IP vs Chip 중 하나를 선택하는 이야기가 아니다. 매우 높은 마진의 IP 모델과 대규모·고성장·이익 기여적인(accretive) 칩 사업을 결합하는 이야기다." — R&D 투자의 대부분은 이미 반영되어 있어, 추가 칩 매출의 GP가 영업이익으로 상당 부분 낙수(drop-through)된다.
-    </div>
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION: 리스크 (risks)                      -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="risks">
+<div class="container">
+  <div class="section-label">06 — Key Risks</div>
+  <div class="section-title">핵심 리스크</div>
+
+  <div class="section-label" style="margin-top:2rem;">RISC-V: 비즈니스 모델 자체를 무력화하는 구조적 위협</div>
+  
+
+  <div class="card">
+    <h3>왜 RISC-V가 위험한가</h3>
+    <p>ARM의 핵심 수익원인 라이선스비+로열티를 업계에서는 "ARM Tax"라고 부른다. RISC-V는 오픈소스라서 이 비용이 0원이다.</p>
+    <p>ARM이 직접 칩을 팔겠다고 선언하면서, 라이선시들이 RISC-V로 헤지할 동기가 더 커졌다.</p>
   </div>
 
   <div class="card">
-    <h3>Chip 사업 가시성 & 고객 구조</h3>
-    <p><strong>$1B+ 매출 가시성:</strong> 향후 2년(FY27+FY28) 합산 $1B 이상의 칩 매출을 확보. FY28부터 본격 매출, FY31까지 exponential ramp.</p>
-    <p><strong>고객 구조:</strong> Meta(리드 파트너), OpenAI, SAP, Cloudflare, SK Telecom, F5 + 비공개 다수. $15B 달성에 Meta·OpenAI만 필요한 것이 아니라 다양한 경로가 존재한다고 강조.</p>
-    <p><strong>기존 IP 사업과의 관계:</strong> 칩 사업은 자체 칩 설계 역량이 없거나 원치 않는 "새로운 고객"을 타겟. AWS/Google/MS는 자체 칩을 자사 DC에만 사용하고 외부 판매하지 않으므로, ARM이 공략하는 것은 이들이 서브하지 않는 시장. 카니발리제이션 없음.</p>
-    <p><strong>제품 로드맵:</strong> AGI CPU 1세대 발표 완료. 2세대는 이미 완성 단계(약 1년 내 출시). 3세대 개발 착수. FY31까지 3개 세대 동시 램프.</p>
+    <h3>이미 움직이고 있는 플레이어들</h3>
+    <p><strong>Qualcomm:</strong> 2025년 말 RISC-V 고성능 코어 설계사 Ventana Micro Systems 인수. <a class="fc-source" href="https://www.theregister.com/2025/12/10/qualcomm_riscv_arm_ventana/" target="_blank">The Register</a></p>
+    <p><strong>Tenstorrent</strong> (Jim Keller): Ascalon-X 코어가 벤치마크에서 AMD Zen 5, ARM Neoverse V3와 동급 성능 달성 <span class="fc-note fc-note-warn">자체 발표</span> <a class="fc-source" href="https://markets.financialcontent.com/wral/article/tokenring-2026-1-16-the-risc-v-revolution-open-source-silicon-challenges-arm-and-x86-dominance-in-2026" target="_blank">FinancialContent</a> — "RISC-V는 저성능"이라는 인식을 깨는 사건.</p>
+    <p><strong>Nvidia:</strong> RISC-V 지원 시작.</p>
+    <p><strong>중국:</strong> 미국 수출 규제 우회를 위해 RISC-V 서버 칩 개발 활발.</p>
   </div>
 
-  <div class="card" style="padding:1.5rem; overflow-x:auto;">
-    <h3>FY31 수익 구조: >$9 Non-GAAP EPS</h3>
-    <svg width="100%" viewBox="0 0 680 200" style="max-width:680px; margin:0 auto; display:block;">
-      <rect x="40" y="20" width="180" height="160" rx="10" fill="rgba(26,86,219,0.03)" stroke="#85b7eb" stroke-width="0.5"/>
-      <text x="130" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">IP/CSS business in FY31</text>
-      <text x="130" y="80" text-anchor="middle" font-family="Libre Baskerville,serif" font-size="11" fill="#1a56db">IP/CSS revenue</text>
-      <text x="130" y="105" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" fill="#1a56db" font-weight="500">$10B</text>
-      <text x="130" y="135" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">Non-GAAP OPM</text>
-      <text x="130" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="20" fill="#1a1a2e" font-weight="500">>65%</text>
-      <rect x="250" y="20" width="180" height="160" rx="10" fill="rgba(26,86,219,0.03)" stroke="#85b7eb" stroke-width="0.5"/>
-      <text x="340" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">AGI CPU business in FY31</text>
-      <text x="340" y="80" text-anchor="middle" font-family="Libre Baskerville,serif" font-size="11" fill="#1a56db">Chip revenue</text>
-      <text x="340" y="105" text-anchor="middle" font-family="Inter,sans-serif" font-size="24" fill="#1a56db" font-weight="500">$15B</text>
-      <text x="340" y="135" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">Non-GAAP OPM</text>
-      <text x="340" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="20" fill="#1a1a2e" font-weight="500">>30%</text>
-      <rect x="460" y="20" width="180" height="160" rx="10" fill="rgba(26,86,219,0.06)" stroke="#1a56db" stroke-width="1"/>
-      <text x="550" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">Consolidated in FY31</text>
-      <text x="550" y="80" text-anchor="middle" font-family="Libre Baskerville,serif" font-size="11" fill="#1a56db">Non-GAAP EPS</text>
-      <text x="550" y="115" text-anchor="middle" font-family="Inter,sans-serif" font-size="32" fill="#1a56db" font-weight="500">>$9</text>
-      <text x="550" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96">현재 약 $2 대비</text>
-      <text x="550" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#b45309" font-weight="500">약 4.5배</text>
-    </svg>
-    <p style="color:var(--text-dim); font-size:0.8rem; margin-top:0.5rem;">R&D 투자 대부분 이미 반영 → 추가 칩 GP가 영업이익으로 drop-through. 출처: ARM 도쿄 IR (© 2026 Arm)</p>
+  <div class="card">
+    <h3>단기적으로는 제한적인 이유</h3>
+    <p>SemiAnalysis(Dylan Patel): "RISC-V가 데이터센터의 중앙 CPU가 되는 건 당분간 일어나지 않을 것." <a class="fc-source" href="https://www.datacenterdynamics.com/en/analysis/can-risc-v-thrive-in-the-data-center/" target="_blank">DCD</a> ARM은 CPU 코어뿐 아니라 Network-on-Chip, 메모리 컨트롤러, 물리적 레이아웃까지 통합 제공하는데, RISC-V 생태계는 아직 이런 완성도가 부족하다.</p>
+    <p>Counterpoint Research: 2029년까지 커스텀 프로세서 기반 AI 서버의 90%가 ARM <a class="fc-source" href="https://www.tomshardware.com/pc-components/cpus/report-claims-arm-chips-will-power-90-percent-of-ai-servers-based-on-custom-processors-in-2029-x86-and-risc-v-on-the-outside-looking-in" target="_blank">Counterpoint via Tom's HW</a>, x86+RISC-V 합쳐서 10% 전망.</p>
+    <p>가장 큰 장벽은 수십 년간 ARM/x86에 최적화된 소프트웨어 자산.</p>
   </div>
 
-  <div class="card" style="padding:1.5rem;">
-    <h3>매출 구성 변화: Licensing + Royalty + AGI CPU → $25B</h3>
-    <p style="color:var(--text-muted); margin-bottom:1rem;">AGI CPU 매출은 IP/CSS 라이선스·로열티에 추가(additive)되는 구조. 카니발리제이션 없음. FY30에 Cloud AI가 Edge AI를 추월하여 최대 매출원으로 부상.</p>
-    <div style="position:relative; height:360px; width:100%;">
-      <canvas id="revenueChart"></canvas>
-    </div>
-    <p style="color:var(--text-dim); font-size:0.8rem; margin-top:0.75rem;">출처: ARM 도쿄 IR 브리핑 (© 2026 Arm), 추정치 기반. $25B 타겟은 점선으로 표시.</p>
+  <div class="highlight">
+    <strong>ARM의 딜레마:</strong><br>
+    라이선스료를 높이면 → 고객들이 RISC-V로 이탈할 동기 증가<br>
+    라이선스료를 낮추면 → 수익성 악화<br>
+    직접 칩을 팔면 → 고객 이탈 + RISC-V 전환 가속<br><br>
+    위험하지만, 가만히 있어도 위험한 상황에서 선제적으로 움직인 것이다. RISC-V가 고성능 서버 CPU에서 ARM을 대체하려면 아직 수년이 필요하다는 판단 하에, 그 시간 안에 칩 사업을 궤도에 올리겠다는 계산.
   </div>
+
+
 
   
-  <script>
-  window.addEventListener("load", function() {
+  
+  <div class="section-label" style="margin-top:3rem;">AGI CPU의 실질 TAM: 네오클라우드와 고객 구조</div>
+
+  <div class="card">
+    <h3>네오클라우드의 CPU 선택 구조</h3>
+    <p>CoreWeave, Lambda, Nebius, Crusoe 등 네오클라우드들은 GPU-first 사업자로, CPU는 주로 Nvidia GPU 시스템에 번들된 것을 사용한다. CoreWeave의 GB200/GB300 인스턴스는 각각 Grace CPU가 내장된 슈퍼칩 구조이며, 2H26부터는 Vera Rubin NVL72 플랫폼과 Vera CPU 랙을 배치할 계획이다. <a class="fc-source" href="https://www.coreweave.com/news/coreweave-advances-ai-native-cloud-platform-for-the-next-phase-of-production-scale-ai" target="_blank">CoreWeave</a></p>
+    <p><strong>CoreWeave가 Vera CPU standalone 최초 고객:</strong> Jensen Huang이 Bloomberg 인터뷰에서 CoreWeave에 Vera CPU를 standalone으로 최초 제공한다고 발표. Nvidia가 $2B 추가 투자하면서 지분을 9%로 확대. "standalone CPU 배치 고객이 더 많아질 것"이라고 시사. <a class="fc-source" href="https://www.datacenterdynamics.com/en/news/nvidia-to-make-vera-cpu-available-as-standalone-offering-with-coreweave-first-customer-to-get-access/" target="_blank">DCD</a> <a class="fc-source" href="https://www.tomshardware.com/tech-industry/big-tech/nvidia-pumps-another-usd2-billion-into-coreweave-and-announces-standalone-availability-of-vera-cpu-chipmaker-increases-stake-in-its-customer-to-9-percent" target="_blank">Tom's Hardware</a></p>
+    <p><strong>네오클라우드 시장 규모:</strong> Forrester 기준 2026년 $20B, Mordor Intelligence 기준 $35B. GPUaaS 시장은 2032년까지 $50B 전망(Fortune Business Insights). CoreWeave만 $5B+ 연매출. <a class="fc-source" href="https://blog.nirvanalabs.io/rise-of-neoclouds-specialized-cloud/" target="_blank">Nirvana Labs</a></p>
+  </div>
+
+  <div class="card">
+    <h3>ARM AGI CPU의 실질 TAM 리스크</h3>
+    <p>ARM이 제시하는 $100B+ 데이터센터 CPU TAM은 전체 시장 규모이지만, 실질적으로 AGI CPU가 공략할 수 있는 시장은 이보다 좁을 수 있다:</p>
+    <p><strong>Tier 1(빅테크)은 이탈 불가:</strong> AWS/Google/MS/Apple은 자체 CPU를 보유하며 AGI CPU를 구매할 유인이 없다. 이들이 DC CPU 시장의 상당 부분을 차지.</p>
+    <p><strong>Nvidia 진영 lock-in:</strong> 네오클라우드들은 Nvidia GPU 생태계에 깊이 종속되어 있어, CPU도 Nvidia Vera를 선택할 가능성이 높다. CoreWeave는 Nvidia가 9% 지분을 보유한 사실상의 전략적 파트너. Nvidia는 GPU-CPU-DPU-네트워킹까지 풀스택으로 묶어 판매하는 전략.</p>
+    <p><strong>x86 레거시 수요:</strong> Google-Intel IPU 파트너십이 보여주듯, 호환성·레거시 이유로 x86(Xeon/EPYC)을 유지하는 수요도 상당. 에이전틱 워크로드의 "대부분이 아직 x86에서 실행"(Lisa Su).</p>
+    <p><strong>Nvidia 풀스택 번들 구조:</strong> Vera Rubin NVL72 Pod(72 Rubin GPU + 36 Vera CPU)를 통째로 구매하면 CPU가 이미 포함되어 있어 AGI CPU를 별도로 살 이유가 없다. AI 클라우드 CAPEX의 대부분이 이 풀스택 구매로 흘러가는 현 구조에서, AGI CPU의 실질 기회는 제한적일 수 있다.</p>
+    <p><strong>그럼에도 AGI CPU가 공략할 수 있는 시장:</strong> Nvidia GPU가 아닌 커스텀 ASIC 가속기를 사용하는 기업들. 이들에게는 Vera가 번들로 오지 않으므로, 가속기와 연결할 호스트 CPU를 별도 조달해야 한다. 이때 선택지는 x86(Intel Xeon, AMD EPYC) vs ARM AGI CPU가 된다.</p>
+    <p style="margin-left:1rem;">• <strong>Meta</strong> — 자체 MTIA 가속기를 개발·배치 중. AGI CPU의 리드 파트너이자 첫 고객.</p>
+    <p style="margin-left:1rem;">• <strong>Cerebras</strong> — 웨이퍼 스케일 가속기. AGI CPU 파트너로 발표.</p>
+    <p style="margin-left:1rem;">• <strong>Rebellions, Furiosa</strong> — 한국 AI 반도체 스타트업. 자체 가속기를 개발하되 호스트 CPU는 외부 조달.</p>
+    <p style="margin-left:1rem;">• <strong>Google TPU 생태계</strong> — Axion(자체 ARM CPU)을 보유하고 있으나, 동시에 Intel Xeon도 병행 사용. ARM AGI CPU가 추가 선택지가 될 수 있는 영역.</p>
+    <p style="margin-left:1rem;">• <strong>향후 Broadcom/Marvell ASIC 고객</strong> — OpenAI(Broadcom ASIC 2027+), 기타 하이퍼스케일러가 커스텀 ASIC으로 전환 시, Nvidia Vera 번들에서 벗어나면서 호스트 CPU 선택이 열림.</p>
+    <p><strong>결론:</strong> ARM AGI CPU의 실질 TAM은 "non-Nvidia 가속기 + 호스트 CPU 별도 조달" 세그먼트로 좁혀진다. 이 시장에서 x86(Xeon/EPYC)과의 경쟁이 핵심이며, ARM의 와트당 성능 우위와 Neoverse 생태계 호환성이 차별화 포인트. $15B 타겟 대비 이 시장이 실질적으로 얼마나 되는지는 커스텀 ASIC 전환 속도에 달려 있다.</p>
+  </div>
+
+
+<div class="section-label" style="margin-top:3rem;">경쟁사 동향: x86 진영의 반격</div>
+
+<div class="card">
+    <h3>Intel-Google IPU 파트너십 (2026.04.09 발표)</h3>
+    <p>Google과 Intel이 멀티이어 AI 인프라 협력을 확대 발표. 두 가지 축으로 구성:</p>
+    <p><strong>1) Xeon 6 지속 배치:</strong> Google Cloud가 Intel Xeon 6 프로세서를 C4/N4 인스턴스에 배치하여 AI 학습 조정, 저지연 추론, 범용 컴퓨팅 워크로드 처리. Google은 약 30년 전부터 Intel 프로세서를 사용해온 관계이며, 자체 ARM 기반 Axion CPU를 보유하고 있지만 x86 수요도 병행 유지. <a class="fc-source" href="https://www.cnbc.com/2026/04/09/google-expands-partnership-with-intel-for-ai-chips-.html" target="_blank">CNBC</a></p>
+    <p><strong>2) 커스텀 IPU 공동 개발 확대:</strong> 2022년부터 진행 중인 IPU(Infrastructure Processing Unit) 공동 개발을 확대. IPU는 네트워킹·스토리지·보안 기능을 호스트 CPU에서 오프로드하는 프로그래머블 ASIC 가속기로, Nvidia BlueField DPU와 유사한 역할. CPU가 인프라 태스크에서 해방되어 AI 워크로드에 전념할 수 있도록 하는 구조. Google은 이미 2022년 Intel과 개발한 Mount Evans IPU를 C3 인스턴스에 배치한 바 있으며, 이번 확대는 에이전틱 AI 시대의 인프라 복잡성 증가에 대응하는 것. <a class="fc-source" href="https://www.tomshardware.com/pc-components/cpus/intel-and-google-announce-multi-year-chip-deal-google-will-deploy-intel-xeon-with-custom-ipus-for-next-gen-ai-cloud-infrastructure" target="_blank">Tom's Hardware</a></p>
+    <div class="highlight" style="margin-top:1rem;">
+      <strong>ARM 투자 관점 시사점:</strong> 이 파트너십은 x86(Intel Xeon)과 IPU의 조합이지만, 더 큰 그림에서는 CPU+인프라 가속기의 이종 시스템(heterogeneous architecture)이 AI 데이터센터의 표준이 되고 있음을 확인시켜준다. ARM 진영에서는 Graviton(CPU) + Nitro(인프라 오프로드)가 이미 이 구조를 구현하고 있으며, Nvidia는 Vera(CPU) + BlueField-4(DPU)로 대응. Intel CEO Lip-Bu Tan: "AI 스케일링에는 가속기 이상의 것이 필요하다. 균형 잡힌 시스템에서 CPU와 IPU가 핵심이다." <a class="fc-source" href="https://www.intc.com/news-events/press-releases/detail/1766/intel-and-google-deepen-collaboration-to-advance-ai" target="_blank">Intel IR</a> <a class="fc-source" href="https://techcrunch.com/2026/04/09/google-and-intel-deepen-ai-infrastructure-partnership/" target="_blank">TechCrunch</a>
+    </div>
+  </div>
+
+<div class="section-label" style="margin-top:3rem;">기타 핵심 리스크</div>
+<div class="risk-grid">
+<div class="risk-card">
+      <span class="tag risk">Risk</span>
+      <h4>마진 딜루션</h4>
+      <p>IP 라이선스 GM 96~97% vs 칩 판매 GM 40~50%. 직접 칩 판매 비중이 커질수록 블렌디드 마진 하락 불가피.</p>
+    </div>
+<div class="risk-card">
+      <span class="tag risk">Risk</span>
+      <h4>라이선시 갈등</h4>
+      <p>설계도 원본을 가진 회사가 같은 시장에서 경쟁하는 구조. Apple, Qualcomm 등이 RISC-V 대안을 더 적극 검토할 수 있음.</p>
+    </div>
+<div class="risk-card">
+      <span class="tag risk">Risk</span>
+      <h4>TSMC N3 캐파 제약</h4>
+      <p>TSMC N3 공정 캐파가 타이트하여 단기 실적 서프라이즈도 어려움.</p>
+    </div>
+<div class="risk-card">
+      <span class="tag neutral">Monitor</span>
+      <h4>ARM China 리스크</h4>
+      <p>매출의 약 24% 차지하는 ARM China는 실질 독립 기업(ARM 지분 4.8%). 미중 갈등 시 리스크 요인.</p>
+    </div>
+<div class="risk-card">
+      <span class="tag neutral">Monitor</span>
+      <h4>밸류에이션</h4>
+      <p>FY2025 기준 P/E 약 94x (MS 추정치 FY26e). AI 프리미엄이 어디까지 정당화되는지 모니터링 필요.</p>
+    </div>
+</div>
+</div>
+</section>
+
+
+
+</div><!-- container -->
+
+<footer>
+  <p>ARM Holdings ($ARM) Investment Research — Last updated: 2026.04.10</p>
+  <p style="margin-top:0.5rem;">개인 투자 리서치 목적. 투자 권유가 아닙니다.</p>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SCRIPTS: Toggle System + Chart.js          -->
+<!-- ═══════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+
+/* ─── COLLAPSIBLE TOGGLE SYSTEM ─── */
+document.addEventListener('DOMContentLoaded', function() {
+
+  /* 대분류: section > h2 */
+  document.querySelectorAll('section > div.container > h2, section > h2').forEach(function(h2) {
+    h2.classList.add('section-toggle');
+    var siblings = [];
+    var next = h2.nextElementSibling;
+    while (next) { siblings.push(next); next = next.nextElementSibling; }
+    var wrapper = document.createElement('div');
+    wrapper.className = 'section-content-wrapper';
+    wrapper.style.overflow = 'hidden';
+    wrapper.style.transition = 'max-height 0.5s ease, opacity 0.3s ease';
+    wrapper.style.maxHeight = '999999px';
+    wrapper.style.opacity = '1';
+    wrapper.dataset.open = 'true';
+    h2.parentNode.insertBefore(wrapper, h2.nextSibling);
+    siblings.forEach(function(el) { wrapper.appendChild(el); });
+    h2.addEventListener('click', function() {
+      this.classList.toggle('collapsed');
+      if (wrapper.dataset.open === 'true') {
+        wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.dataset.open = 'false';
+      } else {
+        wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.dataset.open = 'true';
+      }
+    });
+  });
+
+  /* 중분류: section-label (start open) */
+  document.querySelectorAll('.section-label').forEach(function(label) {
+    label.classList.add('sub-toggle');
+    label.style.paddingLeft = '1.2rem';
+    var siblings = [];
+    var next = label.nextElementSibling;
+    while (next && !next.classList.contains('section-label') && next.tagName !== 'SECTION' && !next.classList.contains('section-content-wrapper')) {
+      siblings.push(next); next = next.nextElementSibling;
+    }
+    if (siblings.length === 0) return;
+    var wrapper = document.createElement('div');
+    wrapper.className = 'sub-content-wrapper';
+    wrapper.style.overflow = 'hidden';
+    wrapper.style.transition = 'max-height 0.4s ease, opacity 0.25s ease';
+    wrapper.style.maxHeight = '999999px';
+    wrapper.style.opacity = '1';
+    wrapper.dataset.open = 'true';
+    label.parentNode.insertBefore(wrapper, label.nextSibling);
+    siblings.forEach(function(el) { wrapper.appendChild(el); });
+    label.addEventListener('click', function() {
+      this.classList.toggle('collapsed');
+      if (wrapper.dataset.open === 'true') {
+        wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.dataset.open = 'false';
+      } else {
+        wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.dataset.open = 'true';
+      }
+    });
+  });
+
+  /* 소분류: card h3 (start collapsed) */
+  document.querySelectorAll('.card h3').forEach(function(h3) {
+    h3.classList.add('sub-toggle');
+    h3.classList.add('collapsed');
+    var siblings = [];
+    var next = h3.nextElementSibling;
+    while (next) { siblings.push(next); next = next.nextElementSibling; }
+    if (siblings.length === 0) return;
+    var wrapper = document.createElement('div');
+    wrapper.className = 'sub-content-wrapper';
+    wrapper.style.overflow = 'hidden';
+    wrapper.style.transition = 'max-height 0.4s ease, opacity 0.25s ease';
+    wrapper.style.maxHeight = '0';
+    wrapper.style.opacity = '0';
+    wrapper.dataset.open = 'false';
+    h3.parentNode.insertBefore(wrapper, h3.nextSibling);
+    siblings.forEach(function(el) { wrapper.appendChild(el); });
+    h3.addEventListener('click', function() {
+      this.classList.toggle('collapsed');
+      if (wrapper.dataset.open === 'true') {
+        wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.style.marginTop = '0'; wrapper.dataset.open = 'false';
+        h3.style.marginBottom = '0';
+      } else {
+        wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.style.marginTop = ''; wrapper.dataset.open = 'true';
+        h3.style.marginBottom = '';
+      }
+    });
+  });
+
+});
+
+</script>
+<script>
+window.addEventListener("load", function() {
+    new Chart(document.getElementById('perfWattChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Intel Xeon 6980P', 'AMD EPYC 9965', 'Nvidia Vera', 'ARM AGI CPU'],
+        datasets: [{
+          data: [0.26, 0.38, 0.40, 0.45],
+          backgroundColor: ['rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(26,86,219,0.85)'],
+          borderColor: ['#c8ccd2', '#c8ccd2', '#c8ccd2', '#1a56db'],
+          borderWidth: [1, 1, 1, 2],
+          borderRadius: 6, barPercentage: 0.55,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        plugins: { legend: { display: false },
+          tooltip: { backgroundColor:'#1a1a2e', cornerRadius:6, callbacks: { label: function(c) { return c.raw + ' cores/W'; } } }
+        },
+        scales: {
+          x: { grid:{color:'rgba(226,228,232,0.4)',lineWidth:0.5}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#7a7a96'}, border:{display:false}, max:0.55 },
+          y: { grid:{display:false}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#4a4a68'}, border:{color:'#e2e4e8'} }
+        }
+      },
+      plugins: [{ afterDraw: function(chart) { var ctx=chart.ctx,meta=chart.getDatasetMeta(0); ctx.save(); ctx.font="600 11px 'Inter',sans-serif"; meta.data.forEach(function(bar,i){ var v=chart.data.datasets[0].data[i]; ctx.fillStyle=i===3?'#1a56db':'#4a4a68'; ctx.fillText(v.toFixed(2),bar.x+6,bar.y+4); }); ctx.restore(); } }]
+    });
+    new Chart(document.getElementById('densityChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Intel Xeon 6980P', 'AMD EPYC 9965', 'Nvidia Vera', 'ARM AGI CPU'],
+        datasets: [{
+          data: [1.0, 1.50, 0.73, 1.88],
+          backgroundColor: ['rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(26,86,219,0.85)'],
+          borderColor: ['#c8ccd2', '#c8ccd2', '#c8ccd2', '#1a56db'],
+          borderWidth: [1, 1, 1, 2],
+          borderRadius: 6, barPercentage: 0.55,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        plugins: { legend: { display: false },
+          tooltip: { backgroundColor:'#1a1a2e', cornerRadius:6, callbacks: { label: function(c) { return c.raw.toFixed(2) + 'x vs Intel Xeon'; } } }
+        },
+        scales: {
+          x: { grid:{color:'rgba(226,228,232,0.4)',lineWidth:0.5}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#7a7a96',callback:function(v){return v.toFixed(1)+'x';}}, border:{display:false}, max:2.2 },
+          y: { grid:{display:false}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#4a4a68'}, border:{color:'#e2e4e8'} }
+        }
+      },
+      plugins: [{ afterDraw: function(chart) { var ctx=chart.ctx,meta=chart.getDatasetMeta(0); ctx.save(); ctx.font="600 11px 'Inter',sans-serif"; meta.data.forEach(function(bar,i){ var v=chart.data.datasets[0].data[i]; ctx.fillStyle=i===3?'#1a56db':'#4a4a68'; ctx.fillText(v.toFixed(2)+'x',bar.x+6,bar.y+4); }); ctx.restore(); } }]
+    });
+  });
+window.addEventListener("load", function() {
     const ctx = document.getElementById('revenueChart').getContext('2d');
     
     const labels = ['FY26', 'FY27', 'FY28', 'FY29', 'FY30', 'FY31'];
@@ -1645,25 +1906,7 @@ footer {
       }]
     });
   })();
-  </script>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>라이선스 기반 확대:</strong> Total Access License 수가 10→50개(5배), Flexible Access License 수가 190→318개로 꾸준히 증가. ARM 생태계의 저변 확대를 보여주는 긍정적 선행지표.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>Related Party 매출 급증:</strong> SoftBank 그룹 관련 매출이 FY2025 들어 분기 $222M~$338M 수준으로 급증. Ampere 인수 및 SoftBank AI 인프라 투자와 연관된 거래로 추정. 매출 품질(sustainability) 모니터링 필요.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>RPO 감소:</strong> 잔여 이행 의무(RPO)가 1Q24 $2,484M 피크 후 4Q25 $2,148M으로 YoY -7.6% 감소. 라이선스 딜 파이프라인의 선행지표로서 모멘텀 둔화 시사.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>마진 구조:</strong> GPM 97%대로 업계 최고 수준 유지. 다만 AGI CPU 직접 판매가 본격화되면 칩 매출의 GM은 40~50% 수준이므로 블렌디드 마진 하락 불가피 — MS 다운그레이드의 핵심 논점 중 하나.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>CAPEX 급등:</strong> FY2025 들어 CAPEX % of Sales가 6%→14%대로 급등. 칩 직접 제조를 위한 선행 투자(TSMC 웨이퍼 커밋, 서버 레퍼런스 디자인 등)가 반영된 것으로 추정.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>매출 성장:</strong> FY2025 연간 $4.0B(YoY +24%). 사상 최초 분기 $1B 돌파(4Q25 $1,242M). 다만 YoY 성장률은 33.7%(1Q25) → 26.3%(4Q25)으로 둔화 추세.</p>
-
-
-  
-
-  <div class="card" style="padding:1.5rem;">
-    <h3>라이선스 매출 성장: 미래 로열티의 선행지표</h3>
-    <p style="color:var(--text-muted); margin-bottom:1rem;">IPO 시 low single digit 가이던스 → 실제 약 19% CAGR. 오늘의 라이선스 성장이 향후 수년간의 로열티 성장을 견인.</p>
-    <div style="position:relative; height:280px; width:100%;"><canvas id="licenseChart"></canvas></div>
-    <p class="table-caption" style="margin-top:0.5rem;">SoftBank 디자인 서비스 매출 포함, 칩 매출 미포함. 출처: ARM 도쿄 IR (© 2026 Arm)</p>
-  </div>
-  <script>
-  window.addEventListener("load", function() {
+window.addEventListener("load", function() {
     new Chart(document.getElementById('licenseChart').getContext('2d'), {
       type: 'bar',
       data: {
@@ -1699,116 +1942,7 @@ footer {
       }]
     });
   })();
-  </script>
-  <script>
-  window.addEventListener("load", function() {
-    const ctx = document.getElementById('licenseChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['FY22','FY23','FY24','FY25','FY26','FY27','FY28','FY29~31'],
-        datasets: [{
-          label: 'License Revenue',
-          data: [0.9, 1.0, 1.4, 1.7, 2.1, 2.3, 2.5, 2.8],
-          backgroundColor: function(ctx)) {
-            return ctx.dataIndex < 5 ? 'rgba(133,183,235,0.85)' : 'rgba(26,86,219,0.5)';
-          },
-          borderColor: function(ctx) {
-            return ctx.dataIndex < 5 ? 'rgba(133,183,235,1)' : 'rgba(26,86,219,0.7)';
-          },
-          borderWidth: 1, borderRadius: 4,
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: { backgroundColor: '#1a1a2e', titleFont: { family: "'Inter', sans-serif", size: 12 }, bodyFont: { family: "'Inter', sans-serif", size: 11 }, padding: 10, cornerRadius: 6, callbacks: { label: function(c) { return '$' + c.raw.toFixed(1) + 'B'; } } }
-        },
-        scales: {
-          x: { grid: { display: false }, ticks: { font: { family: "'Inter', sans-serif", size: 10 }, color: '#7a7a96' }, border: { color: '#e2e4e8' } },
-          y: { max: 3.5, grid: { color: 'rgba(226,228,232,0.5)', lineWidth: 0.5 }, ticks: { font: { family: "'Inter', sans-serif", size: 10 }, color: '#7a7a96', callback: function(v) { return '$'+v+'B'; }, stepSize: 1 }, border: { display: false } }
-        }
-      },
-      plugins: [{
-        afterDraw: function(chart) {
-          const ctx2 = chart.ctx;
-          const xScale = chart.scales.x;
-          const yScale = chart.scales.y;
-          ctx2.save();
-          const x1 = xScale.getPixelForValue(0), y1 = yScale.getPixelForValue(0.9);
-          const x2 = xScale.getPixelForValue(4), y2 = yScale.getPixelForValue(2.1);
-          ctx2.strokeStyle = '#b45309'; ctx2.lineWidth = 2;
-          ctx2.beginPath(); ctx2.moveTo(x1, y1-10); ctx2.quadraticCurveTo((x1+x2)/2, (y1+y2)/2-25, x2, y2-10); ctx2.stroke();
-          ctx2.fillStyle = '#b45309'; ctx2.font = "500 11px 'Inter', sans-serif";
-          ctx2.fillText('~19% CAGR', (x1+x2)/2-15, (y1+y2)/2-30);
-          ctx2.restore();
-        }
-      }]
-    });
-  })();
-  </script>
-
-
-  <div class="card">
-    <h3>로열티 매출 성장 드라이버 (20% CAGR 전망)</h3>
-    <p><strong>로열티율 상승:</strong> v9는 v8 대비 2배, CSS는 추가 2배. 세대별로 약 20%씩 추가 상승(연간 신세대 출시 → 연 20% 인상).</p>
-    <p><strong>코어 수 증가:</strong> 데이터센터 칩의 코어 수가 연간 약 20% 증가. 현재 출하 중인 칩 대부분 약 100코어. 200, 300, 심지어 500코어 이상의 미래 칩에 대한 가시성 확보. 코어 2배 = 로열티 2배.</p>
-    <p><strong>계약 기반:</strong> FY27~31 전망 로열티 매출의 70% 이상이 이미 계약 체결·로열티율 합의 완료. <a class="fc-source" href="#">도쿄 IR 브리핑</a> FY31 시점에도 약 60%가 계약 기반. 나머지 40%도 거의 전부 기존 고객의 차세대 계약.</p>
-    <p><strong>과거 5년 로열티 CAGR 약 14% → 최근 2년 20%+ 가속.</strong> 향후 5년 평균 20% 전망 (간헐적 시장 조정 가능).</p>
-  </div>
-
-  <div class="card" style="padding:1.5rem;">
-    <h3>로열티 매출 성장 추이 및 전망</h3>
-    <p style="color:var(--text-muted); margin-bottom:1rem;">과거 5년 약 14% CAGR → 향후 5년 20% CAGR 가속. 칩 사업이 로열티 궤적에 material impact 없음(additive).</p>
-    <div style="position:relative; height:300px; width:100%;"><canvas id="royaltyChart"></canvas></div>
-    <p class="table-caption" style="margin-top:0.5rem;">출처: ARM 도쿄 IR (© 2026 Arm), 추정치 기반</p>
-  </div>
-  <script>
-  window.addEventListener("load", function() {
-    new Chart(document.getElementById('royaltyChart').getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: ['FY22','FY23','FY24','FY25','FY26','FY27','FY28','FY29','FY30','FY31'],
-        datasets: [{
-          label: 'Royalty Revenue',
-          data: [1.0, 1.2, 1.5, 1.9, 2.4, 2.9, 3.5, 4.2, 5.0, 6.0],
-          backgroundColor: function(ctx) { return ctx.dataIndex < 5 ? 'rgba(133,183,235,0.8)' : 'rgba(26,86,219,0.8)'; },
-          borderColor: function(ctx) { return ctx.dataIndex < 5 ? '#85b7eb' : '#1a56db'; },
-          borderWidth: 1, borderRadius: 4,
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: { backgroundColor:'#1a1a2e', cornerRadius:6, titleFont:{family:"'Inter',sans-serif",size:12}, bodyFont:{family:"'Inter',sans-serif",size:11},
-            callbacks: { label: function(c){return 'Royalty: $'+c.raw.toFixed(1)+'B (est.)';} }
-          },
-          annotation: {}
-        },
-        scales: {
-          x: { grid:{display:false}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#4a4a68'}, border:{color:'#e2e4e8'} },
-          y: { grid:{color:'rgba(226,228,232,0.4)',lineWidth:0.5}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#7a7a96',callback:function(v){return '$'+v+'B';}}, border:{display:false}, max:7 }
-        }
-      },
-      plugins: [{
-        afterDraw: function(chart) {
-          var ctx=chart.ctx, meta=chart.getDatasetMeta(0);
-          ctx.save(); ctx.font="500 11px 'Inter',sans-serif"; ctx.fillStyle='#b45309';
-          // Draw CAGR annotations
-          var bar4=meta.data[3], bar5=meta.data[4];
-          ctx.fillText('14% CAGR →', bar4.x-30, bar4.y-12);
-          var bar9=meta.data[9];
-          ctx.fillText('20% CAGR', bar9.x-25, bar9.y-12);
-          ctx.restore();
-        }
-      }]
-    });
-  })();
-  </script>
-  <script>
-  window.addEventListener("load", function() {
+window.addEventListener("load", function() {
     const ctx = document.getElementById('royaltyChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
@@ -1869,17 +2003,48 @@ footer {
       }]
     });
   })();
-  </script>
-
-
-  <div class="card" style="padding:1.5rem;">
-    <h3>로열티 매출의 계약 기반 비율</h3>
-    <p style="color:var(--text-muted); margin-bottom:1rem;">전망 로열티 매출의 70% 이상이 이미 계약 체결·로열티율 합의 완료. FY31에도 약 60%가 계약 기반. 나머지 40%도 거의 전부 기존 고객의 차세대 계약.</p>
-    <div style="position:relative; height:280px; width:100%;"><canvas id="contractChart"></canvas></div>
-    <p class="table-caption" style="margin-top:0.5rem;">파랑 = 계약 기반 / 회색 = 미계약. 출처: ARM 도쿄 IR (© 2026 Arm)</p>
-  </div>
-  <script>
-  window.addEventListener("load", function() {
+window.addEventListener("load", function() {
+    new Chart(document.getElementById('royaltyChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['FY22','FY23','FY24','FY25','FY26','FY27','FY28','FY29','FY30','FY31'],
+        datasets: [{
+          label: 'Royalty Revenue',
+          data: [1.0, 1.2, 1.5, 1.9, 2.4, 2.9, 3.5, 4.2, 5.0, 6.0],
+          backgroundColor: function(ctx) { return ctx.dataIndex < 5 ? 'rgba(133,183,235,0.8)' : 'rgba(26,86,219,0.8)'; },
+          borderColor: function(ctx) { return ctx.dataIndex < 5 ? '#85b7eb' : '#1a56db'; },
+          borderWidth: 1, borderRadius: 4,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { backgroundColor:'#1a1a2e', cornerRadius:6, titleFont:{family:"'Inter',sans-serif",size:12}, bodyFont:{family:"'Inter',sans-serif",size:11},
+            callbacks: { label: function(c){return 'Royalty: $'+c.raw.toFixed(1)+'B (est.)';} }
+          },
+          annotation: {}
+        },
+        scales: {
+          x: { grid:{display:false}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#4a4a68'}, border:{color:'#e2e4e8'} },
+          y: { grid:{color:'rgba(226,228,232,0.4)',lineWidth:0.5}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#7a7a96',callback:function(v){return '$'+v+'B';}}, border:{display:false}, max:7 }
+        }
+      },
+      plugins: [{
+        afterDraw: function(chart) {
+          var ctx=chart.ctx, meta=chart.getDatasetMeta(0);
+          ctx.save(); ctx.font="500 11px 'Inter',sans-serif"; ctx.fillStyle='#b45309';
+          // Draw CAGR annotations
+          var bar4=meta.data[3], bar5=meta.data[4];
+          ctx.fillText('14% CAGR →', bar4.x-30, bar4.y-12);
+          var bar9=meta.data[9];
+          ctx.fillText('20% CAGR', bar9.x-25, bar9.y-12);
+          ctx.restore();
+        }
+      }]
+    });
+  })();
+window.addEventListener("load", function() {
     new Chart(document.getElementById('contractChart').getContext('2d'), {
       type: 'bar',
       data: {
@@ -1904,9 +2069,53 @@ footer {
       }
     });
   })();
-  </script>
-  <script>
-  window.addEventListener("load", function() {
+window.addEventListener("load", function() {
+    const ctx = document.getElementById('licenseChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['FY22','FY23','FY24','FY25','FY26','FY27','FY28','FY29~31'],
+        datasets: [{
+          label: 'License Revenue',
+          data: [0.9, 1.0, 1.4, 1.7, 2.1, 2.3, 2.5, 2.8],
+          backgroundColor: function(ctx)) {
+            return ctx.dataIndex < 5 ? 'rgba(133,183,235,0.85)' : 'rgba(26,86,219,0.5)';
+          },
+          borderColor: function(ctx) {
+            return ctx.dataIndex < 5 ? 'rgba(133,183,235,1)' : 'rgba(26,86,219,0.7)';
+          },
+          borderWidth: 1, borderRadius: 4,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { backgroundColor: '#1a1a2e', titleFont: { family: "'Inter', sans-serif", size: 12 }, bodyFont: { family: "'Inter', sans-serif", size: 11 }, padding: 10, cornerRadius: 6, callbacks: { label: function(c) { return '$' + c.raw.toFixed(1) + 'B'; } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { family: "'Inter', sans-serif", size: 10 }, color: '#7a7a96' }, border: { color: '#e2e4e8' } },
+          y: { max: 3.5, grid: { color: 'rgba(226,228,232,0.5)', lineWidth: 0.5 }, ticks: { font: { family: "'Inter', sans-serif", size: 10 }, color: '#7a7a96', callback: function(v) { return '$'+v+'B'; }, stepSize: 1 }, border: { display: false } }
+        }
+      },
+      plugins: [{
+        afterDraw: function(chart) {
+          const ctx2 = chart.ctx;
+          const xScale = chart.scales.x;
+          const yScale = chart.scales.y;
+          ctx2.save();
+          const x1 = xScale.getPixelForValue(0), y1 = yScale.getPixelForValue(0.9);
+          const x2 = xScale.getPixelForValue(4), y2 = yScale.getPixelForValue(2.1);
+          ctx2.strokeStyle = '#b45309'; ctx2.lineWidth = 2;
+          ctx2.beginPath(); ctx2.moveTo(x1, y1-10); ctx2.quadraticCurveTo((x1+x2)/2, (y1+y2)/2-25, x2, y2-10); ctx2.stroke();
+          ctx2.fillStyle = '#b45309'; ctx2.font = "500 11px 'Inter', sans-serif";
+          ctx2.fillText('~19% CAGR', (x1+x2)/2-15, (y1+y2)/2-30);
+          ctx2.restore();
+        }
+      }]
+    });
+  })();
+window.addEventListener("load", function() {
     const ctx = document.getElementById('contractChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
@@ -1930,143 +2139,6 @@ footer {
       }
     });
   })();
-  </script>
-
-
-  
-
-  <div class="card">
-    <h3>기타 주요 발언</h3>
-    <p><strong>소프트웨어 생태계:</strong> ARM 개발자 2,200만 명 이상, 누적 15억+ 시간의 ARM 소프트웨어 개발 투자. v8에 약 $1B, v9에 약 $3B의 자체 소프트웨어 투자. AWS 상위 1,000 고객 중 99%+가 일부 워크로드를 ARM에서 실행.</p>
-    <p><strong>자동차:</strong> 한 OEM이 1세대 자율주행차에 433개 ARM 코어 배치 <a class="fc-source" href="#">도쿄 IR 브리핑</a> → 차량당 로열티 $100~$200 발생. 로보택시 올해 약 10,000대 → 2020년대 말 1,000만대+ 전망.</p>
-    <p><strong>Edge AI:</strong> Android 앱스토어의 AI 지원 앱 중 70%+가 ARM CPU만으로 실행(별도 가속 불필요). v9는 엣지 AI 가속에 필수 → 거의 모든 소비자 전자기기가 v9로 전환 전망.</p>
-    <p><strong>Chiplet 표준화:</strong> 30년 전 IP 표준을 만들었듯이, 이제 칩렛 간 표준 인터페이스를 만들려는 initiative 진행 중. CPU 칩렛(ARM) + 가속기 칩렛(Nvidia/Rebellions 등) + IO 칩렛을 하나의 패키지에 통합하는 미래.</p>
-    <p><strong>SoftBank/Ampere/Graphcore 관계:</strong> AGI CPU는 순수 ARM 이니셔티브로, SoftBank 산하 Ampere(약 1,000명)·Graphcore(약 500명)와는 완전히 별개 프로젝트. 이들이 무엇을 개발 중인지는 별도 발표 예정.</p>
-    <p><strong>TAL(Total Access License):</strong> 상위 50개 고객 중 30개만 구독 라이선스 체결. 나머지 20개도 향후 가입 전망 → 라이선스 매출 성장 여력.</p>
-  </div>
-
-  
-
-</section>
-
-<section id="risks">
-  <div class="section-label">06 — Key Risks</div>
-  <div class="section-title">핵심 리스크</div>
-
-  <div class="section-label" style="margin-top:2rem;">RISC-V: 비즈니스 모델 자체를 무력화하는 구조적 위협</div>
-  
-
-  <div class="card">
-    <h3>왜 RISC-V가 위험한가</h3>
-    <p>ARM의 핵심 수익원인 라이선스비+로열티를 업계에서는 "ARM Tax"라고 부른다. RISC-V는 오픈소스라서 이 비용이 0원이다.</p>
-    <p>ARM이 직접 칩을 팔겠다고 선언하면서, 라이선시들이 RISC-V로 헤지할 동기가 더 커졌다.</p>
-  </div>
-
-  <div class="card">
-    <h3>이미 움직이고 있는 플레이어들</h3>
-    <p><strong>Qualcomm:</strong> 2025년 말 RISC-V 고성능 코어 설계사 Ventana Micro Systems 인수. <a class="fc-source" href="https://www.theregister.com/2025/12/10/qualcomm_riscv_arm_ventana/" target="_blank">The Register</a></p>
-    <p><strong>Tenstorrent</strong> (Jim Keller): Ascalon-X 코어가 벤치마크에서 AMD Zen 5, ARM Neoverse V3와 동급 성능 달성 <span class="fc-note fc-note-warn">자체 발표</span> <a class="fc-source" href="https://markets.financialcontent.com/wral/article/tokenring-2026-1-16-the-risc-v-revolution-open-source-silicon-challenges-arm-and-x86-dominance-in-2026" target="_blank">FinancialContent</a> — "RISC-V는 저성능"이라는 인식을 깨는 사건.</p>
-    <p><strong>Nvidia:</strong> RISC-V 지원 시작.</p>
-    <p><strong>중국:</strong> 미국 수출 규제 우회를 위해 RISC-V 서버 칩 개발 활발.</p>
-  </div>
-
-  <div class="card">
-    <h3>단기적으로는 제한적인 이유</h3>
-    <p>SemiAnalysis(Dylan Patel): "RISC-V가 데이터센터의 중앙 CPU가 되는 건 당분간 일어나지 않을 것." <a class="fc-source" href="https://www.datacenterdynamics.com/en/analysis/can-risc-v-thrive-in-the-data-center/" target="_blank">DCD</a> ARM은 CPU 코어뿐 아니라 Network-on-Chip, 메모리 컨트롤러, 물리적 레이아웃까지 통합 제공하는데, RISC-V 생태계는 아직 이런 완성도가 부족하다.</p>
-    <p>Counterpoint Research: 2029년까지 커스텀 프로세서 기반 AI 서버의 90%가 ARM <a class="fc-source" href="https://www.tomshardware.com/pc-components/cpus/report-claims-arm-chips-will-power-90-percent-of-ai-servers-based-on-custom-processors-in-2029-x86-and-risc-v-on-the-outside-looking-in" target="_blank">Counterpoint via Tom's HW</a>, x86+RISC-V 합쳐서 10% 전망.</p>
-    <p>가장 큰 장벽은 수십 년간 ARM/x86에 최적화된 소프트웨어 자산.</p>
-  </div>
-
-  <div class="highlight">
-    <strong>ARM의 딜레마:</strong><br>
-    라이선스료를 높이면 → 고객들이 RISC-V로 이탈할 동기 증가<br>
-    라이선스료를 낮추면 → 수익성 악화<br>
-    직접 칩을 팔면 → 고객 이탈 + RISC-V 전환 가속<br><br>
-    위험하지만, 가만히 있어도 위험한 상황에서 선제적으로 움직인 것이다. RISC-V가 고성능 서버 CPU에서 ARM을 대체하려면 아직 수년이 필요하다는 판단 하에, 그 시간 안에 칩 사업을 궤도에 올리겠다는 계산.
-  </div>
-
-
-
-  
-  
-  <div class="section-label" style="margin-top:3rem;">AGI CPU의 실질 TAM: 네오클라우드와 고객 구조</div>
-
-  <div class="card">
-    <h3>네오클라우드의 CPU 선택 구조</h3>
-    <p>CoreWeave, Lambda, Nebius, Crusoe 등 네오클라우드들은 GPU-first 사업자로, CPU는 주로 Nvidia GPU 시스템에 번들된 것을 사용한다. CoreWeave의 GB200/GB300 인스턴스는 각각 Grace CPU가 내장된 슈퍼칩 구조이며, 2H26부터는 Vera Rubin NVL72 플랫폼과 Vera CPU 랙을 배치할 계획이다. <a class="fc-source" href="https://www.coreweave.com/news/coreweave-advances-ai-native-cloud-platform-for-the-next-phase-of-production-scale-ai" target="_blank">CoreWeave</a></p>
-    <p><strong>CoreWeave가 Vera CPU standalone 최초 고객:</strong> Jensen Huang이 Bloomberg 인터뷰에서 CoreWeave에 Vera CPU를 standalone으로 최초 제공한다고 발표. Nvidia가 $2B 추가 투자하면서 지분을 9%로 확대. "standalone CPU 배치 고객이 더 많아질 것"이라고 시사. <a class="fc-source" href="https://www.datacenterdynamics.com/en/news/nvidia-to-make-vera-cpu-available-as-standalone-offering-with-coreweave-first-customer-to-get-access/" target="_blank">DCD</a> <a class="fc-source" href="https://www.tomshardware.com/tech-industry/big-tech/nvidia-pumps-another-usd2-billion-into-coreweave-and-announces-standalone-availability-of-vera-cpu-chipmaker-increases-stake-in-its-customer-to-9-percent" target="_blank">Tom's Hardware</a></p>
-    <p><strong>네오클라우드 시장 규모:</strong> Forrester 기준 2026년 $20B, Mordor Intelligence 기준 $35B. GPUaaS 시장은 2032년까지 $50B 전망(Fortune Business Insights). CoreWeave만 $5B+ 연매출. <a class="fc-source" href="https://blog.nirvanalabs.io/rise-of-neoclouds-specialized-cloud/" target="_blank">Nirvana Labs</a></p>
-  </div>
-
-  <div class="card">
-    <h3>ARM AGI CPU의 실질 TAM 리스크</h3>
-    <p>ARM이 제시하는 $100B+ 데이터센터 CPU TAM은 전체 시장 규모이지만, 실질적으로 AGI CPU가 공략할 수 있는 시장은 이보다 좁을 수 있다:</p>
-    <p><strong>Tier 1(빅테크)은 이탈 불가:</strong> AWS/Google/MS/Apple은 자체 CPU를 보유하며 AGI CPU를 구매할 유인이 없다. 이들이 DC CPU 시장의 상당 부분을 차지.</p>
-    <p><strong>Nvidia 진영 lock-in:</strong> 네오클라우드들은 Nvidia GPU 생태계에 깊이 종속되어 있어, CPU도 Nvidia Vera를 선택할 가능성이 높다. CoreWeave는 Nvidia가 9% 지분을 보유한 사실상의 전략적 파트너. Nvidia는 GPU-CPU-DPU-네트워킹까지 풀스택으로 묶어 판매하는 전략.</p>
-    <p><strong>x86 레거시 수요:</strong> Google-Intel IPU 파트너십이 보여주듯, 호환성·레거시 이유로 x86(Xeon/EPYC)을 유지하는 수요도 상당. 에이전틱 워크로드의 "대부분이 아직 x86에서 실행"(Lisa Su).</p>
-    <p><strong>Nvidia 풀스택 번들 구조:</strong> Vera Rubin NVL72 Pod(72 Rubin GPU + 36 Vera CPU)를 통째로 구매하면 CPU가 이미 포함되어 있어 AGI CPU를 별도로 살 이유가 없다. AI 클라우드 CAPEX의 대부분이 이 풀스택 구매로 흘러가는 현 구조에서, AGI CPU의 실질 기회는 제한적일 수 있다.</p>
-    <p><strong>그럼에도 AGI CPU가 공략할 수 있는 시장:</strong> Nvidia GPU가 아닌 커스텀 ASIC 가속기를 사용하는 기업들. 이들에게는 Vera가 번들로 오지 않으므로, 가속기와 연결할 호스트 CPU를 별도 조달해야 한다. 이때 선택지는 x86(Intel Xeon, AMD EPYC) vs ARM AGI CPU가 된다.</p>
-    <p style="margin-left:1rem;">• <strong>Meta</strong> — 자체 MTIA 가속기를 개발·배치 중. AGI CPU의 리드 파트너이자 첫 고객.</p>
-    <p style="margin-left:1rem;">• <strong>Cerebras</strong> — 웨이퍼 스케일 가속기. AGI CPU 파트너로 발표.</p>
-    <p style="margin-left:1rem;">• <strong>Rebellions, Furiosa</strong> — 한국 AI 반도체 스타트업. 자체 가속기를 개발하되 호스트 CPU는 외부 조달.</p>
-    <p style="margin-left:1rem;">• <strong>Google TPU 생태계</strong> — Axion(자체 ARM CPU)을 보유하고 있으나, 동시에 Intel Xeon도 병행 사용. ARM AGI CPU가 추가 선택지가 될 수 있는 영역.</p>
-    <p style="margin-left:1rem;">• <strong>향후 Broadcom/Marvell ASIC 고객</strong> — OpenAI(Broadcom ASIC 2027+), 기타 하이퍼스케일러가 커스텀 ASIC으로 전환 시, Nvidia Vera 번들에서 벗어나면서 호스트 CPU 선택이 열림.</p>
-    <p><strong>결론:</strong> ARM AGI CPU의 실질 TAM은 "non-Nvidia 가속기 + 호스트 CPU 별도 조달" 세그먼트로 좁혀진다. 이 시장에서 x86(Xeon/EPYC)과의 경쟁이 핵심이며, ARM의 와트당 성능 우위와 Neoverse 생태계 호환성이 차별화 포인트. $15B 타겟 대비 이 시장이 실질적으로 얼마나 되는지는 커스텀 ASIC 전환 속도에 달려 있다.</p>
-  </div>
-
-
-<div class="section-label" style="margin-top:3rem;">경쟁사 동향: x86 진영의 반격</div>
-
-<div class="card">
-    <h3>Intel-Google IPU 파트너십 (2026.04.09 발표)</h3>
-    <p>Google과 Intel이 멀티이어 AI 인프라 협력을 확대 발표. 두 가지 축으로 구성:</p>
-    <p><strong>1) Xeon 6 지속 배치:</strong> Google Cloud가 Intel Xeon 6 프로세서를 C4/N4 인스턴스에 배치하여 AI 학습 조정, 저지연 추론, 범용 컴퓨팅 워크로드 처리. Google은 약 30년 전부터 Intel 프로세서를 사용해온 관계이며, 자체 ARM 기반 Axion CPU를 보유하고 있지만 x86 수요도 병행 유지. <a class="fc-source" href="https://www.cnbc.com/2026/04/09/google-expands-partnership-with-intel-for-ai-chips-.html" target="_blank">CNBC</a></p>
-    <p><strong>2) 커스텀 IPU 공동 개발 확대:</strong> 2022년부터 진행 중인 IPU(Infrastructure Processing Unit) 공동 개발을 확대. IPU는 네트워킹·스토리지·보안 기능을 호스트 CPU에서 오프로드하는 프로그래머블 ASIC 가속기로, Nvidia BlueField DPU와 유사한 역할. CPU가 인프라 태스크에서 해방되어 AI 워크로드에 전념할 수 있도록 하는 구조. Google은 이미 2022년 Intel과 개발한 Mount Evans IPU를 C3 인스턴스에 배치한 바 있으며, 이번 확대는 에이전틱 AI 시대의 인프라 복잡성 증가에 대응하는 것. <a class="fc-source" href="https://www.tomshardware.com/pc-components/cpus/intel-and-google-announce-multi-year-chip-deal-google-will-deploy-intel-xeon-with-custom-ipus-for-next-gen-ai-cloud-infrastructure" target="_blank">Tom's Hardware</a></p>
-    <div class="highlight" style="margin-top:1rem;">
-      <strong>ARM 투자 관점 시사점:</strong> 이 파트너십은 x86(Intel Xeon)과 IPU의 조합이지만, 더 큰 그림에서는 CPU+인프라 가속기의 이종 시스템(heterogeneous architecture)이 AI 데이터센터의 표준이 되고 있음을 확인시켜준다. ARM 진영에서는 Graviton(CPU) + Nitro(인프라 오프로드)가 이미 이 구조를 구현하고 있으며, Nvidia는 Vera(CPU) + BlueField-4(DPU)로 대응. Intel CEO Lip-Bu Tan: "AI 스케일링에는 가속기 이상의 것이 필요하다. 균형 잡힌 시스템에서 CPU와 IPU가 핵심이다." <a class="fc-source" href="https://www.intc.com/news-events/press-releases/detail/1766/intel-and-google-deepen-collaboration-to-advance-ai" target="_blank">Intel IR</a> <a class="fc-source" href="https://techcrunch.com/2026/04/09/google-and-intel-deepen-ai-infrastructure-partnership/" target="_blank">TechCrunch</a>
-    </div>
-  </div>
-
-<div class="section-label" style="margin-top:3rem;">기타 핵심 리스크</div>
-<div class="risk-grid">
-<div class="risk-card">
-      <span class="tag risk">Risk</span>
-      <h4>마진 딜루션</h4>
-      <p>IP 라이선스 GM 96~97% vs 칩 판매 GM 40~50%. 직접 칩 판매 비중이 커질수록 블렌디드 마진 하락 불가피.</p>
-    </div>
-<div class="risk-card">
-      <span class="tag risk">Risk</span>
-      <h4>라이선시 갈등</h4>
-      <p>설계도 원본을 가진 회사가 같은 시장에서 경쟁하는 구조. Apple, Qualcomm 등이 RISC-V 대안을 더 적극 검토할 수 있음.</p>
-    </div>
-<div class="risk-card">
-      <span class="tag risk">Risk</span>
-      <h4>TSMC N3 캐파 제약</h4>
-      <p>TSMC N3 공정 캐파가 타이트하여 단기 실적 서프라이즈도 어려움.</p>
-    </div>
-<div class="risk-card">
-      <span class="tag neutral">Monitor</span>
-      <h4>ARM China 리스크</h4>
-      <p>매출의 약 24% 차지하는 ARM China는 실질 독립 기업(ARM 지분 4.8%). 미중 갈등 시 리스크 요인.</p>
-    </div>
-<div class="risk-card">
-      <span class="tag neutral">Monitor</span>
-      <h4>밸류에이션</h4>
-      <p>FY2025 기준 P/E 약 94x (MS 추정치 FY26e). AI 프리미엄이 어디까지 정당화되는지 모니터링 필요.</p>
-    </div>
-</div>
-</section>
-
-
-
-</div><!-- container -->
-
-<footer>
-  <p>ARM Holdings ($ARM) Investment Research — Last updated: 2026.04.10</p>
-  <p style="margin-top:0.5rem;">개인 투자 리서치 목적. 투자 권유가 아닙니다.</p>
-</footer>
-
-<script>
 // Smooth scroll for nav links
 document.querySelectorAll('nav a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
@@ -2092,90 +2164,6 @@ document.querySelectorAll('.card, .compare-card, .risk-card, .img-container, .hi
   observer.observe(el);
 });
 </script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // 대분류: section h2
-    document.querySelectorAll('section > h2').forEach(function(h2) {
-      h2.classList.add('section-toggle');
-      var siblings = [];
-      var next = h2.nextElementSibling;
-      while (next) { siblings.push(next); next = next.nextElementSibling; }
-      var wrapper = document.createElement('div');
-      wrapper.style.overflow = 'hidden';
-      wrapper.style.transition = 'max-height 0.5s ease, opacity 0.3s ease';
-      wrapper.style.maxHeight = '999999px';
-      wrapper.style.opacity = '1';
-      wrapper.dataset.open = 'true';
-      h2.parentNode.insertBefore(wrapper, h2.nextSibling);
-      siblings.forEach(function(el) { wrapper.appendChild(el); });
-      h2.addEventListener('click', function() {
-        this.classList.toggle('collapsed');
-        if (wrapper.dataset.open === 'true') {
-          wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.dataset.open = 'false';
-        } else {
-          wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.dataset.open = 'true';
-        }
-      });
-    });
-
-    // 중분류: section-label (start open)
-    document.querySelectorAll('.section-label').forEach(function(label) {
-      label.classList.add('sub-toggle');
-      label.style.paddingLeft = '1.2rem';
-      var siblings = [];
-      var next = label.nextElementSibling;
-      while (next && !next.classList.contains('section-label')) {
-        siblings.push(next); next = next.nextElementSibling;
-      }
-      if (siblings.length === 0) return;
-      var wrapper = document.createElement('div');
-      wrapper.style.overflow = 'hidden';
-      wrapper.style.transition = 'max-height 0.4s ease, opacity 0.25s ease';
-      wrapper.style.maxHeight = '999999px';
-      wrapper.style.opacity = '1';
-      wrapper.dataset.open = 'true';
-      label.parentNode.insertBefore(wrapper, label.nextSibling);
-      siblings.forEach(function(el) { wrapper.appendChild(el); });
-      label.addEventListener('click', function() {
-        this.classList.toggle('collapsed');
-        if (wrapper.dataset.open === 'true') {
-          wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.dataset.open = 'false';
-        } else {
-          wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.dataset.open = 'true';
-        }
-      });
-    });
-
-    // 소분류: card h3 (start collapsed)
-    document.querySelectorAll('.card h3').forEach(function(h3) {
-      h3.classList.add('sub-toggle');
-      h3.classList.add('collapsed');
-      var siblings = [];
-      var next = h3.nextElementSibling;
-      while (next) { siblings.push(next); next = next.nextElementSibling; }
-      if (siblings.length === 0) return;
-      var wrapper = document.createElement('div');
-      wrapper.style.overflow = 'hidden';
-      wrapper.style.transition = 'max-height 0.4s ease, opacity 0.25s ease';
-      wrapper.style.maxHeight = '0';
-      wrapper.style.opacity = '0';
-      wrapper.dataset.open = 'false';
-      h3.parentNode.insertBefore(wrapper, h3.nextSibling);
-      siblings.forEach(function(el) { wrapper.appendChild(el); });
-      h3.addEventListener('click', function() {
-        this.classList.toggle('collapsed');
-        if (wrapper.dataset.open === 'true') {
-          wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.style.marginTop = '0'; wrapper.dataset.open = 'false';
-          h3.style.marginBottom = '0';
-        } else {
-          wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.style.marginTop = ''; wrapper.dataset.open = 'true';
-          h3.style.marginBottom = '';
-        }
-      });
-    });
-  });
-  </script>
 
 </body>
 </html>
