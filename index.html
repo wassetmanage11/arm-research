@@ -99,7 +99,7 @@ nav ul a:hover { color: var(--text); background: var(--bg-card); }
 .hero .meta-row span { display: flex; align-items: center; gap: 0.4rem; }
 
 /* ─── SECTIONS ─── */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; overflow: hidden; }
 
 section {
   padding: 5rem 0;
@@ -126,7 +126,7 @@ section:first-of-type { border-top: none; }
   padding: 2rem;
   margin-bottom: 1.5rem;
   transition: border-color 0.3s;
-  overflow: hidden;
+  overflow: visible;
 }
 .card:hover { border-color: var(--border-accent); }
 
@@ -320,46 +320,13 @@ footer {
 .fc-fix { background: rgba(194,37,37,0.08); color: var(--red); }
 .fc-note-warn { background: rgba(180,83,9,0.08); color: var(--orange); }
 
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-  margin: 1.5rem 0;
-  background: var(--bg-card);
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-.data-table thead th {
-  background: #1a1a2e;
-  color: #fff;
-  font-weight: 500;
-  padding: 0.75rem 1rem;
-  text-align: left;
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
-}
-.data-table tbody td {
-  padding: 0.65rem 1rem;
-  border-bottom: 1px solid var(--border);
-  color: var(--text);
-  vertical-align: top;
-  line-height: 1.5;
-}
-.data-table tbody tr:last-child td {
-  border-bottom: none;
-}
-.data-table tbody tr:hover {
-  background: var(--bg-card-hover);
-}
-.data-table .row-label {
-  font-weight: 500;
-  color: var(--text);
-  white-space: nowrap;
-}
-.data-table .highlight-cell {
-  background: rgba(26, 86, 219, 0.04);
-}
+
+
+
+
+
+
+
 .table-caption {
   font-size: 0.75rem;
   color: var(--text-dim);
@@ -367,23 +334,15 @@ footer {
   font-style: italic;
 }
 
-    
-    
-    
-    
-    
-    
+    /* ─── DATA TABLE (test4 verified) ─── */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+    .data-table { border-collapse: collapse; font-size: 13px; white-space: nowrap; }
+    .data-table th, .data-table td { padding: 8px 12px; border: 1px solid var(--border); text-align: left; }
+    .data-table th { background: #1a1a2e; color: #fff; font-size: 12px; }
+    .data-table tbody tr:hover { background: var(--bg-card-hover); }
+    .data-table .row-label { font-weight: 500; }
 
-  
-    
-
-  
-    
-    
-    
-    
-
-  </style>
+</style>
 </head>
 <body>
 
@@ -577,14 +536,14 @@ footer {
     <p>DPU는 Intel, AMD, Nvidia 등 다양한 기업들이 만들고 있지만, Nvidia가 자사 제품들을 랙스케일 단위로 판매하면서 출하량이 빠르게 증가하고 있다. Nvidia DPU의 경우 ARM CPU가 핵심이다.</p>
     <p><strong>AI Agent 시대의 DPU:</strong> AI Agent 시대 대비를 위해 루빈과 함께 출시되는 BlueField-4 DPU는 증가하는 KV Cache 관련 워크로드를 처리하기 위해 코어 수가 4배 더 증가했다. DPU 성능 증가 요구는 곧 CPU 수혜로 이어지며, ARM이 이 영역에서도 구조적 수혜를 받을 것으로 기대된다.</p>
   
-    <div style="overflow-x:auto; margin-top:1.5rem;">
+    <div class="table-wrap" style="overflow-x:auto; margin-top:1.5rem;">
     <table class="data-table">
       <thead>
         <tr>
-          <th style="min-width:100px;">항목</th>
-          <th style="min-width:150px;">BlueField-3 DPU</th>
-          <th style="min-width:150px;">BlueField-4 DPU</th>
-          <th style="min-width:160px;">BF-4 개선점</th>
+          <th>항목</th>
+          <th>BlueField-3 DPU</th>
+          <th>BlueField-4 DPU</th>
+          <th>BF-4 개선점</th>
         </tr>
       </thead>
       <tbody>
@@ -608,8 +567,9 @@ footer {
     <h3>ARM vs x86: 데이터센터 효율성 비교</h3>
     <p>ARM 기반 서버 CPU가 x86 대비 에너지 효율에서 구조적 우위를 보이고 있다. 이는 RISC 아키텍처의 근본적 설계 차이에서 기인하며, 서버 랙 단위로 누적되면 OPEX와 밀도에서 유의미한 차이로 이어진다.</p>
 
-    <table class="data-table">
-      <thead><tr><th style="width:22%;">핵심 지표</th><th style="width:22%;">Intel/AMD 서버 (x86)</th><th style="width:22%;">ARM 서버</th><th style="width:34%;">핵심 체크포인트 (TCO/효과)</th></tr></thead>
+    <div class="table-wrap" style="overflow-x:auto;max-width:100%;">
+<table class="data-table">
+      <thead><tr><th>핵심 지표</th><th>Intel/AMD 서버 (x86)</th><th>ARM 서버</th><th>핵심 체크포인트 (TCO/효과)</th></tr></thead>
       <tbody>
         <tr><td class="row-label">소모 전력 (TDP)</td><td>CPU당 300~500W</td><td>CPU당 150~300W</td><td>전기 요금(OPEX) 약 30~40% 절감. 냉각 설비 가동률 동반 하락.</td></tr>
         <tr><td class="row-label">상면 공간 (Rack Density)</td><td>높은 발열로 랙당 장착 대수 제한 (2U 폼팩터 일반적)</td><td>단일 CPU에 128~192코어 고집적, 저발열 (1U 가능)</td><td>동일 공간 대비 처리량 극대화. ARM AGI CPU 기준 36kW 랙에 8,160코어.</td></tr>
@@ -619,6 +579,7 @@ footer {
         <tr><td class="row-label">서버 시장 점유율 (2025)</td><td>약 79% (IDC)</td><td>약 21% (YoY +70% 성장)</td><td>ARM이 2026년까지 25%, 2028년까지 30%+ 전망. x86 독점 구조가 깨지는 구간.</td></tr>
       </tbody>
     </table>
+</div>
     <p class="table-caption">출처: IDC 서버 시장 데이터 (2025), ARM 공식 발표, AWS Graviton 벤치마크, Signal65 분석. "2x performance per rack" 주장은 ARM 자체 추정치(에어쿨링 기준)로, 독립 검증 필요. <a class="fc-source" href="https://newsroom.arm.com/blog/arm-converged-ai-data-center-aws-graviton5" target="_blank">ARM Newsroom</a> <a class="fc-source" href="https://signal65.com/research/arm-neoverse-enables-leading-cloud-performance-and-cost-efficiency-with-aws-graviton4/" target="_blank">Signal65</a> <a class="fc-source" href="https://eu.36kr.com/en/p/3439511596109447" target="_blank">36Kr</a></p>
 
     <p style="margin-top:1rem;"><strong>왜 ARM이 더 효율적인가:</strong> x86은 CISC 설계 철학(고성능 중심)으로 수십 년간 레거시 호환성을 유지하면서 회로가 복잡해졌다. 트랜지스터의 상당 부분이 "쓰이지 않는 레거시 명령어 디코딩"에 소비된다. ARM은 RISC 설계 철학(고효율 중심)으로 출발했고, 레거시 지원 부분을 과감히 제거하여 전력 효율을 극대화했다. 이 차이가 서버 랙 단위로 누적되면 동일 전력 예산에서 ARM이 더 많은 코어를 가동할 수 있다.</p>
@@ -774,6 +735,7 @@ footer {
     <h3>ARM ISA 버전별 개요</h3>
     <p>ARM의 명령어 세트 아키텍처(ISA)는 세대를 거듭하며 진화해왔다. 현재 v9가 최신이며, AI 연산과 보안 기능이 핵심 강화 포인트다.</p>
   
+<div class="table-wrap" style="overflow-x:auto;max-width:100%;">
 <table class="data-table">
   <thead><tr><th>구분</th><th>설명</th><th>세부 제품</th></tr></thead>
   <tbody>
@@ -782,6 +744,7 @@ footer {
     <tr style="background:rgba(26,86,219,0.04)"><td class="row-label">Subsystems IP<br>(CSS)</td><td>사전 통합 컴퓨트 서브시스템. CPU + 인터커넥트 + 시스템 IP를 미리 조립한 형태. 거의 추가 설계가 필요 없는 완제품 상태. <strong>최근 ARM 매출의 핵심 성장 동력.</strong></td><td>Neoverse CSS: 데이터센터 용<br>Lumex CSS: 스마트폰/노트북 용<br>Zena CSS: 자동차 SDV 용</td></tr>
   </tbody>
 </table>
+</div>
 <p class="table-caption">출처: ARM 공식 제품 페이지 기반 재구성</p>
 </div>
 
@@ -795,8 +758,9 @@ footer {
   
 
 
+<div class="table-wrap" style="overflow-x:auto;max-width:100%;">
 <table class="data-table">
-  <thead><tr><th style="width:12%;">IP 종류</th><th style="width:30%;">설명</th><th style="width:28%;">비고</th><th style="width:30%;">주요 고객 / 납품처</th></tr></thead>
+  <thead><tr><th>IP 종류</th><th>설명</th><th>비고</th><th>주요 고객 / 납품처</th></tr></thead>
   <tbody>
     <tr>
       <td class="row-label"><a href="https://www.arm.com/products/cortex-x" target="_blank">Cortex-X</a></td>
@@ -848,6 +812,7 @@ footer {
     </tr>
   </tbody>
 </table>
+</div>
 <p class="table-caption">출처: <a href="https://www.arm.com/products" target="_blank">ARM 공식 제품 페이지</a> 및 도쿄 IR 브리핑 기반 재구성. 고객 정보는 공개 발표 기준.</p>
 </div>
 
@@ -925,16 +890,16 @@ footer {
 
     
 
-    <div style="overflow-x:auto; margin-top:1.5rem;">
+    <div class="table-wrap" style="overflow-x:auto; margin-top:1.5rem;">
     <table class="data-table">
       <thead>
         <tr>
-          <th style="min-width:100px;">항목</th>
-          <th style="min-width:115px;">Intel Xeon 6980P<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Granite Rapids</span></th>
-          <th style="min-width:115px;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Turin Dense</span></th>
-          <th style="min-width:115px;">Nvidia Vera<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Olympus (ARM)</span></th>
-          <th style="min-width:115px;">AWS Graviton4<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Neoverse V2</span></th>
-          <th style="min-width:115px;background:rgba(26,86,219,0.04);">ARM AGI CPU<br><span style="font-weight:400;font-size:0.75em;color:#1a56db;">Neoverse V3</span></th>
+          <th>항목</th>
+          <th>Intel Xeon 6980P<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Granite Rapids</span></th>
+          <th>AMD EPYC 9965<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Turin Dense</span></th>
+          <th>Nvidia Vera<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Olympus (ARM)</span></th>
+          <th>AWS Graviton4<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Neoverse V2</span></th>
+          <th style="background:rgba(26,86,219,0.04);">ARM AGI CPU<br><span style="font-weight:400;font-size:0.75em;color:#1a56db;">Neoverse V3</span></th>
         </tr>
       </thead>
       <tbody>
