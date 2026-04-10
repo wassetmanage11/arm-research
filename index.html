@@ -896,36 +896,7 @@ footer {
 <div class="section-label" style="margin-top:3rem;">서버 CPU 경쟁 구도</div>
   
 
-  <div class="compare-grid">
-    <div class="compare-card">
-      <div class="chip-name">ARM AGI CPU</div>
-      <div class="chip-maker">ARM Holdings — 자체 설계 · TSMC 제조</div>
-      <div class="spec-row"><span class="label">코어</span><span class="value">136x Neoverse V3</span></div>
-      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A</span></div>
-      <div class="spec-row"><span class="label">공정</span><span class="value">TSMC N3P (3nm) <a class="fc-source" href="https://fudzilla.com/arm-agi-cpu-is-a-136-core-hardware-chip/" target="_blank">Fudzilla</a></span></div>
-      <div class="spec-row"><span class="label">다이 구성</span><span class="value">듀얼 칩렛 (MCM)</span></div>
-      <div class="spec-row"><span class="label">TDP</span><span class="value">300W (250~430W)</span></div>
-      <div class="spec-row"><span class="label">메모리</span><span class="value">DDR5, 800+ GB/s</span></div>
-      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">6 GB/s</span></div>
-      <div class="spec-row"><span class="label">SMT</span><span class="value">없음 (1T/core)</span></div>
-      <div class="spec-row"><span class="label">강점</span><span class="value">코어 밀도, 에어쿨링</span></div>
-      <div class="spec-row"><span class="label">첫 고객</span><span class="value">Meta</span></div>
-    </div>
-    <div class="compare-card">
-      <div class="chip-name">Nvidia Vera CPU</div>
-      <div class="chip-maker">Nvidia — 커스텀 Olympus 코어</div>
-      <div class="spec-row"><span class="label">코어</span><span class="value">88x Olympus</span></div>
-      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A (커스텀)</span></div>
-      <div class="spec-row"><span class="label">공정</span><span class="value">비공개</span></div>
-      <div class="spec-row"><span class="label">다이 구성</span><span class="value">모놀리식 + dielets</span></div>
-      <div class="spec-row"><span class="label">TDP</span><span class="value">비공개</span></div>
-      <div class="spec-row"><span class="label">메모리</span><span class="value">LPDDR5X, 1.2 TB/s <a class="fc-source" href="https://developer.nvidia.com/blog/nvidia-vera-cpu-delivers-high-performance-bandwidth-and-efficiency-for-ai-factories/" target="_blank">Nvidia Blog</a></span></div>
-      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">약 14 GB/s</span></div>
-      <div class="spec-row"><span class="label">SMT</span><span class="value">Spatial MT (176 threads) <a class="fc-source" href="https://www.tomshardware.com/pc-components/gpus/nvidia-unveils-details-of-new-88-core-vera-cpus-positioned-to-compete-with-amd-and-intel-new-vera-cpu-rack-features-256-liquid-cooled-chips-that-deliver-up-to-a-6x-gain-in-cpu-throughput" target="_blank">Tom's Hardware</a></span></div>
-      <div class="spec-row"><span class="label">강점</span><span class="value">단일 스레드, GPU 연동</span></div>
-      <div class="spec-row"><span class="label">핵심 플랫폼</span><span class="value">Vera Rubin NVL72</span></div>
-    </div>
-  </div>
+  
 
   <div class="highlight">
     <strong>핵심 아이러니:</strong> Nvidia Vera도 ARM 아키텍처(v9.2-A) 기반이다. <a class="fc-source" href="https://www.servethehome.com/nvidias-vera-cpu-in-detail-high-perf-chip-takes-aim-at-broader-ai-server-market/" target="_blank">ServeTheHome</a> Nvidia는 ARM에 아키텍처 라이선스 비용을 지불하면서 자기만의 커스텀 CPU를 만든다. 즉 ARM은 자기 아키텍처를 라이선스해준 고객과 같은 시장에서 직접 경쟁하게 된 것이다. 다만 Grace(기성품 Neoverse 코어 사용)와 달리 Vera의 Olympus 코어는 Nvidia가 처음부터 자체 설계한 풀커스텀 코어다.
@@ -1110,7 +1081,45 @@ footer {
 
   <div class="card">
     <h3>서버 CPU 4파전: 스펙·효율·밀도 비교 대시보드</h3>
-    <p style="color:var(--text-muted); margin-bottom:1rem;">2026년 기준 데이터센터 서버 CPU 주요 4개 제품의 핵심 스펙 비교. 동일 전력 예산(36kW 표준 랙) 기준 코어 밀도가 투자 판단의 핵심 변수.</p>
+    
+<div class="compare-grid">
+    <div class="compare-card">
+      <div class="chip-name">ARM AGI CPU</div>
+      <div class="chip-maker">ARM Holdings — 자체 설계 · TSMC 제조</div>
+      <div class="spec-row"><span class="label">코어</span><span class="value">136x Neoverse V3</span></div>
+      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A</span></div>
+      <div class="spec-row"><span class="label">공정</span><span class="value">TSMC N3P (3nm) <a class="fc-source" href="https://fudzilla.com/arm-agi-cpu-is-a-136-core-hardware-chip/" target="_blank">Fudzilla</a></span></div>
+      <div class="spec-row"><span class="label">다이 구성</span><span class="value">듀얼 칩렛 (MCM)</span></div>
+      <div class="spec-row"><span class="label">TDP</span><span class="value">300W (250~430W)</span></div>
+      <div class="spec-row"><span class="label">메모리</span><span class="value">DDR5, 800+ GB/s</span></div>
+      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">6 GB/s</span></div>
+      <div class="spec-row"><span class="label">SMT</span><span class="value">없음 (1T/core)</span></div>
+      <div class="spec-row"><span class="label">강점</span><span class="value">코어 밀도, 에어쿨링</span></div>
+      <div class="spec-row"><span class="label">첫 고객</span><span class="value">Meta</span></div>
+    </div>
+    <div class="compare-card">
+      <div class="chip-name">Nvidia Vera CPU</div>
+      <div class="chip-maker">Nvidia — 커스텀 Olympus 코어</div>
+      <div class="spec-row"><span class="label">코어</span><span class="value">88x Olympus</span></div>
+      <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A (커스텀)</span></div>
+      <div class="spec-row"><span class="label">공정</span><span class="value">비공개</span></div>
+      <div class="spec-row"><span class="label">다이 구성</span><span class="value">모놀리식 + dielets</span></div>
+      <div class="spec-row"><span class="label">TDP</span><span class="value">비공개</span></div>
+      <div class="spec-row"><span class="label">메모리</span><span class="value">LPDDR5X, 1.2 TB/s <a class="fc-source" href="https://developer.nvidia.com/blog/nvidia-vera-cpu-delivers-high-performance-bandwidth-and-efficiency-for-ai-factories/" target="_blank">Nvidia Blog</a></span></div>
+      <div class="spec-row"><span class="label">코어당 BW</span><span class="value">약 14 GB/s</span></div>
+      <div class="spec-row"><span class="label">SMT</span><span class="value">Spatial MT (176 threads) <a class="fc-source" href="https://www.tomshardware.com/pc-components/gpus/nvidia-unveils-details-of-new-88-core-vera-cpus-positioned-to-compete-with-amd-and-intel-new-vera-cpu-rack-features-256-liquid-cooled-chips-that-deliver-up-to-a-6x-gain-in-cpu-throughput" target="_blank">Tom's Hardware</a></span></div>
+      <div class="spec-row"><span class="label">강점</span><span class="value">단일 스레드, GPU 연동</span></div>
+      <div class="spec-row"><span class="label">핵심 플랫폼</span><span class="value">Vera Rubin NVL72</span></div>
+    </div>
+  </div>
+<div class="card">
+    <h3>ARM의 논리: 왜 이 선택을 했나</h3>
+    <p>기존 라이선스 모델의 한계: 칩 가격의 1~2% 로열티로는 AI 인프라 투자 붐에서 나오는 가치의 극히 일부만 가져간다.</p>
+    <p>CEO Rene Haas는 AGI CPU 단독으로 <strong>2031년까지 연 $15B 매출</strong>을 전망하며 <a class="fc-source" href="https://www.hpcwire.com/aiwire/2026/04/01/arm-flexes-with-new-data-center-cpu-for-ai-inference/" target="_blank">HPCwire</a>, 회사 전체 매출을 $25B까지 끌어올리겠다고 발표. FY2025 전체 매출이 $4.0B인 점 감안하면, 라이선스 모델만으로는 불가능한 성장 규모다.</p>
+    <p><strong>제품 로드맵:</strong> 1세대 AGI CPU 발표 완료. 2세대는 이미 완성 단계로 약 1년 내 출시 예정, 3세대 개발도 착수. FY31까지 3개 세대가 동시에 램프되면서 exponential한 매출 성장을 견인할 계획.</p>
+    <p>또한 Meta 같은 하이퍼스케일러는 자체 칩 설계에 엔지니어 1,000명, $500M 예산이 필요한데, 그런 자원이 없는 기업들에게 ARM이 "기성품 ARM CPU"를 제공한다는 포지셔닝.</p>
+  </div>
+<p style="color:var(--text-muted); margin-bottom:1rem;">2026년 기준 데이터센터 서버 CPU 주요 4개 제품의 핵심 스펙 비교. 동일 전력 예산(36kW 표준 랙) 기준 코어 밀도가 투자 판단의 핵심 변수.</p>
     <div style="overflow-x:auto;">
     <table class="data-table">
       <thead>
