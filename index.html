@@ -360,8 +360,8 @@ footer {
   font-style: italic;
 }
 
-    .section-toggle { cursor:pointer; user-select:none; display:flex; align-items:center; gap:0.5rem; font-size:1.1em; }
-    .section-toggle::before { content:'▼'; font-size:0.85rem; color:var(--accent); transition:transform 0.3s ease; }
+    .section-toggle { cursor:pointer; user-select:none; display:flex; align-items:center; gap:0.75rem; font-size:1.4em; padding:0.3rem 0; }
+    .section-toggle::before { content:'▼'; font-size:1rem; color:var(--accent); transition:transform 0.3s ease; }
     .section-toggle.collapsed::before { transform:rotate(-90deg); }
     .sub-toggle { cursor:pointer; user-select:none; position:relative; padding-left:1.2rem; }
     .sub-toggle::before { content:'▾'; position:absolute; left:0; font-size:0.7rem; color:var(--accent); transition:transform 0.3s ease; }
@@ -2190,10 +2190,9 @@ document.querySelectorAll('.card, .compare-card, .risk-card, .img-container, .hi
       });
     });
 
-    // 중분류: section-label (start collapsed)
+    // 중분류: section-label (start open)
     document.querySelectorAll('.section-label').forEach(function(label) {
       label.classList.add('sub-toggle');
-      label.classList.add('collapsed');
       label.style.paddingLeft = '1.2rem';
       var siblings = [];
       var next = label.nextElementSibling;
@@ -2204,9 +2203,9 @@ document.querySelectorAll('.card, .compare-card, .risk-card, .img-container, .hi
       var wrapper = document.createElement('div');
       wrapper.style.overflow = 'hidden';
       wrapper.style.transition = 'max-height 0.4s ease, opacity 0.25s ease';
-      wrapper.style.maxHeight = '0';
-      wrapper.style.opacity = '0';
-      wrapper.dataset.open = 'false';
+      wrapper.style.maxHeight = '999999px';
+      wrapper.style.opacity = '1';
+      wrapper.dataset.open = 'true';
       label.parentNode.insertBefore(wrapper, label.nextSibling);
       siblings.forEach(function(el) { wrapper.appendChild(el); });
       label.addEventListener('click', function() {
