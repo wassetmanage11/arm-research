@@ -431,17 +431,8 @@ footer {
   <div class="section-label" style="margin-top:3rem;">왜 CPU가 다시 중요해졌나</div>
   
 
-  <div class="card">
-    <h3>에이전틱 AI가 CPU 수요를 폭발시킨다</h3>
-    <p>AI 시장이 LLM 학습(training)에서 <strong>에이전틱 AI 추론(inference)</strong>으로 넘어가고 있다. AI 에이전트가 API를 호출하고, 코드를 실행하고, 도구를 조합하는 작업은 GPU가 아니라 CPU가 처리한다.</p>
-    <p>가속기(GPU)는 토큰을 생성하지만, 그 토큰의 관리·스케줄링·라우팅·워크플로 실행은 CPU의 몫이다.</p>
-    <p>사용자당 생성되는 토큰 수가 15배 이상 증가할 수 있다. 에이전트는 사람보다 훨씬 빠르게 요청을 생성하고 24시간 내내 작동하기 때문이다.</p>
-  </div>
-
   
-
-
-  <div class="card" style="padding:1.5rem; overflow-x:auto;">
+<div class="card" style="padding:1.5rem; overflow-x:auto;">
     <h3>에이전틱 AI 시대: CPU 수요의 구조적 증가</h3>
     <p style="color:var(--text-muted); margin-bottom:1.5rem;">GPU 투자가 줄어드는 것이 아니다. GPU/XPU 랙은 여전히 가장 큰 dollar share를 차지하고 투자는 계속 증가한다. 핵심은 CPU가 과소투자되어 있으며, 에이전틱 워크로드가 "추가적인" CPU 수요를 폭발시킨다는 것이다. CPU:GPU 비율이 1:1 수준으로 회귀할 전망. <a class="fc-source" href="https://futurumgroup.com/insights/arms-15-billion-cpu-opportunity-hinges-on-agentic-data-center-design/" target="_blank">Futurum Research</a></p>
     <svg width="100%" viewBox="0 0 680 540" style="max-width:680px; margin:0 auto; display:block;">
@@ -507,141 +498,12 @@ footer {
       <rect x="360" y="492" width="260" height="36" rx="6" fill="#e6f1fb" stroke="#85b7eb" stroke-width="0.5"/>
       <text x="490" y="514" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#0c447c" font-weight="500" dominant-baseline="central">CPU: 30M→120M cores/GW (+4x)</text>
     </svg>
-  </div>
-
-
-  <div class="card" style="padding:1.5rem; overflow-x:auto;">
-    <h3>AI 에이전트 워크플로에서 CPU의 오케스트레이션 역할</h3>
-    <p style="color:var(--text-muted); margin-bottom:1.5rem;">GPU는 토큰 생성만 담당하고, 나머지 전부(스케줄링, KV 캐시 관리, 툴 호출, 데이터 파이프라인, 멀티스텝 루프)는 CPU가 처리한다. 에이전트가 24시간 자율 반복하면서 이 루프가 무한히 돌기 때문에 CPU 수요가 4배 이상 폭발한다.</p>
-    <svg width="100%" viewBox="0 0 680 580" style="max-width:680px; margin:0 auto; display:block;">
-      <defs>
-        <marker id="d1-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </marker>
-      </defs>
-
-      <text x="340" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#7a7a96" font-weight="500" letter-spacing="0.08em" text-transform="uppercase">AGENTIC AI WORKFLOW</text>
-
-      <rect x="255" y="50" width="170" height="40" rx="6" fill="#f0f1f3" stroke="#c8ccd2" stroke-width="0.5"/>
-      <text x="340" y="74" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#1a1a2e" font-weight="500" dominant-baseline="central">User prompt</text>
-
-      <line x1="340" y1="90" x2="340" y2="118" stroke="#1a56db" stroke-width="1" marker-end="url(#d1-arrow)"/>
-
-      <rect x="100" y="118" width="480" height="270" rx="14" fill="rgba(26,86,219,0.03)" stroke="#1a56db" stroke-width="1" stroke-dasharray="none"/>
-      <text x="340" y="142" text-anchor="middle" font-family="Libre Baskerville,serif" font-size="15" fill="#1a56db" font-weight="700">ARM AGI CPU</text>
-      <text x="340" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#4a4a68">Orchestration layer</text>
-
-      <rect x="130" y="176" width="155" height="48" rx="6" fill="#e6f1fb" stroke="#85b7eb" stroke-width="0.5"/>
-      <text x="207" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#0c447c" font-weight="500" dominant-baseline="central">Request routing</text>
-      <text x="207" y="212" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#185fa5" dominant-baseline="central">Scheduling, load balancing</text>
-
-      <rect x="395" y="176" width="155" height="48" rx="6" fill="#e6f1fb" stroke="#85b7eb" stroke-width="0.5"/>
-      <text x="472" y="196" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#0c447c" font-weight="500" dominant-baseline="central">Memory management</text>
-      <text x="472" y="212" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#185fa5" dominant-baseline="central">KV cache, context window</text>
-
-      <line x1="287" y1="200" x2="393" y2="200" stroke="#85b7eb" stroke-width="0.5" marker-end="url(#d1-arrow)"/>
-
-      <rect x="130" y="244" width="155" height="48" rx="6" fill="#e6f1fb" stroke="#85b7eb" stroke-width="0.5"/>
-      <text x="207" y="264" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#0c447c" font-weight="500" dominant-baseline="central">Tool execution</text>
-      <text x="207" y="280" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#185fa5" dominant-baseline="central">API, code, DB queries</text>
-
-      <rect x="395" y="244" width="155" height="48" rx="6" fill="#e6f1fb" stroke="#85b7eb" stroke-width="0.5"/>
-      <text x="472" y="264" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#0c447c" font-weight="500" dominant-baseline="central">Data pipeline</text>
-      <text x="472" y="280" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#185fa5" dominant-baseline="central">Pre/post processing</text>
-
-      <line x1="207" y1="224" x2="207" y2="242" stroke="#85b7eb" stroke-width="0.5" marker-end="url(#d1-arrow)"/>
-      <line x1="472" y1="224" x2="472" y2="242" stroke="#85b7eb" stroke-width="0.5" marker-end="url(#d1-arrow)"/>
-
-      <rect x="200" y="312" width="280" height="48" rx="6" fill="#1a56db" stroke="none" stroke-width="0"/>
-      <text x="340" y="332" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#ffffff" font-weight="500" dominant-baseline="central">Workflow coordination</text>
-      <text x="340" y="348" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.8)" dominant-baseline="central">Multi-step agent loop, 24/7 autonomous</text>
-
-      <line x1="230" y1="292" x2="270" y2="310" stroke="#85b7eb" stroke-width="0.5" marker-end="url(#d1-arrow)"/>
-      <line x1="450" y1="292" x2="410" y2="310" stroke="#85b7eb" stroke-width="0.5" marker-end="url(#d1-arrow)"/>
-
-      <line x1="200" y1="396" x2="130" y2="426" stroke="#c22525" stroke-width="0.8" marker-end="url(#d1-arrow)"/>
-      <line x1="148" y1="426" x2="218" y2="396" stroke="#0f7b3f" stroke-width="0.8" marker-end="url(#d1-arrow)"/>
-      <text x="148" y="416" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#7a7a96">Tokens</text>
-
-      <line x1="340" y1="396" x2="340" y2="426" stroke="#534AB7" stroke-width="0.8" marker-end="url(#d1-arrow)"/>
-      <line x1="345" y1="426" x2="345" y2="396" stroke="#534AB7" stroke-width="0.8" marker-end="url(#d1-arrow)"/>
-      <text x="356" y="416" text-anchor="start" font-family="Inter,sans-serif" font-size="10" fill="#7a7a96">Calls</text>
-
-      <line x1="480" y1="396" x2="550" y2="426" stroke="#5F5E5A" stroke-width="0.8" marker-end="url(#d1-arrow)"/>
-      <line x1="532" y1="426" x2="462" y2="396" stroke="#5F5E5A" stroke-width="0.8" marker-end="url(#d1-arrow)"/>
-      <text x="530" y="416" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#7a7a96">I/O</text>
-
-      <rect x="40" y="430" width="180" height="48" rx="6" fill="#faece7" stroke="#f0997b" stroke-width="0.5"/>
-      <text x="130" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#712b13" font-weight="500" dominant-baseline="central">GPU / accelerator</text>
-      <text x="130" y="466" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#993c1d" dominant-baseline="central">Token generation only</text>
-
-      <rect x="250" y="430" width="180" height="48" rx="6" fill="#eeedfe" stroke="#afa9ec" stroke-width="0.5"/>
-      <text x="340" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#3c3489" font-weight="500" dominant-baseline="central">External tools</text>
-      <text x="340" y="466" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#534ab7" dominant-baseline="central">APIs, DBs, code sandbox</text>
-
-      <rect x="460" y="430" width="180" height="48" rx="6" fill="#f1efe8" stroke="#b4b2a9" stroke-width="0.5"/>
-      <text x="550" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#444441" font-weight="500" dominant-baseline="central">Storage / network</text>
-      <text x="550" y="466" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#5f5e5a" dominant-baseline="central">Data movement, I/O</text>
-
-      <rect x="255" y="516" width="170" height="40" rx="6" fill="#f0f1f3" stroke="#c8ccd2" stroke-width="0.5"/>
-      <text x="340" y="540" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#1a1a2e" font-weight="500" dominant-baseline="central">Response to user</text>
-
-      <line x1="340" y1="478" x2="340" y2="514" stroke="#1a56db" stroke-width="1" marker-end="url(#d1-arrow)"/>
-
-      <path d="M600 360 L640 360 L640 540 L427 540" fill="none" stroke="#b45309" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#d1-arrow)"/>
-      <text x="648" y="446" text-anchor="start" font-family="Inter,sans-serif" font-size="10" fill="#b45309" font-weight="500">Agent</text>
-      <text x="648" y="458" text-anchor="start" font-family="Inter,sans-serif" font-size="10" fill="#b45309" font-weight="500">loop</text>
-    </svg>
-  </div>
-
-  
   
 
+  <p>AI 시장이 LLM 학습(training)에서 <strong>에이전틱 AI 추론(inference)</strong>으로 넘어가고 있다. AI 에이전트가 API를 호출하고, 코드를 실행하고, 도구를 조합하는 작업은 GPU가 아니라 CPU가 처리한다.</p>
+    <p>가속기(GPU)는 토큰을 생성하지만, 그 토큰의 관리·스케줄링·라우팅·워크플로 실행은 CPU의 몫이다.</p>
+    <p>사용자당 생성되는 토큰 수가 15배 이상 증가할 수 있다. 에이전트는 사람보다 훨씬 빠르게 요청을 생성하고 24시간 내내 작동하기 때문이다.</p>
 
-<div class="card">
-    <h3>CPU 병목 테제: 주요 근거와 출처</h3>
-    
-    <p><strong>Georgia Tech & Intel 공동 연구:</strong> 5개 대표 에이전틱 워크로드를 프로파일링한 결과, CPU 측 도구 처리가 전체 레이턴시의 최대 90.6%를 차지. GPU가 할당되어 있지만 유휴 상태인 시간이 에이전트 복잡도에 비례하여 증가. <a class="fc-source" href="https://futurumgroup.com/insights/arms-15-billion-cpu-opportunity-hinges-on-agentic-data-center-design/" target="_blank">Futurum Research</a></p>
-    
-    <p><strong>Anyscale 실증 데이터:</strong> 실제 AI 파이프라인에서 CPU 집약적 단계와 GPU 집약적 단계를 분리(disaggregate)하자 동일 워크로드 대비 GPU 요구량이 8배 감소. GPU가 CPU를 기다리느라 유휴 상태인 것이 가장 비싼 비효율이라는 점을 실증. <a class="fc-source" href="https://futurumgroup.com/insights/arms-15-billion-cpu-opportunity-hinges-on-agentic-data-center-design/" target="_blank">Futurum Research</a></p>
-    
-    <p><strong>Signal65 워크로드 프로파일링:</strong> 워크로드 유형별 CPU/GPU 비중이 스펙트럼으로 분포. 단순 챗봇은 GPU 90~95%, RAG+검색은 CPU 50~75%, 멀티에이전트 오케스트레이션은 CPU 60~70%, SWE-Agent 같은 도구 집약형은 CPU 80~90%. <a class="fc-source" href="https://www.techspot.com/news/111814-arm-changed-rules-building-first-ever-cpu-betting.html" target="_blank">TechSpot / Signal65</a></p>
-    
-    <p><strong>Futurum Research:</strong> CPU:GPU 비율이 AI 클러스터에서 1:1 수준으로 회귀할 전망. CPU 시장 성장률이 2029년까지 34.9%에 달하며 GPU/XPU 성장률을 상회할 것으로 예측. <a class="fc-source" href="https://futurumgroup.com/press-release/can-the-cpu-market-meet-agentic-ai-demand/" target="_blank">Futurum</a></p>
-    
-    <p><strong>AWS-OpenAI $38B 계약 (2025.11):</strong> 공식 발표문에 "수십만 개의 최신 Nvidia GPU와 함께 수천만 개의 CPU로 에이전틱 워크로드를 빠르게 확장"이라고 명시. GPU뿐 아니라 CPU 확보가 이 계약의 핵심 동기 중 하나였음을 시사. <a class="fc-source" href="https://www.uncoveralpha.com/p/the-forgotten-chip-cpus-the-new-bottleneck" target="_blank">Uncover Alpha</a></p>
-    
-    <p><strong>AMD CEO Lisa Su:</strong> "에이전틱 워크플로에서 AI 에이전트가 작업을 스핀오프하면 실제로 많은 전통적 CPU 태스크로 이어진다." 서버 CPU 시장이 2026년에 "strong double digits" 성장할 것으로 전망. EPYC 클라우드 인스턴스가 YoY 50% 이상 증가. <a class="fc-source" href="https://www.uncoveralpha.com/p/the-forgotten-chip-cpus-the-new-bottleneck" target="_blank">Uncover Alpha</a></p>
-    
-    <p><strong>Intel CFO Dave Zinsner:</strong> Intel이 "absolutely constrained" 상태이며 저가 클라이언트 시장을 후순위로 밀어내고 데이터센터 제품에 생산 역량을 집중하고 있다고 인정. 공급이 더 있었다면 매출이 더 높았을 것이라고 발언. <a class="fc-source" href="https://www.uncoveralpha.com/p/the-forgotten-chip-cpus-the-new-bottleneck" target="_blank">Uncover Alpha</a></p>
-    
-    <p><strong>Ben Bajarin (Creative Strategies):</strong> "이 테제는 GPU 수요가 약해진다는 것이 아니다. GPU/XPU 랙이 여전히 가장 큰 dollar share를 차지한다. 그러나 CPU가 AI 인프라에서 과소평가되고 있다는 것이 핵심이다. GPU가 CPU 티어를 기다리느라 유휴 상태가 되는 것은, 클러스터에서 가장 비싼 부분이 가장 저렴한 부분의 부족 때문에 저활용되는 구조." <a class="fc-source" href="https://thediligencestack.com/p/secret-agent-cpu" target="_blank">The Diligence Stack</a></p>
-
-    
-    <p><strong>AWS Graviton 채택 규모:</strong> AWS 상위 1,000 EC2 고객 중 98%가 Graviton을 사용. 3년 연속 AWS에 추가된 신규 CPU 용량의 절반 이상이 Graviton. 최신 Graviton5는 192코어, 3nm 공정으로 전세대 대비 25% 성능 향상. Graviton·Trainium·Nitro를 합산한 Amazon 자체 칩 사업의 연간 매출 런레이트가 $20B 이상이며 YoY 트리플 디짓 성장 중. <a class="fc-source" href="https://www.aboutamazon.com/news/aws/aws-graviton-5-cpu-amazon-ec2" target="_blank">About Amazon</a> <a class="fc-source" href="https://www.nextbigfuture.com/2026/04/amazon-investing-200-billion-into-ai-capex-in-2026-and-making-15-billion-in-ai-revenue.html" target="_blank">NextBigFuture</a></p>
-
-    <p><strong>OpenAI·Anthropic의 CPU 수요:</strong> Uber, Anthropic, OpenAI, Apple 등이 모두 AWS 칩(Graviton + Trainium) 사용을 확대 중. OpenAI-AWS $38B 계약에서는 "수십만 GPU + 수천만 CPU"가 명시되었으며, Anthropic는 AWS Project Rainier에서 100만 개 이상의 Trainium2 칩을 운영하면서 Graviton CPU도 함께 배치. 이들 AI 랩이 Graviton 인스턴스를 통째로 구매 요청할 정도로 CPU 수요가 GPU 못지않게 높다. <a class="fc-source" href="https://techcrunch.com/2026/03/22/an-exclusive-tour-of-amazons-trainium-lab-the-chip-thats-won-over-anthropic-openai-even-apple/" target="_blank">TechCrunch</a> <a class="fc-source" href="https://theaiinsider.tech/2026/04/08/amazon-deepens-ai-infrastructure-push-as-uber-expands-aws-deal-to-adopt-graviton-and-trainium-chips/" target="_blank">The AI Insider</a></p>
-
-    <p><strong>Anthropic의 컴퓨트 전쟁:</strong> Anthropic의 서버 용량이 수요를 따라잡지 못해 유료 고객들이 사용량 제한과 장애를 겪는 상황. CEO Dario Amodei는 "컴퓨트 과잉 구매에 대한 헤지 수단은 지구상에 없다"고 발언. 추론이 2026년 전체 컴퓨트 지출의 2/3를 차지할 전망(2023년 1/3에서 증가)이며, 추론의 핵심 인프라가 CPU 오케스트레이션 레이어. <a class="fc-source" href="https://www.axios.com/2026/04/02/anthropic-usage-limits-openai" target="_blank">Axios</a> <a class="fc-source" href="https://www.datagravity.dev/p/anthropics-compute-advantage-why" target="_blank">DataGravity</a></p>
-
-    
-    <p><strong>AWS Trainium 로드맵과 수요 폭발:</strong></p>
-    <p style="margin-left:1rem; margin-bottom:0.5rem;"><strong>Trainium2:</strong> 대안 GPU 대비 30~40% 가성비 우위. 거의 전량 매진(sold out). Anthropic Claude가 100만 개 이상의 Trn2 칩 위에서 운영 중. Amazon Bedrock 추론 트래픽의 대부분을 처리. <a class="fc-source" href="https://techcrunch.com/2026/03/22/an-exclusive-tour-of-amazons-trainium-lab-the-chip-thats-won-over-anthropic-openai-even-apple/" target="_blank">TechCrunch</a></p>
-    <p style="margin-left:1rem; margin-bottom:0.5rem;"><strong>Trainium3:</strong> 1Q26 출하 시작, 2Q26 양산 본격화. TSMC N3P 공정. Trn2 대비 30~40% 추가 가성비 향상. 이미 거의 전량 예약 완료(nearly fully-subscribed). 2026년 총 출하량 160~170만 개 전망. 에어쿨링 우선 배치로 시장 투입 속도 확보. <a class="fc-source" href="https://www.nextbigfuture.com/2026/04/amazon-investing-200-billion-into-ai-capex-in-2026-and-making-15-billion-in-ai-revenue.html" target="_blank">NextBigFuture</a> <a class="fc-source" href="https://www.digitimes.com/news/a20260213PD201/aws-ai-server-cooling-production-2026.html" target="_blank">Digitimes</a></p>
-    <p style="margin-left:1rem; margin-bottom:0.5rem;"><strong>Trainium4:</strong> GA까지 약 18개월(3Q27 양산 추정). 아직 broad availability 전이지만 이미 상당 물량이 예약 완료. "수요가 너무 많아서 향후 Trainium 랙을 서드파티에 직접 판매할 가능성도 있다"(Andy Jassy). <a class="fc-source" href="https://pro.thestreet.com/portfolio/amazons-200-billion-capex-message-is-a-nice-boost-for-these-2-holdings" target="_blank">TheStreet Pro</a></p>
-
-    <div class="highlight" style="margin-top:0.75rem; margin-bottom:1rem;">
-      <strong>시사점:</strong> Trainium의 폭발적 수요는 GPU 대안 수요만이 아니다. 각 Trainium 랙에는 Graviton CPU가 함께 배치되며(슬레드 = Trainium + Graviton + Nitro), 에이전틱 추론 워크로드 확대 → Trainium 수요 증가 → Graviton CPU 동반 수요 증가의 선순환 구조. AWS 자체 칩 사업(Graviton+Trainium+Nitro) 런레이트 $20B+, YoY 트리플 디짓 성장. 이 중 상당 부분이 ARM 아키텍처 기반(Graviton = ARM Neoverse). <a class="fc-source" href="https://techcrunch.com/2026/03/22/an-exclusive-tour-of-amazons-trainium-lab-the-chip-thats-won-over-anthropic-openai-even-apple/" target="_blank">TechCrunch</a>
-    </div>
-
-    <div class="highlight" style="margin-top:1rem;">
-      <strong>Dell'Oro Group:</strong> 글로벌 데이터센터 CAPEX가 2030년까지 $1.7T 이상으로 전망. GTC 2026의 핵심 메시지는 "최적화와 특화(heterogeneous architecture)"이며, GPU뿐 아니라 CPU, DPU, LPU, 네트워킹, 스토리지까지 풀스택 인프라로 확장되는 추세. <a class="fc-source" href="https://www.delloro.com/from-scale-to-optimization-gtc-2026-signals-the-next-phase-of-ai-infrastructure/" target="_blank">Dell'Oro Group</a>
-    </div>
-  </div>
-
-
-
-  
   <div class="img-container">
     <img src="images/img_001.jpg" alt="Agents token requests 15x of humans">
     <div class="img-caption">Step 1 — 에이전트의 토큰 요청은 인간의 15배 이상. AI 에이전트가 클라우드 CPU를 통해 다수의 에이전트를 생성하고, 각 에이전트가 AI 데이터센터에서 CPU(오케스트레이션) + Accelerator(토큰 생성) 조합으로 작업을 수행. 출처: ARM 공식 자료 (© 2026 Arm)</div>
@@ -657,11 +519,13 @@ footer {
     <div class="img-caption">Step 3 — 해결책: 더 많은 CPU가 필요. 에이전트 플로우의 균형을 맞추기 위해 CPU를 대폭 증설. 같은 전력 예산 안에 4배의 CPU 코어를 넣어야 하는 상황 → ARM AGI CPU의 와트당 효율이 핵심 차별화 포인트. 출처: ARM 공식 자료 (© 2026 Arm)</div>
   </div>
 
-<div class="highlight">
+  <div class="highlight">
     <strong>ARM 추정: CPU 수요가 약 4배 증가</strong> <span class="fc-note fc-note-warn">ARM 추정</span> <a class="fc-source" href="https://www.theregister.com/2026/03/24/arm_agi_cpu/" target="_blank">The Register</a><br>
     데이터센터 1GW당 약 3,000만 코어 → 약 1억 2,000만 코어.<br>
     같은 전력 예산 안에 CPU 코어를 4배 더 넣어야 하는 상황.
   </div>
+</div>
+
 
   <div class="card">
     <h3>실제로 벌어지고 있는 일 (SemiAnalysis / Daytona 기반)</h3>
