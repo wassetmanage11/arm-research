@@ -1097,7 +1097,96 @@ footer {
     </table>
     </div>
     <p class="table-caption">출처: Intel, AMD, Nvidia, ARM 공식 발표, Tom's Hardware, VideoCardz, Fudzilla 기반 종합. Vera CPU 일부 스펙은 비공개로 추정치 포함. 36kW 랙 밀도는 ARM 공식 발표(AGI CPU) 및 업계 추정치 기반.</p>
-  </div>
+  
+    <div style="overflow-x:auto; margin-top:2rem;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="min-width:110px;">항목</th>
+          <th style="min-width:130px;">Intel Xeon 6980P<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Granite Rapids</span></th>
+          <th style="min-width:130px;">AMD EPYC 9965<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Turin Dense</span></th>
+          <th style="min-width:130px;">Nvidia Vera<br><span style="font-weight:400;font-size:0.75em;color:#7a7a96;">Olympus (ARM)</span></th>
+          <th style="min-width:130px;background:rgba(26,86,219,0.04);">ARM AGI CPU<br><span style="font-weight:400;font-size:0.75em;color:#1a56db;">Neoverse V3</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-label">아키텍처</td><td>x86 (Redwood Cove)</td><td>x86 (Zen 5C)</td><td>ARM v9.2-A (커스텀)</td><td>ARM v9.2-A</td></tr>
+        <tr><td class="row-label">공정</td><td>Intel 3</td><td>TSMC N4</td><td>비공개 (N3P 추정)</td><td>TSMC N3P</td></tr>
+        <tr><td class="row-label">코어 수</td><td>128</td><td>192 (384T)</td><td>88 (176T)</td><td>136 (136T)</td></tr>
+        <tr><td class="row-label">TDP</td><td>500W</td><td>500W</td><td>비공개 (약 350W 추정)</td><td>300W (250~430W)</td></tr>
+        <tr><td class="row-label">메모리</td><td>DDR5 12ch MCR</td><td>DDR5 12ch 6000MT/s</td><td>LPDDR5X 1.2TB/s</td><td>DDR5 12ch 8800MT/s</td></tr>
+        <tr><td class="row-label">PCIe</td><td>5.0 x96</td><td>5.0 x128</td><td>NVLink-C2C</td><td>Gen6 x96, CXL 3.0</td></tr>
+        <tr><td class="row-label">코어/와트</td><td>0.26</td><td>0.38</td><td>약 0.40</td><td style="color:#1a56db;font-weight:600;">0.45</td></tr>
+        <tr><td class="row-label">36kW 랙 코어</td><td>약 4,352</td><td>약 6,528</td><td>3,168 (NVL72)</td><td style="color:#1a56db;font-weight:600;">8,160</td></tr>
+        <tr><td class="row-label">가격</td><td>$17,800</td><td>$14,813</td><td>번들</td><td>미공개</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="table-caption">Vera TDP 비공개로 약 350W 추정 적용. 36kW 랙 밀도는 에어쿨링 기준. 출처: Intel, AMD, Nvidia, ARM 공식 발표 종합.</p>
+
+    <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:2rem;">
+      <div style="flex:1; min-width:280px;">
+        <h4 style="font-family:var(--sans); font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem; text-align:center;">Performance / Watt (코어/W)</h4>
+        <div style="position:relative; height:240px;"><canvas id="perfWattChart"></canvas></div>
+      </div>
+      <div style="flex:1; min-width:280px;">
+        <h4 style="font-family:var(--sans); font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem; text-align:center;">36kW 랙 코어 밀도 (x86 Xeon 대비)</h4>
+        <div style="position:relative; height:240px;"><canvas id="densityChart"></canvas></div>
+      </div>
+    </div>
+</div>
+  <script>
+  window.addEventListener("load", function() {
+    new Chart(document.getElementById('perfWattChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Intel Xeon 6980P', 'AMD EPYC 9965', 'Nvidia Vera', 'ARM AGI CPU'],
+        datasets: [{
+          data: [0.26, 0.38, 0.40, 0.45],
+          backgroundColor: ['rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(26,86,219,0.85)'],
+          borderColor: ['#c8ccd2', '#c8ccd2', '#c8ccd2', '#1a56db'],
+          borderWidth: [1, 1, 1, 2],
+          borderRadius: 6, barPercentage: 0.55,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        plugins: { legend: { display: false },
+          tooltip: { backgroundColor:'#1a1a2e', cornerRadius:6, callbacks: { label: function(c) { return c.raw + ' cores/W'; } } }
+        },
+        scales: {
+          x: { grid:{color:'rgba(226,228,232,0.4)',lineWidth:0.5}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#7a7a96'}, border:{display:false}, max:0.55 },
+          y: { grid:{display:false}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#4a4a68'}, border:{color:'#e2e4e8'} }
+        }
+      },
+      plugins: [{ afterDraw: function(chart) { var ctx=chart.ctx,meta=chart.getDatasetMeta(0); ctx.save(); ctx.font="600 11px 'Inter',sans-serif"; meta.data.forEach(function(bar,i){ var v=chart.data.datasets[0].data[i]; ctx.fillStyle=i===3?'#1a56db':'#4a4a68'; ctx.fillText(v.toFixed(2),bar.x+6,bar.y+4); }); ctx.restore(); } }]
+    });
+    new Chart(document.getElementById('densityChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Intel Xeon 6980P', 'AMD EPYC 9965', 'Nvidia Vera', 'ARM AGI CPU'],
+        datasets: [{
+          data: [1.0, 1.50, 0.73, 1.88],
+          backgroundColor: ['rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(200,204,210,0.7)', 'rgba(26,86,219,0.85)'],
+          borderColor: ['#c8ccd2', '#c8ccd2', '#c8ccd2', '#1a56db'],
+          borderWidth: [1, 1, 1, 2],
+          borderRadius: 6, barPercentage: 0.55,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        plugins: { legend: { display: false },
+          tooltip: { backgroundColor:'#1a1a2e', cornerRadius:6, callbacks: { label: function(c) { return c.raw.toFixed(2) + 'x vs Intel Xeon'; } } }
+        },
+        scales: {
+          x: { grid:{color:'rgba(226,228,232,0.4)',lineWidth:0.5}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#7a7a96',callback:function(v){return v.toFixed(1)+'x';}}, border:{display:false}, max:2.2 },
+          y: { grid:{display:false}, ticks:{font:{family:"'Inter',sans-serif",size:10},color:'#4a4a68'}, border:{color:'#e2e4e8'} }
+        }
+      },
+      plugins: [{ afterDraw: function(chart) { var ctx=chart.ctx,meta=chart.getDatasetMeta(0); ctx.save(); ctx.font="600 11px 'Inter',sans-serif"; meta.data.forEach(function(bar,i){ var v=chart.data.datasets[0].data[i]; ctx.fillStyle=i===3?'#1a56db':'#4a4a68'; ctx.fillText(v.toFixed(2)+'x',bar.x+6,bar.y+4); }); ctx.restore(); } }]
+    });
+  });
+  </script>
 
 
   <div class="card">
