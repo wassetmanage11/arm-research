@@ -72,7 +72,7 @@ nav ul a:hover { color: var(--text); background: var(--bg-card); }
   padding: 10rem 2rem 5rem;
   text-align: center;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 .hero::before {
   content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
@@ -126,7 +126,7 @@ section:first-of-type { border-top: none; }
   padding: 2rem;
   margin-bottom: 1.5rem;
   transition: border-color 0.3s;
-  overflow: visible;
+  overflow: hidden;
 }
 .card:hover { border-color: var(--border-accent); }
 
@@ -172,7 +172,7 @@ section:first-of-type { border-top: none; }
 .compare-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 1.5rem; margin: 2rem 0;
-  overflow-x: auto;
+  overflow: hidden;
 }
 @media (max-width: 768px) {
   .compare-grid { grid-template-columns: 1fr; }
@@ -367,12 +367,21 @@ footer {
   font-style: italic;
 }
 
-    .section-toggle { cursor:pointer; user-select:none; display:flex; align-items:center; gap:0.75rem; font-size:1.4em; padding:0.3rem 0; }
-    .section-toggle::before { content:'▼'; font-size:1rem; color:var(--accent); transition:transform 0.3s ease; }
-    .section-toggle.collapsed::before { transform:rotate(-90deg); }
-    .sub-toggle { cursor:pointer; user-select:none; position:relative; padding-left:1.2rem; }
-    .sub-toggle::before { content:'▾'; position:absolute; left:0; font-size:0.7rem; color:var(--accent); transition:transform 0.3s ease; }
-    .sub-toggle.collapsed::before { transform:rotate(-90deg); }
+    
+    
+    
+    
+    
+    
+
+  
+    
+
+  
+    
+    
+    
+    
 
   </style>
 </head>
@@ -1621,95 +1630,75 @@ footer {
 <!-- ═══════════════════════════════════════════ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
-
-/* ─── COLLAPSIBLE TOGGLE SYSTEM ─── */
 document.addEventListener('DOMContentLoaded', function() {
-
-  /* 대분류: section > h2 */
-  document.querySelectorAll('section > div.container > h2, section > h2').forEach(function(h2) {
-    h2.classList.add('section-toggle');
-    var siblings = [];
-    var next = h2.nextElementSibling;
-    while (next) { siblings.push(next); next = next.nextElementSibling; }
-    var wrapper = document.createElement('div');
-    wrapper.className = 'section-content-wrapper';
-    wrapper.style.overflow = 'hidden';
-    wrapper.style.transition = 'max-height 0.5s ease, opacity 0.3s ease';
-    wrapper.style.maxHeight = '999999px';
-    wrapper.style.opacity = '1';
-    wrapper.dataset.open = 'true';
-    h2.parentNode.insertBefore(wrapper, h2.nextSibling);
-    siblings.forEach(function(el) { wrapper.appendChild(el); });
-    h2.addEventListener('click', function() {
-      this.classList.toggle('collapsed');
-      if (wrapper.dataset.open === 'true') {
-        wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.dataset.open = 'false';
-      } else {
-        wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.dataset.open = 'true';
-      }
-    });
-  });
-
-  /* 중분류: section-label (start open) */
-  document.querySelectorAll('.section-label').forEach(function(label) {
-    label.classList.add('sub-toggle');
-    label.style.paddingLeft = '1.2rem';
-    var siblings = [];
-    var next = label.nextElementSibling;
-    while (next && !next.classList.contains('section-label') && next.tagName !== 'SECTION' && !next.classList.contains('section-content-wrapper')) {
-      siblings.push(next); next = next.nextElementSibling;
-    }
-    if (siblings.length === 0) return;
-    var wrapper = document.createElement('div');
-    wrapper.className = 'sub-content-wrapper';
-    wrapper.style.overflow = 'hidden';
-    wrapper.style.transition = 'max-height 0.4s ease, opacity 0.25s ease';
-    wrapper.style.maxHeight = '999999px';
-    wrapper.style.opacity = '1';
-    wrapper.dataset.open = 'true';
-    label.parentNode.insertBefore(wrapper, label.nextSibling);
-    siblings.forEach(function(el) { wrapper.appendChild(el); });
-    label.addEventListener('click', function() {
-      this.classList.toggle('collapsed');
-      if (wrapper.dataset.open === 'true') {
-        wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.dataset.open = 'false';
-      } else {
-        wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.dataset.open = 'true';
-      }
-    });
-  });
-
-  /* 소분류: card h3 (start collapsed) */
-  document.querySelectorAll('.card h3').forEach(function(h3) {
-    h3.classList.add('sub-toggle');
-    h3.classList.add('collapsed');
+  // 소분류 only: card h3 toggle (no wrapper div, just toggle display on siblings)
+  document.querySelectorAll('.card h3:not(.no-toggle)').forEach(function(h3) {
+    h3.style.cursor = 'pointer';
+    h3.style.userSelect = 'none';
+    // Start collapsed
     var siblings = [];
     var next = h3.nextElementSibling;
     while (next) { siblings.push(next); next = next.nextElementSibling; }
-    if (siblings.length === 0) return;
-    var wrapper = document.createElement('div');
-    wrapper.className = 'sub-content-wrapper';
-    wrapper.style.overflow = 'hidden';
-    wrapper.style.transition = 'max-height 0.4s ease, opacity 0.25s ease';
-    wrapper.style.maxHeight = '0';
-    wrapper.style.opacity = '0';
-    wrapper.dataset.open = 'false';
-    h3.parentNode.insertBefore(wrapper, h3.nextSibling);
-    siblings.forEach(function(el) { wrapper.appendChild(el); });
+    siblings.forEach(function(el) { el.style.display = 'none'; });
+    h3.dataset.open = 'false';
+    // Add arrow
+    h3.insertAdjacentHTML('beforebegin', '');
+    h3.style.paddingLeft = '1.2rem';
+    h3.style.position = 'relative';
+    var arrow = document.createElement('span');
+    arrow.textContent = '▶';
+    arrow.style.cssText = 'position:absolute;left:0;font-size:0.65rem;color:#1a56db;transition:transform 0.2s;top:0.35em;';
+    h3.insertBefore(arrow, h3.firstChild);
+    
     h3.addEventListener('click', function() {
-      this.classList.toggle('collapsed');
-      if (wrapper.dataset.open === 'true') {
-        wrapper.style.maxHeight = '0'; wrapper.style.opacity = '0'; wrapper.style.marginTop = '0'; wrapper.dataset.open = 'false';
-        h3.style.marginBottom = '0';
+      if (this.dataset.open === 'false') {
+        siblings.forEach(function(el) { el.style.display = ''; });
+        arrow.style.transform = 'rotate(90deg)';
+        this.dataset.open = 'true';
       } else {
-        wrapper.style.maxHeight = '999999px'; wrapper.style.opacity = '1'; wrapper.style.marginTop = ''; wrapper.dataset.open = 'true';
-        h3.style.marginBottom = '';
+        siblings.forEach(function(el) { el.style.display = 'none'; });
+        arrow.style.transform = 'rotate(0deg)';
+        this.dataset.open = 'false';
       }
     });
   });
 
+  // 중분류: section-label toggle (no wrapper - toggle display on siblings directly)
+  document.querySelectorAll('.section-label').forEach(function(label) {
+    // Skip section number labels (01, 02, 04, 05, 06)
+    if (/^0[1-6]/.test(label.textContent.trim())) return;
+    
+    label.style.cursor = 'pointer';
+    label.style.userSelect = 'none';
+    label.style.paddingLeft = '1.2rem';
+    label.style.position = 'relative';
+    var arrow = document.createElement('span');
+    arrow.textContent = '▼';
+    arrow.style.cssText = 'position:absolute;left:0;font-size:0.6rem;color:#1a56db;transition:transform 0.2s;top:0.3em;';
+    label.insertBefore(arrow, label.firstChild);
+    
+    // Collect siblings until next section-label
+    var siblings = [];
+    var next = label.nextElementSibling;
+    while (next && !next.classList.contains('section-label')) {
+      siblings.push(next);
+      next = next.nextElementSibling;
+    }
+    
+    label.dataset.open = 'true';
+    label.addEventListener('click', function() {
+      if (this.dataset.open === 'true') {
+        siblings.forEach(function(el) { el.style.display = 'none'; });
+        arrow.style.transform = 'rotate(-90deg)';
+        this.dataset.open = 'false';
+      } else {
+        siblings.forEach(function(el) { el.style.display = ''; });
+        arrow.style.transform = 'rotate(0deg)';
+        this.dataset.open = 'true';
+      }
+    });
+  });
 });
-
 </script>
 <script>
 window.addEventListener("load", function() {
