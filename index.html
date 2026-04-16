@@ -1036,7 +1036,6 @@ footer {
     <h3>기존 라이선시와의 긴장 관계</h3>
     <p>ARM vs Qualcomm: Nuvia 인수 건 라이선스 분쟁 → 2025.09 연방법원에서 Qualcomm 최종 승소, 다만 ARM이 2025.10 항소 제기. Qualcomm은 이를 계기로 RISC-V(Ventana 인수)로 듀얼 트랙 전환 중.</p>
     <p>Nvidia: 4Q25에 잔여 ARM 지분 110만 주(약 $140M) 전량 매각(2026.02 SEC 공시). 다만 20년 라이선스 계약은 유지되며 Grace/Vera CPU 모두 ARM 아키텍처 기반을 유지. Jensen Huang은 "수십 년간 라이선시로서 ARM을 지원하겠다"고 발언. $140M은 Nvidia 시가총액 $4.58T 대비 사실상 무의미한 규모로, 관계 악화보다는 포트폴리오 재배분으로 해석. <a class="fc-source" href="https://www.cnbc.com/2026/02/18/arm-nvidia-nokia-ai-stake-shares.html" target="_blank">CNBC</a> <a class="fc-source" href="https://www.tomshardware.com/tech-industry/nvidia-sells-off-final-arm-shares-but-licensing-deals-will-continue-usd140-million-stake-sold-equating-to-1-1-million-shares" target="_blank">Tom's Hardware</a></p>
-    <p><strong>Nvidia 로열티율 하락 리스크:</strong> Grace CPU는 ARM 기성품 Neoverse V2 코어를 사용하여 설계 코어 라이선스(높은 로열티)였으나, Vera CPU에서 Olympus 풀커스텀 코어로 전환하면서 아키텍처 라이선스(낮은 로열티)로 이동. Nvidia가 서버 CPU 시장에서 점유율을 확대할수록, ARM이 수취하는 로열티율은 구조적으로 낮아지는 역설. ARM의 가장 큰 DC 라이선시가 로열티율이 가장 낮은 유형으로 전환하는 셈.</p>
     <p>Qualcomm: 소송 패배 후 2025년 말 RISC-V 설계사 Ventana 인수로 ARM 의존도 축소 — Oryon(ARM) + Ventana(RISC-V) 듀얼 트랙 전략.</p>
   </div>
 
@@ -1350,7 +1349,6 @@ footer {
     <p><strong>스마트폰:</strong> ARM이 이미 100% 시장 점유율을 보유. 핵심 드라이버는 v9 전환 — Android 앱스토어의 AI 지원 앱 중 70%+가 ARM CPU만으로 실행(별도 가속 불필요). 거의 모든 소비자 전자기기가 AI 알고리즘 실행을 위해 v9로 전환할 전망이며, 이는 로열티율 상승(v8→v9 2배)을 구조적으로 견인. <a class="fc-source" href="#">도쿄 IR 브리핑</a></p>
     <p><strong>PC 시장 점유율 확대:</strong> Apple은 100% ARM 기반(M 시리즈). 많은 Chromebook이 ARM 기반. Nvidia가 ARM 기반 PC 칩으로 진출 중. Windows on ARM 생태계가 성숙하면서 x86 독점이 점진적으로 침식되는 구간. ARM CEO Rene Haas 본인이 Nvidia에서 Windows on ARM 사업을 직접 관리한 경력.</p>
     <p><strong>TAM:</strong> Edge AI 시장 $180B(현재) → $250B(FY31), CAGR 약 7%. 시장 성장률은 클라우드보다 낮지만, ARM의 100% 점유율 기반 위에서 v9/CSS 전환에 따른 ASP 상승이 핵심.</p>
-    <p><strong>스마트폰 매출 리스크:</strong> Apple이 AI 기능 강화를 위해 DRAM을 대규모로 쓸어가고 있다는 보도가 나오고 있음. Apple은 ARM의 Top 5 고객이지만 ISA 라이선스만 사용하여 로열티율이 가장 낮은 고객 — Apple이 스마트폰 시장 물량을 더 가져갈수록, ARM 입장에서는 로열티율이 높은 다른 Android OEM(Samsung, MediaTek 등)의 상대적 비중이 줄어드는 구조적 역풍.</p>
   </div>
 
   <div class="card">
@@ -1461,6 +1459,13 @@ footer {
   </div>
 
 <div class="section-label" style="margin-top:3rem;">기타 핵심 리스크</div>
+
+<div class="card">
+    <h3>로열티 구조적 희석 리스크</h3>
+    <p><strong>Nvidia Grace→Vera 전환:</strong> Grace CPU는 ARM 기성품 Neoverse V2 코어를 사용하여 설계 코어 라이선스(높은 로열티)였으나, Vera CPU에서 Olympus 풀커스텀 코어로 전환하면서 아키텍처 라이선스(낮은 로열티)로 이동. Nvidia가 서버 CPU 시장에서 점유율을 확대할수록, ARM이 수취하는 로열티율은 구조적으로 낮아지는 역설. ARM의 가장 큰 DC 라이선시가 로열티율이 가장 낮은 유형으로 전환하는 셈.</p>
+    <p><strong>Apple 스마트폰 시장 지배력 확대:</strong> Apple이 AI 기능 강화를 위해 DRAM을 대규모로 쓸어가고 있다는 보도가 나오고 있음. Apple은 ARM의 Top 5 고객이지만 ISA 라이선스만 사용하여 로열티율이 가장 낮은 고객 — Apple이 스마트폰 시장 물량을 더 가져갈수록, ARM 입장에서는 로열티율이 높은 다른 Android OEM(Samsung, MediaTek 등)의 상대적 비중이 줄어드는 구조적 역풍.</p>
+    <p><strong>공통 패턴:</strong> 데이터센터(Nvidia)든 스마트폰(Apple)이든, ARM 생태계 내에서 가장 큰 고객이 가장 낮은 로열티를 내는 구조. 이들의 시장 지배력이 강화될수록 ARM의 평균 로열티율은 구조적으로 하락 압력을 받게 됨.</p>
+</div>
 
 <div class="card">
     <h3>TSMC N3 캐파 제약: ARM은 후순위 고객</h3>
