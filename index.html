@@ -776,21 +776,7 @@ footer {
     <p>Apple은 ISA 라이선스만 사용하여 자체 설계를 하므로, 엄청난 물량에도 ARM 매출 비중은 한 자릿수에 불과하다.</p>
   </div>
 
-  <div class="card">
-    <h3>고객 세그먼테이션: 누가 AGI CPU를 사고, 누가 안 사는가</h3>
-    <p>ARM의 고객 구조를 정확히 이해하려면 CPU 설계 역량 유무에 따른 세그먼테이션이 핵심이다.</p>
 
-    <p><strong>Tier 1A — 풀커스텀 설계 (아키텍처 라이선스):</strong> Apple, Nvidia(Vera), Qualcomm. ISA만 가져가고 CPU 코어를 완전 자체 설계. 로열티율이 가장 낮음. AGI CPU 구매 유인 없음. Apple이 엄청난 물량에도 ARM 매출에서 한 자릿수 비중인 이유.</p>
-    <p><strong>Tier 1B — 기성품 코어 기반 자체 칩 (설계 코어 라이선스):</strong> AWS(Graviton), Google(Axion), Microsoft(Cobalt). ARM의 Neoverse 기성품 코어를 사용하여 자체 클라우드 전용 칩을 설계. Tier 1A보다 로열티율 높음. 단, 자사 클라우드 내부 전용이라 외부 판매 없음 → AGI CPU 구매 유인 없음. Nvidia도 Grace CPU는 Neoverse V2 기반(Tier 1B)이었으나 Vera에서 커스텀 코어(Tier 1A)로 전환.</p>
-
-    <p><strong>Tier 2 — 자체 설계 일부 보유 (CSS 라이선스):</strong> Samsung, MediaTek, Tesla, Renesas 등. ARM이 설계한 코어+서브시스템을 가져가되 차별화 영역(ISP, 모뎀 등)만 자체 설계. 로열티율이 높고(v9 기준 3~5%, CSS 시 최대 10%), ARM 매출의 핵심 성장 동력. Total Access License 50개, Flexible Access License 318개가 이 세그먼트.</p>
-
-    <p><strong>Tier 3 — 설계 역량 없음 (AGI CPU 직접 구매):</strong> Meta, OpenAI, Cloudflare, SAP, SK Telecom, F5, 네오클라우드(CoreWeave, Lambda, Nebius 등), 엔터프라이즈. 자체 칩 설계팀이 없거나(엔지니어 1,000명+, 예산 $500M 필요) 원하지 않는 기업들. AWS/Google/MS의 커스텀 CPU는 자사 클라우드 내부용일 뿐 외부 판매하지 않으므로, 이 세그먼트에는 "살 수 있는 CPU"가 없었다. ARM AGI CPU의 핵심 타겟.</p>
-
-    <div class="highlight" style="margin-top:1rem;">
-      <strong>Ian Thornton (ARM VP IR, 도쿄 브리핑):</strong> "AWS는 AWS용, Google은 GCP용, MS는 Azure용으로만 칩을 만든다. 외부에 파는 회사가 없다. Meta나 Cloudflare나 SAP 입장에서는 선택지가 없다(there is nobody to sell you a chip). 그리고 이 칩들의 대부분이 이미 ARM 기술 기반이므로, 다른 칩 개발사가 차별화할 여지도 적어서 시장이 underserved 상태였다. ARM에게는 매우 쉽고 매력적인 시장이다."
-    </div>
-  </div>
 
 
 
@@ -907,6 +893,20 @@ footer {
 </table>
 </div>
 <p class="table-caption">출처: <a href="https://www.arm.com/products" target="_blank">ARM 공식 제품 페이지</a> 및 도쿄 IR 브리핑 기반 재구성. 고객 정보는 공개 발표 기준.</p>
+    <h3 class="no-toggle" style="margin-top:2rem;">고객 세그먼테이션: 라이선스 유형별 고객 구조</h3>
+    <p>ARM의 고객 구조를 정확히 이해하려면 CPU 설계 역량 유무에 따른 세그먼테이션이 핵심이다.</p>
+
+    <p><strong>Tier 1A — 풀커스텀 설계 (아키텍처 라이선스):</strong> Apple, Nvidia(Vera), Qualcomm. ISA만 가져가고 CPU 코어를 완전 자체 설계. 로열티율이 가장 낮음. AGI CPU 구매 유인 없음. Apple이 엄청난 물량에도 ARM 매출에서 한 자릿수 비중인 이유.</p>
+    <p><strong>Tier 1B — 기성품 코어 기반 자체 칩 (설계 코어 라이선스):</strong> AWS(Graviton), Google(Axion), Microsoft(Cobalt). ARM의 Neoverse 기성품 코어를 사용하여 자체 클라우드 전용 칩을 설계. Tier 1A보다 로열티율 높음. 단, 자사 클라우드 내부 전용이라 외부 판매 없음 → AGI CPU 구매 유인 없음. Nvidia도 Grace CPU는 Neoverse V2 기반(Tier 1B)이었으나 Vera에서 커스텀 코어(Tier 1A)로 전환.</p>
+
+    <p><strong>Tier 2 — 자체 설계 일부 보유 (CSS 라이선스):</strong> Samsung, MediaTek, Tesla, Renesas 등. ARM이 설계한 코어+서브시스템을 가져가되 차별화 영역(ISP, 모뎀 등)만 자체 설계. 로열티율이 높고(v9 기준 3~5%, CSS 시 최대 10%), ARM 매출의 핵심 성장 동력. Total Access License 50개, Flexible Access License 318개가 이 세그먼트.</p>
+
+    <p><strong>Tier 3 — 설계 역량 없음 (AGI CPU 직접 구매):</strong> Meta, OpenAI, Cloudflare, SAP, SK Telecom, F5, 네오클라우드(CoreWeave, Lambda, Nebius 등), 엔터프라이즈. 자체 칩 설계팀이 없거나(엔지니어 1,000명+, 예산 $500M 필요) 원하지 않는 기업들. AWS/Google/MS의 커스텀 CPU는 자사 클라우드 내부용일 뿐 외부 판매하지 않으므로, 이 세그먼트에는 "살 수 있는 CPU"가 없었다. ARM AGI CPU의 핵심 타겟.</p>
+
+    <div class="highlight" style="margin-top:1rem;">
+      <strong>Ian Thornton (ARM VP IR, 도쿄 브리핑):</strong> "AWS는 AWS용, Google은 GCP용, MS는 Azure용으로만 칩을 만든다. 외부에 파는 회사가 없다. Meta나 Cloudflare나 SAP 입장에서는 선택지가 없다(there is nobody to sell you a chip). 그리고 이 칩들의 대부분이 이미 ARM 기술 기반이므로, 다른 칩 개발사가 차별화할 여지도 적어서 시장이 underserved 상태였다. ARM에게는 매우 쉽고 매력적인 시장이다."
+    </div>
+
 </div>
 
   <div class="section-label" style="margin-top:3rem;">서버 CPU 경쟁 구도</div>
