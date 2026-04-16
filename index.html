@@ -1419,18 +1419,25 @@ footer {
 
   <div class="card">
     <h3>ARM AGI CPU의 실질 TAM 리스크</h3>
-    <p>ARM이 제시하는 $100B+ 데이터센터 CPU TAM은 전체 시장 규모이지만, 실질적으로 AGI CPU가 공략할 수 있는 시장은 이보다 좁을 수 있다:</p>
-    <p><strong>Tier 1(빅테크)은 이탈 불가:</strong> AWS/Google/MS/Apple은 자체 CPU를 보유하며 AGI CPU를 구매할 유인이 없다. 이들이 DC CPU 시장의 상당 부분을 차지.</p>
-    <p><strong>Nvidia 진영 lock-in:</strong> 네오클라우드들은 Nvidia GPU 생태계에 깊이 종속되어 있어, CPU도 Nvidia Vera를 선택할 가능성이 높다. CoreWeave는 Nvidia가 9% 지분을 보유한 사실상의 전략적 파트너. Nvidia는 GPU-CPU-DPU-네트워킹까지 풀스택으로 묶어 판매하는 전략.</p>
-    <p><strong>x86 레거시 수요:</strong> Google-Intel IPU 파트너십이 보여주듯, 호환성·레거시 이유로 x86(Xeon/EPYC)을 유지하는 수요도 상당. 에이전틱 워크로드의 "대부분이 아직 x86에서 실행"(Lisa Su).</p>
-    <p><strong>Nvidia 풀스택 번들 구조:</strong> Vera Rubin NVL72 Pod(72 Rubin GPU + 36 Vera CPU)를 통째로 구매하면 CPU가 이미 포함되어 있어 AGI CPU를 별도로 살 이유가 없다. AI 클라우드 CAPEX의 대부분이 이 풀스택 구매로 흘러가는 현 구조에서, AGI CPU의 실질 기회는 제한적일 수 있다.</p>
-    <p><strong>그럼에도 AGI CPU가 공략할 수 있는 시장:</strong> Nvidia GPU가 아닌 커스텀 ASIC 가속기를 사용하는 기업들. 이들에게는 Vera가 번들로 오지 않으므로, 가속기와 연결할 호스트 CPU를 별도 조달해야 한다. 이때 선택지는 x86(Intel Xeon, AMD EPYC) vs ARM AGI CPU가 된다.</p>
+    <p>ARM이 제시하는 FY31 DC CPU TAM $100B, 그 중 ARM AGI CPU TAM은 $15B를 언급. 그러나 돌이켜 생각해보면, 실질적으로 AGI CPU가 공략할 수 있는 시장은 이보다 좁을 수 있다.</p>
+
+    <p><strong>Tier 1(빅테크 & 하이퍼스케일러)은 이탈 불가:</strong> AWS/Google/MS/Apple은 자체 CPU를 보유하거나 이미 x86 스택 위에 올라가 있으며, 호환성을 고려했을 때 AGI CPU를 구매할 유인이 없다. 이미 이들이 DC CPU 시장의 상당 부분을 차지.</p>
+    <p><strong>x86 레거시 수요:</strong> Google-Intel IPU 파트너십이 보여주듯, 호환성·레거시 이유로 x86(Xeon/EPYC)을 유지하는 수요도 상당. 리사 수(Lisa Su) 피셜 에이전틱 워크로드의 "대부분이 아직 x86에서 실행".</p>
+
+    <p><strong>Tier 2 네오클라우드 = Nvidia 진영 lock-in:</strong> 네오클라우드들은 Nvidia가 투자하고, 그 자금으로 다시 Nvidia Pod를 구매하는 식으로 생태계에 깊이 종속되어 있어 CPU도 Nvidia Vera를 선택할 가능성이 높다. Vera Rubin NVL72 Pod(72 Rubin GPU + 36 Vera CPU)를 통째로 구매하면 CPU가 이미 포함되어 있어 AGI CPU를 별도로 살 이유가 없다. AI 클라우드 CAPEX의 대부분이 이 풀스택 구매로 흘러가는 현 구조에서, AGI CPU의 실질 기회는 제한적.</p>
+
+    <p><strong>AGI CPU가 공략할 수 있는 시장:</strong> 커스텀 ASIC 가속기를 사용하는 기업들. 이들에게는 Vera를 번들로 구매해야만 하는 것이 아니므로, 가속기와 연결할 호스트 CPU를 별도 조달해야 한다. 이때 선택지는 x86(Intel Xeon, AMD EPYC) vs ARM AGI CPU가 된다.</p>
+    <p>실제 현 고객 리스트도 이 정도:</p>
     <p style="margin-left:1rem;">• <strong>Meta</strong> — 자체 MTIA 가속기를 개발·배치 중. AGI CPU의 리드 파트너이자 첫 고객.</p>
     <p style="margin-left:1rem;">• <strong>Cerebras</strong> — 웨이퍼 스케일 가속기. AGI CPU 파트너로 발표.</p>
     <p style="margin-left:1rem;">• <strong>Rebellions, Furiosa</strong> — 한국 AI 반도체 스타트업. 자체 가속기를 개발하되 호스트 CPU는 외부 조달.</p>
-    <p style="margin-left:1rem;">• <strong>Google TPU 생태계</strong> — Axion(자체 ARM CPU)을 보유하고 있으나, 동시에 Intel Xeon도 병행 사용. ARM AGI CPU가 추가 선택지가 될 수 있는 영역.</p>
-    <p style="margin-left:1rem;">• <strong>향후 Broadcom/Marvell ASIC 고객</strong> — OpenAI(Broadcom ASIC 2027+), 기타 하이퍼스케일러가 커스텀 ASIC으로 전환 시, Nvidia Vera 번들에서 벗어나면서 호스트 CPU 선택이 열림.</p>
-    <p><strong>결론:</strong> ARM AGI CPU의 실질 TAM은 "non-Nvidia 가속기 + 호스트 CPU 별도 조달" 세그먼트로 좁혀진다. 이 시장에서 x86(Xeon/EPYC)과의 경쟁이 핵심이며, ARM의 와트당 성능 우위와 Neoverse 생태계 호환성이 차별화 포인트. $15B 타겟 대비 이 시장이 실질적으로 얼마나 되는지는 커스텀 ASIC 전환 속도에 달려 있다.</p>
+    <p style="margin-left:1rem;">• <strong>향후 Broadcom/Marvell ASIC 고객</strong> — OpenAI나 Anthropic이 자체 클라우드를 구축하며 ASIC을 사용한다면 잠재 고객군이 될 수 있는 정도.</p>
+
+    <p>여기에 아직은 아니지만 <strong>RISC-V 진영도 참전하기 시작한다면</strong>, 생각보다 타겟하는 시장이 굉장히 경쟁적일 수 있음.</p>
+
+    <div class="highlight" style="margin-top:1rem;">
+      <strong>결론:</strong> 지금 ARM은 어떻게든 로열티율을 높여 받기 위해, 본인들 고객인 Nvidia와 기타 빅테크 고객들까지 경쟁하는 선택을 두며 참전했다. 뜻대로 이뤄질지는 지켜봐야 할 일.
+    </div>
   </div>
 
 
@@ -1456,10 +1463,10 @@ footer {
     <p style="margin-left:1rem;">2. <strong>Nvidia</strong> — Rubin GPU + Vera CPU. AI 가속기 수요 폭발로 N3P 물량 대규모 확보. GPU가 CPU보다 다이 사이즈가 훨씬 커서 웨이퍼 소비량도 막대.</p>
     <p style="margin-left:1rem;">3. <strong>AMD</strong> — MI350/MI355 AI 가속기 + EPYC Turin Dense(Zen 5C, N3E). Nvidia·Apple과의 경쟁으로 원하는 만큼 캐파 확보가 어렵다는 분석. <a class="fc-source" href="https://x.com/MikeLongTerm/status/1964800047306187256" target="_blank">SemiAnalysis</a></p>
     <p style="margin-left:1rem;">4. <strong>Qualcomm, MediaTek</strong> — 스마트폰 SoC. 나머지 ~40% 캐파의 대부분을 소비.</p>
-    <p style="margin-left:1rem;">5. <strong>ARM AGI CPU</strong> — 35년 역사상 첫 자체 칩. TSMC 입장에서 신규 고객이며, 기존 대형 고객 대비 물량 규모와 계약 이력이 없음. 실질적으로 <strong>후순위 배정</strong>이 될 수밖에 없는 구조.</p>
+    <p style="margin-left:1rem;">5. <strong>ARM AGI CPU</strong> — 35년 역사상 첫 자체 칩. TSMC 입장에서 신규 고객이며, 기존 대형 고객 대비 물량 규모와 계약 이력이 없음. 실질적으로 <strong>후순위 배정</strong>이 될 수밖에 없는 구조. 긴급하면 50% 더 내고 확보하는 수밖에.</p>
 
     <div class="highlight" style="margin-top:1rem;">
-      <strong>투자 관점:</strong> AI 수요(가속기+호스트CPU+네트워킹)가 N3 캐파의 약 60%를 차지하고, 나머지 40%도 스마트폰·소비자향으로 완전 소진. <a class="fc-source" href="https://www.tweaktown.com/news/107923/tsmcs-entire-3nm-and-5nm-production-expected-to-be-100-percent-booked-out-in-2026/index.html" target="_blank">TweakTown</a> ARM AGI CPU의 FY28 본격 생산 시점에 충분한 웨이퍼를 확보할 수 있는지가 $15B 매출 타겟의 물리적 전제 조건. 2027년 N3 캐파가 월 25만 장으로 확대 예정이나, 수요 증가가 공급 확대를 상회할 가능성도 존재. <a class="fc-source" href="https://technode.com/2024/06/12/apple-qualcomm-nvidia-amd-fully-book-tsmcs-3nm-capacity-until-2026/" target="_blank">TechNode</a>
+      <strong>투자 관점:</strong> ARM AGI CPU의 FY28 본격 생산 시점에 충분한 웨이퍼를 확보할 수 있는지가 $15B 매출 타겟의 물리적 전제 조건. 2027년 N3 캐파가 월 25만 장으로 확대 예정이나, 그 또한 앞선 우선순위 기업들에게 먼저 선제적으로 배정될 것. <a class="fc-source" href="https://www.tweaktown.com/news/107923/tsmcs-entire-3nm-and-5nm-production-expected-to-be-100-percent-booked-out-in-2026/index.html" target="_blank">TweakTown</a> <a class="fc-source" href="https://technode.com/2024/06/12/apple-qualcomm-nvidia-amd-fully-book-tsmcs-3nm-capacity-until-2026/" target="_blank">TechNode</a>
     </div>
 </div>
 
