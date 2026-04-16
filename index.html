@@ -709,8 +709,9 @@ footer {
     <h3>라이선스 + 로열티 구조</h3>
     <p>ARM은 35년간 칩을 직접 만든 적이 없었다. 설계도(IP)를 만들어 라이선스료를 받고, 파트너가 그 설계로 칩을 만들어 출하할 때마다 로열티를 받는 구조였다.</p>
     <p><strong>두 가지 라이선스 유형:</strong></p>
-    <p>(1) <strong>ARM 설계 코어 라이선스</strong> — ARM이 설계한 코어(Cortex, Neoverse 등)를 그대로 사용. 삼성, MediaTek 등이 이 방식.</p>
-    <p>(2) <strong>아키텍처 라이선스</strong> — ISA만 라이선스하고 자체 CPU 구현체를 설계. Apple, Nvidia, Qualcomm이 이 방식. 로열티율이 훨씬 낮음(약 1% 전후). 대표적 사례로 Nvidia의 경우 Grace CPU는 ARM 기성품 코어(Neoverse V2)를 그대로 사용했으나, 차세대 Vera CPU에서는 ISA만 가져가고 <strong>Olympus라는 풀커스텀 코어를 자체 설계</strong>하여 아키텍처 라이선스로 전환 — ARM 입장에서는 로열티 수취율이 크게 낮아지는 구조.</p>
+    <p>(1) <strong>설계 코어 라이선스 (TLA)</strong> — ARM이 설계한 코어(Cortex, Neoverse 등)를 그대로 사용. 삼성, MediaTek, AWS(Graviton), Google(Axion), MS(Cobalt) 등이 이 방식. 로열티율이 상대적으로 높음(v9 기준 3~5%, CSS 시 최대 10%).</p>
+    <p>(2) <strong>아키텍처 라이선스 (ALA)</strong> — ISA만 라이선스하고 자체 CPU 코어를 설계. Apple, Qualcomm이 대표적이며 로열티율이 상대적으로 낮음. 정확한 요율은 계약별로 비공개이나, Qualcomm-ARM 소송 과정에서 Nuvia(설계 코어 라이선스)의 로열티율이 Qualcomm 기존 ALA 대비 <strong>"many multiples(수 배)"</strong> 높았다는 법정 문서가 공개되어 양 라이선스 간 격차가 상당함을 확인. <a class="fc-source" href="https://www.tomshardware.com/pc-components/cpus/arm-vs-qualcomm-trial-begins-arm-demands-that-the-patent-infringing-nuvia-designs-be-destroyed" target="_blank">Tom's Hardware</a></p>
+    <p><strong>Nvidia 사례 — 라이선스 전환의 로열티 영향:</strong> Grace CPU는 ARM 기성품 코어(Neoverse V2)를 그대로 사용하여 설계 코어 라이선스(높은 로열티)였으나, 차세대 Vera CPU에서는 ISA만 가져가고 <strong>Olympus라는 풀커스텀 코어를 자체 설계</strong>하여 아키텍처 라이선스로 전환. Nvidia는 20년 ALA를 보유. <a class="fc-source" href="https://www.tomshardware.com/news/nvidia-big-cpu-plans-with-20-year-arm-license" target="_blank">Tom's Hardware</a> ARM 입장에서는 동일 고객으로부터의 로열티 수취율이 구조적으로 낮아지는 리스크.</p>
     <div class="highlight">
       아키텍처 라이선스의 핵심 규칙: 고객이 고유 명령어를 추가하여 ARM 호환성을 깨뜨리는 것은 금지. 소프트웨어 호환성 보호가 ARM의 "슈퍼파워"다. 과거에는 많은 고객이 자체 설계를 선택했으나, 현재는 ROI가 낮고(5~15% 이점에 300~400명 엔지니어 필요) 대부분 ARM 기성품 코어를 구매한다.
     </div>
@@ -851,7 +852,6 @@ footer {
     <p><strong>x86:</strong> Intel (Xeon, Clearwater Forest 준비 중), AMD (EPYC Turin)</p>
     <p><strong>ARM 기반:</strong> Nvidia Vera, ARM AGI CPU, AWS Graviton (5세대, 192 Neoverse V3 코어), Google Axion (Neoverse N3), Microsoft Cobalt 200 (CSS V3)</p>
     <p><strong>기타:</strong> RISC-V (Tenstorrent 등 부상 중)</p>
-    <p>Bank of America는 서버 CPU 시장이 2025년 $27B → 2030년 $60B로 성장 전망. <a class="fc-source" href="https://www.cnbc.com/2026/03/13/nvidia-gtc-ai-jensen-huang-cpu-gpu.html" target="_blank">CNBC</a></p>
   </div>
 
 
@@ -1385,7 +1385,8 @@ footer {
     <h3>고객 세그먼테이션: 누가 AGI CPU를 사고, 누가 안 사는가</h3>
     <p>ARM의 고객 구조를 정확히 이해하려면 CPU 설계 역량 유무에 따른 세그먼테이션이 핵심이다.</p>
 
-    <p><strong>Tier 1 — 자체 설계 역량 보유 (ISA/아키텍처 라이선스):</strong> Apple, AWS(Graviton), Google(Axion), Microsoft(Cobalt), Nvidia(Vera). 이들은 ARM ISA만 가져가고 자체 CPU를 설계한다. 로열티율이 가장 낮고(약 1% 전후), CSS나 AGI CPU를 구매할 유인이 거의 없다. Apple이 엄청난 ARM 기반 칩 물량에도 ARM 매출에서 한 자릿수 비중인 이유.</p>
+    <p><strong>Tier 1A — 풀커스텀 설계 (아키텍처 라이선스):</strong> Apple, Nvidia(Vera), Qualcomm. ISA만 가져가고 CPU 코어를 완전 자체 설계. 로열티율이 가장 낮음. AGI CPU 구매 유인 없음. Apple이 엄청난 물량에도 ARM 매출에서 한 자릿수 비중인 이유.</p>
+    <p><strong>Tier 1B — 기성품 코어 기반 자체 칩 (설계 코어 라이선스):</strong> AWS(Graviton), Google(Axion), Microsoft(Cobalt). ARM의 Neoverse 기성품 코어를 사용하여 자체 클라우드 전용 칩을 설계. Tier 1A보다 로열티율 높음. 단, 자사 클라우드 내부 전용이라 외부 판매 없음 → AGI CPU 구매 유인 없음. Nvidia도 Grace CPU는 Neoverse V2 기반(Tier 1B)이었으나 Vera에서 커스텀 코어(Tier 1A)로 전환.</p>
 
     <p><strong>Tier 2 — 자체 설계 일부 보유 (CSS 라이선스):</strong> Samsung, MediaTek, Tesla, Renesas 등. ARM이 설계한 코어+서브시스템을 가져가되 차별화 영역(ISP, 모뎀 등)만 자체 설계. 로열티율이 높고(v9 기준 3~5%, CSS 시 최대 10%), ARM 매출의 핵심 성장 동력. Total Access License 50개, Flexible Access License 318개가 이 세그먼트.</p>
 
