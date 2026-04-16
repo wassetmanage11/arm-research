@@ -1518,10 +1518,10 @@ footer {
       <div class="chip-maker">Nvidia — 커스텀 Olympus 코어</div>
       <div class="spec-row"><span class="label">코어</span><span class="value">88x Olympus</span></div>
       <div class="spec-row"><span class="label">아키텍처</span><span class="value">Armv9.2-A (커스텀)</span></div>
-      <div class="spec-row"><span class="label">공정</span><span class="value">비공개</span></div>
+      <div class="spec-row"><span class="label">공정</span><span class="value">TSMC N3P (3nm) <a class="fc-source" href="https://www.servethehome.com/nvidias-vera-cpu-in-detail-high-perf-chip-takes-aim-at-broader-ai-server-market/" target="_blank">ServeTheHome</a></span></div>
       <div class="spec-row"><span class="label">다이 구성</span><span class="value">모놀리식 + dielets</span></div>
       <div class="spec-row"><span class="label">TDP</span><span class="value">비공개</span></div>
-      <div class="spec-row"><span class="label">메모리</span><span class="value">LPDDR5X, 1.2 TB/s <a class="fc-source" href="https://developer.nvidia.com/blog/nvidia-vera-cpu-delivers-high-performance-bandwidth-and-efficiency-for-ai-factories/" target="_blank">Nvidia Blog</a></span></div>
+      <div class="spec-row"><span class="label">메모리</span><span class="value">SOCAMM2 LPDDR5X, 1.2 TB/s <a class="fc-source" href="https://developer.nvidia.com/blog/nvidia-vera-cpu-delivers-high-performance-bandwidth-and-efficiency-for-ai-factories/" target="_blank">Nvidia Blog</a></span></div>
       <div class="spec-row"><span class="label">코어당 BW</span><span class="value">약 14 GB/s</span></div>
       <div class="spec-row"><span class="label">SMT</span><span class="value">Spatial MT (176 threads) <a class="fc-source" href="https://www.tomshardware.com/pc-components/gpus/nvidia-unveils-details-of-new-88-core-vera-cpus-positioned-to-compete-with-amd-and-intel-new-vera-cpu-rack-features-256-liquid-cooled-chips-that-deliver-up-to-a-6x-gain-in-cpu-throughput" target="_blank">Tom's Hardware</a></span></div>
       <div class="spec-row"><span class="label">강점</span><span class="value">단일 스레드, GPU 연동</span></div>
@@ -1551,16 +1551,16 @@ footer {
       </thead>
       <tbody>
         <tr><td class="row-label">아키텍처</td><td>x86 (Redwood Cove)</td><td>x86 (Zen 5C)</td><td>ARM v9.2-A (커스텀)</td><td>ARM v9 (Neoverse V2)</td><td>ARM v9.2-A (Neoverse V3)</td></tr>
-        <tr><td class="row-label">공정</td><td>Intel 3</td><td>TSMC N4</td><td>비공개 (N3P 추정)</td><td>TSMC N4</td><td>TSMC N3P</td></tr>
+        <tr><td class="row-label">공정</td><td>Intel 3</td><td>TSMC N3E (3nm)</td><td>TSMC N3P (3nm)</td><td>TSMC N4 추정</td><td>TSMC N3P (3nm)</td></tr>
         <tr><td class="row-label">코어 수</td><td>128</td><td>192</td><td>88</td><td>96</td><td>136</td></tr>
         <tr><td class="row-label">Thread 수</td><td>256 (HT)</td><td>384 (SMT)</td><td>176 (Spatial MT)</td><td>N/A (1T/core)</td><td>136 (1T/core)</td></tr>
         <tr><td class="row-label">TDP</td><td>500W</td><td>500W</td><td>비공개 (약 350W 추정)</td><td>비공개</td><td>300W (250~430W)</td></tr>
-        <tr><td class="row-label">메모리 대역폭</td><td>845 GB/s</td><td>614 GB/s</td><td style="color:#1a56db;font-weight:600;">1,200 GB/s</td><td>538 GB/s</td><td>800+ GB/s</td></tr>
+        <tr><td class="row-label">메모리 대역폭</td><td>845 GB/s</td><td>614 GB/s</td><td style="color:#1a56db;font-weight:600;">1,200 GB/s</td><td>537.6 GB/s</td><td>800+ GB/s</td></tr>
         <tr><td class="row-label">코어당 대역폭</td><td>6.6 GB/s</td><td>3.2 GB/s</td><td style="color:#1a56db;font-weight:600;">약 14 GB/s</td><td>5.6 GB/s</td><td>6 GB/s</td></tr>
         <tr><td class="row-label">대표 I/O</td><td>PCIe 5.0 (378 GB/s)</td><td>PCIe 5.0 (504 GB/s)</td><td style="color:#1a56db;font-weight:600;">NVLink-C2C (1.8 TB/s)</td><td>PCIe 5.0 (378 GB/s)</td><td>PCIe Gen6, CXL 3.0</td></tr>
-        <tr><td class="row-label">메모리 타입</td><td>DDR5 MCR DIMM</td><td>DDR5 6000MT/s</td><td>SOCAMM LPDDR5X</td><td>DDR5</td><td>DDR5 8800MT/s</td></tr>
+        <tr><td class="row-label">메모리 타입</td><td>DDR5 MCR DIMM</td><td>DDR5 6400MT/s</td><td>SOCAMM2 LPDDR5X</td><td>DDR5</td><td>DDR5 8800MT/s</td></tr>
         <tr><td class="row-label">코어/와트</td><td>0.26</td><td>0.38</td><td>약 0.40</td><td>N/A</td><td style="color:#1a56db;font-weight:600;">0.45</td></tr>
-        <tr><td class="row-label">36kW 랙 코어</td><td>약 4,352</td><td>약 6,528</td><td>3,168 (NVL72)</td><td>N/A (AWS 전용)</td><td style="color:#1a56db;font-weight:600;">8,160</td></tr>
+        <tr><td class="row-label">36kW 랙 코어</td><td>약 4,352</td><td>약 6,528</td><td>3,168 (NVL72, 120kW+)</td><td>N/A (AWS 전용)</td><td style="color:#1a56db;font-weight:600;">8,160</td></tr>
         <tr><td class="row-label">설계 철학</td><td>범용 고성능</td><td>코어 수 극대화</td><td>코어당 BW 극대화</td><td>클라우드 범용 효율</td><td>코어 밀도·에너지 효율</td></tr>
         <tr><td class="row-label">주요 고객</td><td>Google, 엔터프라이즈</td><td>Meta, AWS, 범용</td><td>CoreWeave, 네오클라우드</td><td>AWS EC2 전용</td><td>Meta, Cerebras, SAP</td></tr>
         <tr><td class="row-label">가격</td><td>$17,800</td><td>$14,813</td><td>번들</td><td>AWS 내부용</td><td>미공개</td></tr>
