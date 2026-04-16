@@ -766,6 +766,11 @@ footer {
     <h3 class="no-toggle" style="margin-top:2rem;">로열티율의 구조적 상승</h3>
     <p>ARM v9 채택 확대로 로열티율이 구조적으로 상승하고 있다. 데이터센터와 하이엔드 스마트폰 시장은 v9 전환이 거의 완료되었다.</p>
     <p>기존 v8 시대 로열티율 약 1% → v9 도입 후 3~5%까지 상승. 설계 완제품(CSS) 형태의 경우 최대 10%까지 가능하다.</p>
+    <h3 class="no-toggle" style="margin-top:2rem;">소프트웨어 생태계의 해자</h3>
+    <p>ARM 개발자 2,200만 명 이상, 누적 15억+ 시간의 ARM 소프트웨어 개발 투자. v8에 약 $1B, v9에 약 $3B의 자체 소프트웨어 투자. AWS 상위 1,000 고객 중 99%+가 일부 워크로드를 ARM에서 실행.</p>
+    <p><strong>TAL(Total Access License):</strong> 상위 50개 고객 중 30개만 구독 라이선스 체결. 나머지 20개도 향후 가입 전망 → 라이선스 매출 성장 여력.</p>
+    <p><strong>SoftBank/Ampere/Graphcore 관계:</strong> AGI CPU는 순수 ARM 이니셔티브로, SoftBank 산하 Ampere(약 1,000명)·Graphcore(약 500명)와는 완전히 별개 프로젝트.</p>
+
   </div>
 
   <div class="card">
@@ -774,6 +779,23 @@ footer {
     <p>ARM China는 실질적으로 독립적인 회사(ARM 지분 4.8%)로, ARM의 중국 지역 서브라이선싱을 담당한다. 미중 갈등 때마다 리스크 요인으로 부각된다.</p>
     <p>Apple은 ISA 라이선스만 사용하여 자체 설계를 하므로, 엄청난 물량에도 ARM 매출 비중은 한 자릿수에 불과하다.</p>
   </div>
+
+  <div class="card">
+    <h3>고객 세그먼테이션: 누가 AGI CPU를 사고, 누가 안 사는가</h3>
+    <p>ARM의 고객 구조를 정확히 이해하려면 CPU 설계 역량 유무에 따른 세그먼테이션이 핵심이다.</p>
+
+    <p><strong>Tier 1A — 풀커스텀 설계 (아키텍처 라이선스):</strong> Apple, Nvidia(Vera), Qualcomm. ISA만 가져가고 CPU 코어를 완전 자체 설계. 로열티율이 가장 낮음. AGI CPU 구매 유인 없음. Apple이 엄청난 물량에도 ARM 매출에서 한 자릿수 비중인 이유.</p>
+    <p><strong>Tier 1B — 기성품 코어 기반 자체 칩 (설계 코어 라이선스):</strong> AWS(Graviton), Google(Axion), Microsoft(Cobalt). ARM의 Neoverse 기성품 코어를 사용하여 자체 클라우드 전용 칩을 설계. Tier 1A보다 로열티율 높음. 단, 자사 클라우드 내부 전용이라 외부 판매 없음 → AGI CPU 구매 유인 없음. Nvidia도 Grace CPU는 Neoverse V2 기반(Tier 1B)이었으나 Vera에서 커스텀 코어(Tier 1A)로 전환.</p>
+
+    <p><strong>Tier 2 — 자체 설계 일부 보유 (CSS 라이선스):</strong> Samsung, MediaTek, Tesla, Renesas 등. ARM이 설계한 코어+서브시스템을 가져가되 차별화 영역(ISP, 모뎀 등)만 자체 설계. 로열티율이 높고(v9 기준 3~5%, CSS 시 최대 10%), ARM 매출의 핵심 성장 동력. Total Access License 50개, Flexible Access License 318개가 이 세그먼트.</p>
+
+    <p><strong>Tier 3 — 설계 역량 없음 (AGI CPU 직접 구매):</strong> Meta, OpenAI, Cloudflare, SAP, SK Telecom, F5, 네오클라우드(CoreWeave, Lambda, Nebius 등), 엔터프라이즈. 자체 칩 설계팀이 없거나(엔지니어 1,000명+, 예산 $500M 필요) 원하지 않는 기업들. AWS/Google/MS의 커스텀 CPU는 자사 클라우드 내부용일 뿐 외부 판매하지 않으므로, 이 세그먼트에는 "살 수 있는 CPU"가 없었다. ARM AGI CPU의 핵심 타겟.</p>
+
+    <div class="highlight" style="margin-top:1rem;">
+      <strong>Ian Thornton (ARM VP IR, 도쿄 브리핑):</strong> "AWS는 AWS용, Google은 GCP용, MS는 Azure용으로만 칩을 만든다. 외부에 파는 회사가 없다. Meta나 Cloudflare나 SAP 입장에서는 선택지가 없다(there is nobody to sell you a chip). 그리고 이 칩들의 대부분이 이미 ARM 기술 기반이므로, 다른 칩 개발사가 차별화할 여지도 적어서 시장이 underserved 상태였다. ARM에게는 매우 쉽고 매력적인 시장이다."
+    </div>
+  </div>
+
 
 
 
@@ -1297,21 +1319,7 @@ footer {
 
   
   
-  <div class="card">
-    <h3>고객 세그먼테이션: 누가 AGI CPU를 사고, 누가 안 사는가</h3>
-    <p>ARM의 고객 구조를 정확히 이해하려면 CPU 설계 역량 유무에 따른 세그먼테이션이 핵심이다.</p>
-
-    <p><strong>Tier 1A — 풀커스텀 설계 (아키텍처 라이선스):</strong> Apple, Nvidia(Vera), Qualcomm. ISA만 가져가고 CPU 코어를 완전 자체 설계. 로열티율이 가장 낮음. AGI CPU 구매 유인 없음. Apple이 엄청난 물량에도 ARM 매출에서 한 자릿수 비중인 이유.</p>
-    <p><strong>Tier 1B — 기성품 코어 기반 자체 칩 (설계 코어 라이선스):</strong> AWS(Graviton), Google(Axion), Microsoft(Cobalt). ARM의 Neoverse 기성품 코어를 사용하여 자체 클라우드 전용 칩을 설계. Tier 1A보다 로열티율 높음. 단, 자사 클라우드 내부 전용이라 외부 판매 없음 → AGI CPU 구매 유인 없음. Nvidia도 Grace CPU는 Neoverse V2 기반(Tier 1B)이었으나 Vera에서 커스텀 코어(Tier 1A)로 전환.</p>
-
-    <p><strong>Tier 2 — 자체 설계 일부 보유 (CSS 라이선스):</strong> Samsung, MediaTek, Tesla, Renesas 등. ARM이 설계한 코어+서브시스템을 가져가되 차별화 영역(ISP, 모뎀 등)만 자체 설계. 로열티율이 높고(v9 기준 3~5%, CSS 시 최대 10%), ARM 매출의 핵심 성장 동력. Total Access License 50개, Flexible Access License 318개가 이 세그먼트.</p>
-
-    <p><strong>Tier 3 — 설계 역량 없음 (AGI CPU 직접 구매):</strong> Meta, OpenAI, Cloudflare, SAP, SK Telecom, F5, 네오클라우드(CoreWeave, Lambda, Nebius 등), 엔터프라이즈. 자체 칩 설계팀이 없거나(엔지니어 1,000명+, 예산 $500M 필요) 원하지 않는 기업들. AWS/Google/MS의 커스텀 CPU는 자사 클라우드 내부용일 뿐 외부 판매하지 않으므로, 이 세그먼트에는 "살 수 있는 CPU"가 없었다. ARM AGI CPU의 핵심 타겟.</p>
-
-    <div class="highlight" style="margin-top:1rem;">
-      <strong>Ian Thornton (ARM VP IR, 도쿄 브리핑):</strong> "AWS는 AWS용, Google은 GCP용, MS는 Azure용으로만 칩을 만든다. 외부에 파는 회사가 없다. Meta나 Cloudflare나 SAP 입장에서는 선택지가 없다(there is nobody to sell you a chip). 그리고 이 칩들의 대부분이 이미 ARM 기술 기반이므로, 다른 칩 개발사가 차별화할 여지도 적어서 시장이 underserved 상태였다. ARM에게는 매우 쉽고 매력적인 시장이다."
-    </div>
-  </div>
+  
 
   <div class="img-container">
     <img src="images/img_019.jpg" alt="ARM AGI CPU Diverse customer demand">
@@ -1319,25 +1327,6 @@ footer {
   </div>
 
 
-
-<div class="section-label" style="margin-top:2rem;">성장 기회</div>
-<div class="risk-grid">
-<div class="risk-card">
-      <span class="tag opp">Opportunity</span>
-      <h4>TAM 확대</h4>
-      <p>서버 CPU 시장 $27B→$60B(2030). 에이전틱 AI로 CPU 수요 4배 증가 전망. AGI CPU 단독 $15B(2031) 목표.</p>
-    </div>
-<div class="risk-card">
-      <span class="tag opp">Opportunity</span>
-      <h4>데이터센터 ARM 전환</h4>
-      <p>AWS Graviton, Google Axion, MS Cobalt 등 하이퍼스케일러가 이미 ARM 기반 커스텀 CPU를 대규모 도입. x86 대비 40% 비용 효율성.</p>
-    </div>
-<div class="risk-card">
-      <span class="tag opp">Opportunity</span>
-      <h4>엣지 & IoT 성장</h4>
-      <p>자동차, 웨어러블, AR 헤드셋 등 모든 성장 엔드마켓이 ARM 기반. 반도체 시장 2020년대 말 $1T 전망.</p>
-    </div>
-</div>
 
   <div class="card">
     <h3>Physical AI: 자동차 & 로보틱스</h3>
@@ -1372,37 +1361,7 @@ footer {
 
 
 
-
-
-
   
-
-  
-
-  
-<p class="table-caption" style="margin-top:0.5rem;"><strong>라이선스 기반 확대:</strong> Total Access License 수가 10→50개(5배), Flexible Access License 수가 190→318개로 꾸준히 증가. ARM 생태계의 저변 확대를 보여주는 긍정적 선행지표.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>Related Party 매출 급증:</strong> SoftBank 그룹 관련 매출이 FY2025 들어 분기 $222M~$338M 수준으로 급증. Ampere 인수 및 SoftBank AI 인프라 투자와 연관된 거래로 추정. 매출 품질(sustainability) 모니터링 필요.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>RPO 감소:</strong> 잔여 이행 의무(RPO)가 1Q24 $2,484M 피크 후 4Q25 $2,148M으로 YoY -7.6% 감소. 라이선스 딜 파이프라인의 선행지표로서 모멘텀 둔화 시사.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>마진 구조:</strong> GPM 97%대로 업계 최고 수준 유지. 다만 AGI CPU 직접 판매가 본격화되면 칩 매출의 GM은 40~50% 수준이므로 블렌디드 마진 하락 불가피 — MS 다운그레이드의 핵심 논점 중 하나.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>CAPEX 급등:</strong> FY2025 들어 CAPEX % of Sales가 6%→14%대로 급등. 칩 직접 제조를 위한 선행 투자(TSMC 웨이퍼 커밋, 서버 레퍼런스 디자인 등)가 반영된 것으로 추정.</p>
-<p class="table-caption" style="margin-top:0.5rem;"><strong>매출 성장:</strong> FY2025 연간 $4.0B(YoY +24%). 사상 최초 분기 $1B 돌파(4Q25 $1,242M). 다만 YoY 성장률은 33.7%(1Q25) → 26.3%(4Q25)으로 둔화 추세.</p>
-
-<div class="card">
-    <h3>기타 주요 발언</h3>
-    <p><strong>소프트웨어 생태계:</strong> ARM 개발자 2,200만 명 이상, 누적 15억+ 시간의 ARM 소프트웨어 개발 투자. v8에 약 $1B, v9에 약 $3B의 자체 소프트웨어 투자. AWS 상위 1,000 고객 중 99%+가 일부 워크로드를 ARM에서 실행.</p>
-    <p><strong>자동차:</strong> 한 OEM이 1세대 자율주행차에 433개 ARM 코어 배치 <a class="fc-source" href="#">도쿄 IR 브리핑</a> → 차량당 로열티 $100~$200 발생. 로보택시 올해 약 10,000대 → 2020년대 말 1,000만대+ 전망.</p>
-    <p><strong>Edge AI:</strong> Android 앱스토어의 AI 지원 앱 중 70%+가 ARM CPU만으로 실행(별도 가속 불필요). v9는 엣지 AI 가속에 필수 → 거의 모든 소비자 전자기기가 v9로 전환 전망.</p>
-    <p><strong>Chiplet 표준화:</strong> 30년 전 IP 표준을 만들었듯이, 이제 칩렛 간 표준 인터페이스를 만들려는 initiative 진행 중. CPU 칩렛(ARM) + 가속기 칩렛(Nvidia/Rebellions 등) + IO 칩렛을 하나의 패키지에 통합하는 미래.</p>
-    <p><strong>SoftBank/Ampere/Graphcore 관계:</strong> AGI CPU는 순수 ARM 이니셔티브로, SoftBank 산하 Ampere(약 1,000명)·Graphcore(약 500명)와는 완전히 별개 프로젝트. 이들이 무엇을 개발 중인지는 별도 발표 예정.</p>
-    <p><strong>TAL(Total Access License):</strong> 상위 50개 고객 중 30개만 구독 라이선스 체결. 나머지 20개도 향후 가입 전망 → 라이선스 매출 성장 여력.</p>
-  </div>
-
-  <div class="card">
-    <h3>CEO 인터뷰: 스타게이트·OpenAI·애플 (Bloomberg, 2026.04)</h3>
-    <p><strong>스타게이트 프로젝트:</strong> 동력을 잃고 있다는 보도에 대해 Haas는 <strong>"전혀 우려하지 않는다"</strong>고 일축. 스타게이트는 복잡한 프로그램이지만 관련 부정적 보도는 다소 과장(overblown)된 것으로 판단. 소프트뱅크는 최근 OpenAI 라운드에 대규모 투자를 단행했으며, OpenAI의 성장 잠재력은 사실상 무한(unbounded)하고 컴퓨트 자원이 유일한 제약 요인이라고 평가. <a class="fc-source" href="https://youtube.com/watch?v=3PagB-dU79I" target="_blank">Bloomberg Technology</a></p>
-    <p><strong>애플과 AI 경쟁:</strong> 애플이 AI 레이스에서 뒤처졌는지에 대해 "아직 너무 이르다"고 답변. AI 경쟁은 아직 초기 단계에 불과.</p>
-    <p><strong>AI와 생산성:</strong> Arm 내부에서도 AI를 적극 활용하여 제품 설계 속도를 높이고 있으나, 현재 Arm의 최대 제약 요인은 엔지니어 수이며 AI가 이를 완전히 대체하지는 못한 상태. 리더십 회의에서 "X를 하고 싶은데 인력이 부족하다"는 아이디어가 넘치는 상황.</p>
-  </div>
 </div>
 </section>
 
