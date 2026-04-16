@@ -709,7 +709,7 @@ footer {
     <p>ARM은 35년간 칩을 직접 만든 적이 없었다. 설계도(IP)를 만들어 라이선스료를 받고, 파트너가 그 설계로 칩을 만들어 출하할 때마다 로열티를 받는 구조였다.</p>
     <p><strong>두 가지 라이선스 유형:</strong></p>
     <p>(1) <strong>ARM 설계 코어 라이선스</strong> — ARM이 설계한 코어(Cortex, Neoverse 등)를 그대로 사용. 삼성, MediaTek 등이 이 방식.</p>
-    <p>(2) <strong>아키텍처 라이선스</strong> — ISA만 라이선스하고 자체 CPU 구현체를 설계. Apple, Nvidia(Olympus 코어), Qualcomm이 이 방식. 로열티율이 훨씬 낮음(약 1% 전후).</p>
+    <p>(2) <strong>아키텍처 라이선스</strong> — ISA만 라이선스하고 자체 CPU 구현체를 설계. Apple, Nvidia, Qualcomm이 이 방식. 로열티율이 훨씬 낮음(약 1% 전후). 대표적 사례로 Nvidia의 경우 Grace CPU는 ARM 기성품 코어(Neoverse V2)를 그대로 사용했으나, 차세대 Vera CPU에서는 ISA만 가져가고 <strong>Olympus라는 풀커스텀 코어를 자체 설계</strong>하여 아키텍처 라이선스로 전환 — ARM 입장에서는 로열티 수취율이 크게 낮아지는 구조.</p>
     <div class="highlight">
       아키텍처 라이선스의 핵심 규칙: 고객이 고유 명령어를 추가하여 ARM 호환성을 깨뜨리는 것은 금지. 소프트웨어 호환성 보호가 ARM의 "슈퍼파워"다. 과거에는 많은 고객이 자체 설계를 선택했으나, 현재는 ROI가 낮고(5~15% 이점에 300~400명 엔지니어 필요) 대부분 ARM 기성품 코어를 구매한다.
     </div>
